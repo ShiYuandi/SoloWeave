@@ -1,0 +1,6 @@
+---
+description: SoloWeave project engineering contract and continuity
+alwaysApply: true
+---
+
+Read `.soloweave/project.yaml` and `.soloweave/context/HANDOFF.md` before substantial work. Follow approved decisions, inspect existing code, run relevant checks, and update handoff information. Use the project SoloWeave skills when relevant. State checks that were not run or unavailable.

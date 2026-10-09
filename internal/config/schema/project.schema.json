@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "project"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 1},
+    "project": {
+      "type": "object", "required": ["name", "type", "status"], "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "type": {"enum": ["frontend", "backend", "fullstack"]},
+        "status": {"enum": ["draft", "approved"]},
+        "team_size": {"type": "integer", "minimum": 1}
+      }
+    },
+    "frontend": {"$ref": "#/$defs/stack"},
+    "backend": {"$ref": "#/$defs/stack"},
+    "database": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"engine": {"type": "string"}, "orm": {"type": "string"}}
+    },
+    "workspace": {
+      "type": "object", "additionalProperties": false,
+      "properties": {
+        "layout": {"type": "string"}, "frontend_path": {"type": "string"},
+        "backend_path": {"type": "string"}, "shared_path": {"type": "string"}
+      }
+    },
+    "reuse": {"$ref": "#/$defs/options"},
+    "continuity": {"$ref": "#/$defs/options"},
+    "quality": {
+      "type": "object", "additionalProperties": false,
+      "properties": {"lint": {"type": "string"}, "relevant_tests": {"type": "string"}}
+    },
+    "agents": {"type": "array", "uniqueItems": true, "items": {"enum": ["codex", "claude", "cursor"]}}
+  },
+  "$defs": {
+    "stack": {
+      "type": "object", "required": ["language"], "additionalProperties": false,
+      "properties": {
+        "language": {"type": "string", "minLength": 1},
+        "framework": {"type": "string"}, "package_manager": {"type": "string"},
+        "architecture": {"type": "string"}
+      }
+    },
+    "options": {"type": "object", "additionalProperties": {"type": "boolean"}}
+  }
+}

@@ -1,0 +1,13 @@
+schema_version: 1
+project:
+    name: SoloWeave
+    type: backend
+    status: approved
+    team_size: 1
+backend:
+    language: go
+    framework: cobra
+agents:
+    - codex
+    - claude
+    - cursor

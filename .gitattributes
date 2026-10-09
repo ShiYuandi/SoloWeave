@@ -1,0 +1,5 @@
+* text=auto eol=lf
+
+# 本地二进制如果日后有意提交，保持原始字节
+*.exe binary
+*.zip binary

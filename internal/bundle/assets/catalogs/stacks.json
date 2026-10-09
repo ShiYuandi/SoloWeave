@@ -1,0 +1,36 @@
+[
+  {
+    "id": "frontend-ts",
+    "description": "TypeScript frontend with React and Vite; no independent backend",
+    "config": {
+      "schema_version": 1,
+      "project": {"name": "new-project", "type": "frontend", "status": "draft", "team_size": 1},
+      "frontend": {"language": "typescript", "framework": "react", "package_manager": "pnpm"},
+      "agents": ["codex"]
+    }
+  },
+  {
+    "id": "api-go",
+    "description": "Go API with PostgreSQL; simple modular backend",
+    "config": {
+      "schema_version": 1,
+      "project": {"name": "new-project", "type": "backend", "status": "draft", "team_size": 1},
+      "backend": {"language": "go", "framework": "stdlib", "architecture": "modular-monolith"},
+      "database": {"engine": "postgresql"},
+      "agents": ["codex"]
+    }
+  },
+  {
+    "id": "web-ts",
+    "description": "TypeScript fullstack with Next.js, NestJS, PostgreSQL, and Prisma",
+    "config": {
+      "schema_version": 1,
+      "project": {"name": "new-project", "type": "fullstack", "status": "draft", "team_size": 1},
+      "frontend": {"language": "typescript", "framework": "nextjs", "package_manager": "pnpm"},
+      "backend": {"language": "typescript", "framework": "nestjs", "architecture": "modular-monolith"},
+      "database": {"engine": "postgresql", "orm": "prisma"},
+      "workspace": {"layout": "monorepo", "frontend_path": "apps/web", "backend_path": "apps/api", "shared_path": "packages/shared"},
+      "agents": ["codex"]
+    }
+  }
+]
