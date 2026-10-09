@@ -1,6 +1,6 @@
 # 仓库目录说明
 
-[English](en/directory-structure.md) · 中文为主版本
+[English](en/directory-structure.md)
 
 本页介绍 **SoloWeave 源码仓库**。CLI 安装到其他项目后生成的目录见[配置说明](configuration.md)和[项目连续性](project-continuity.md)。
 
@@ -52,7 +52,7 @@
 | `docs/skills.md` | 五个 Skill 与平台安装路径 |
 | `docs/agent-acceptance.md` | 尚待执行的真实客户端交接验收步骤 |
 | `docs/directory-structure.md` | 本页 |
-| `docs/en/` | README 和公开使用、贡献文档的英文版；中文为主版本 |
+| `docs/en/` | README 和公开使用、贡献文档的英文版 |
 | `.soloweave/project.yaml` | **本仓库自身**的已批准项目配置 |
 | `.soloweave/approval.json` | 配置批准摘要；由 CLI 管理 |
 | `.soloweave/decisions/ADR-0001.md` | 本仓库架构决策记录 |

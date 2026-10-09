@@ -1,6 +1,6 @@
 # Agent Skills and platform files
 
-[简体中文（主版本）](../skills.md)
+[简体中文](../skills.md)
 
 The five canonical `SKILL.md` files are in `internal/bundle/assets/skills/` and are embedded in the Go binary. They follow the [Agent Skills specification](https://agentskills.io/specification): a short `name` and `description` help an agent select the right skill, while the body describes its workflow.
 

@@ -1,6 +1,6 @@
 # SoloWeave
 
-[English](docs/en/README.md) · 中文为主版本
+[English](docs/en/README.md)
 
 **独立开发，稳妥交付。**
 

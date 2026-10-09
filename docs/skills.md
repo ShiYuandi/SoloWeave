@@ -1,6 +1,6 @@
 # Agent Skill 与平台文件
 
-[English](en/skills.md) · 中文为主版本
+[English](en/skills.md)
 
 五个标准 `SKILL.md` 源文件位于 `internal/bundle/assets/skills/`，构建时嵌入 Go 程序。它们遵循 [Agent Skills 规范](https://agentskills.io/specification)：简短的 `name`、`description` 帮助 Agent 选择技能，正文说明工作流程。
 

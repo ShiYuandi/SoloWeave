@@ -1,6 +1,6 @@
 # 行为准则
 
-[English](docs/en/CODE_OF_CONDUCT.md) · 中文为主版本
+[English](docs/en/CODE_OF_CONDUCT.md)
 
 请尊重他人，围绕事实和证据讨论技术分歧，避免人身攻击，也不要公开他人的私人信息。维护者可以移除辱骂、骚扰或泄露隐私的内容，并限制相关参与者继续参与。
 

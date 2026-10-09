@@ -1,6 +1,6 @@
 # Changelog
 
-[简体中文（主版本）](../../CHANGELOG.md)
+[简体中文](../../CHANGELOG.md)
 
 ## 0.1.0-preview (unreleased)
 

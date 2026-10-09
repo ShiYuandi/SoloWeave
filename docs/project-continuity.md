@@ -1,6 +1,6 @@
 # 项目连续性
 
-[English](en/project-continuity.md) · 中文为主版本
+[English](en/project-continuity.md)
 
 SoloWeave 把可供下一个 Agent 恢复的上下文放在 `.soloweave/context/`：
 

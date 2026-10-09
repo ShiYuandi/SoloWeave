@@ -1,6 +1,6 @@
 # Repository directory guide
 
-[简体中文（主版本）](../directory-structure.md)
+[简体中文](../directory-structure.md)
 
 This page describes the **SoloWeave source repository**. For directories created in a target project, see [configuration](configuration.md) and [project continuity](project-continuity.md).
 
@@ -45,8 +45,8 @@ Each `*_test.go` file tests its neighboring package. Rebuild the CLI after chang
 
 | Path | Purpose |
 | --- | --- |
-| `docs/development-plan.md` | V0.1 scope, steps, and acceptance record; Chinese canonical document |
-| `docs/design-v0.2.md` | Product design baseline approved by the user; Chinese canonical document |
+| `docs/development-plan.md` | V0.1 scope, steps, and acceptance record; available in Chinese |
+| `docs/design-v0.2.md` | Product design baseline approved by the user; available in Chinese |
 | `docs/configuration.md` | Configuration fields and approval flow |
 | `docs/project-continuity.md` | Handoff files and checkpoints |
 | `docs/skills.md` | Five Skills and platform installation paths |

@@ -1,6 +1,6 @@
 # 项目配置
 
-[English](en/configuration.md) · 中文为主版本
+[English](en/configuration.md)
 
 `.soloweave/project.yaml` 是项目技术和架构选型的结构化事实来源。当前使用 `schema_version: 1`，初始化后的 `project.status` 为 `draft`（待确认）。开发者审阅配置并执行 `soloweave approve` 后，CLI 会生成 `.soloweave/decisions/ADR-NNNN.md` 和批准摘要。日后修改了已批准的关键字段，`soloweave check` 会报告不一致；有意变更时需再次审阅并执行 `approve`。
 

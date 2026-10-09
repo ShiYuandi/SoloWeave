@@ -1,6 +1,6 @@
 # Project configuration
 
-[简体中文（主版本）](../configuration.md)
+[简体中文](../configuration.md)
 
 `.soloweave/project.yaml` is the structured source of truth for a project's technology and architecture choices. The current format uses `schema_version: 1`; initialization sets `project.status: draft`. After the developer reviews the file and runs `soloweave approve`, the CLI writes `.soloweave/decisions/ADR-NNNN.md` and an approval digest. If a critical approved field later changes, `soloweave check` reports the mismatch. Review and approve an intentional change again.
 

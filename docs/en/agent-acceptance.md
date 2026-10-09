@@ -1,6 +1,6 @@
 # Cross-agent handoff acceptance
 
-[简体中文（主版本）](../agent-acceptance.md)
+[简体中文](../agent-acceptance.md)
 
 Claude Code and Cursor are not installed on the current development machine. Automated tests cover generated files and checkpoint behavior, but a live handoff in those clients remains unverified.
 

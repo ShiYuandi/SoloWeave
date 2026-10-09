@@ -1,6 +1,6 @@
 # 跨 Agent 交接验收
 
-[English](en/agent-acceptance.md) · 中文为主版本
+[English](en/agent-acceptance.md)
 
 当前开发机未安装 Claude Code 或 Cursor。自动化测试已覆盖安装产物和检查点行为，但这两个客户端中的真实交接**尚未验证**。
 

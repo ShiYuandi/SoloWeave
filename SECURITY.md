@@ -1,6 +1,6 @@
 # 安全说明
 
-[English](docs/en/SECURITY.md) · 中文为主版本
+[English](docs/en/SECURITY.md)
 
 不要在 `.soloweave/` 文档、测试样例、Issue 或日志中写入真实凭据、令牌、密码或私钥。安装器应保护用户已有文件，并拒绝写入目标项目之外的路径。
 

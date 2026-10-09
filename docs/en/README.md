@@ -1,6 +1,6 @@
 # SoloWeave
 
-[简体中文（主版本）](../../README.md)
+[简体中文](../../README.md)
 
 **Build independently. Ship confidently.**
 

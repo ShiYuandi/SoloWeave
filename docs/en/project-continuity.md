@@ -1,6 +1,6 @@
 # Project continuity
 
-[简体中文（主版本）](../project-continuity.md)
+[简体中文](../project-continuity.md)
 
 SoloWeave keeps recoverable project context under `.soloweave/context/`:
 
