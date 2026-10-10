@@ -2,7 +2,7 @@
 name: project-setup
 description: 创建新的 SoloWeave 项目或接入现有项目时使用；帮助确认技术选型并记录开发者批准的架构决策。
 slug: shiyuandi-soloweave-project-setup
-version: 0.1.0
+version: 0.1.1
 displayName: SoloWeave 项目规划
 summary: 为新项目或现有项目确认技术选型，并记录开发者批准的架构决策。
 license: MIT

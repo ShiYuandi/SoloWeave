@@ -2,7 +2,7 @@
 name: project-continuity
 description: 记录 SoloWeave 项目检查点、交接给其他 AI 账号或编程 Agent，以及在聊天上下文丢失后继续开发时使用。
 slug: shiyuandi-soloweave-project-continuity
-version: 0.1.0
+version: 0.1.1
 displayName: SoloWeave 项目交接
 summary: 记录真实开发进度，让新会话或不同编程 Agent 能接续项目。
 license: MIT

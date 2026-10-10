@@ -2,11 +2,11 @@
 
 ## 当前任务
 
-跟进 skillhub.cn 对五个 SoloWeave Skill 的安全审核，并将五个 Skill 的概述更新为中文。
+跟进 skillhub.cn 对五个 SoloWeave Skill `0.1.1` 中文版的安全审核。
 
 ## 当前状态
 
-原发布文件已推送至 GitHub `master`。2026-10-10 通过 SkillHub 的「从 GitHub 导入」流程提交五个 Skill；当时「我的 Skills」逐项显示版本 `0.1.0`、状态“安全审核中”，尚不能宣称已公开上架。本轮将五个 Skill 的 `description`、标题和正文改为中文；GitHub 同步情况以 Git 记录为准，SkillHub 尚未更新。浏览器未保留 SkillHub 登录状态，无法确认最新审核结果。
+五个 Skill 的 `0.1.0` 已在 SkillHub 公开发布。2026-10-10 将五个 Skill 的中文 `description`、标题和正文打包为 `0.1.1`，在管理页逐项提交更新；页面均显示“安全审核中”。公开详情页在审核通过前可能继续显示旧版英文正文。GitHub 同步情况以 Git 记录为准。
 
 ## 已提交的 Skill
 
@@ -16,11 +16,11 @@
 - `shiyuandi-soloweave-project-continuity`：SoloWeave 项目交接。
 - `shiyuandi-soloweave-quality-review`：SoloWeave 质量检查。
 
-入口 Skill 需要另外四个 Skill；`soloweave` CLI 还需从 GitHub Releases 单独安装。SkillHub 使用数字 `0.1.0` 版本，对应当前 CLI 的 `0.1.0-preview` Windows x64 下载版。
+入口 Skill 需要另外四个 Skill；`soloweave` CLI 还需从 GitHub Releases 单独安装。SkillHub 首发版为 `0.1.0`，中文更新版为 `0.1.1`，两者均对应当前 CLI 的 `0.1.0-preview` Windows x64 下载版。
 
 ## 最近改动
 
-此前五个 `SKILL.md` 增加发布信息；新增 `scripts/package-skillhub.ps1`；更新 `docs/skills.md`、`docs/en/skills.md`。本轮将五个 `SKILL.md` 的概述和正文改为中文。
+五个 `SKILL.md` 的 `version` 增至 `0.1.1`，重新生成五个本地 ZIP 并逐项上传 SkillHub；`docs/skills.md` 与 `docs/en/skills.md` 加入五个公开详情页链接、更新流程和审核状态。
 
 ## 实际验证
 
@@ -29,18 +29,19 @@
 - `go build ./...`：通过。
 - `scripts/package-skillhub.ps1`：通过，生成五个 ZIP 和 `SHA256SUMS`；ZIP 条目使用正斜杠路径。
 - SkillHub 网页本地上传检查：修正后的 ZIP 被识别为包含 `SKILL.md`。
-- SkillHub 网页 GitHub 导入：识别五个 Skill；提交后账号页显示五项“安全审核中”。
+- SkillHub 网页 GitHub 导入：识别五个 Skill；`0.1.0` 已公开发布。
 - `git diff --check`：通过。
 - 本轮 `.tools/go/bin/go.exe test ./... -count=1`：通过；本地 Go 缓存位于 `.tools/gocache`。
 - 本轮 `scripts/package-skillhub.ps1`：通过，五个本地 ZIP 已包含中文 Skill 文本。
+- 本轮 SkillHub 管理页更新：五个 `0.1.1` 均显示“安全审核中”；审核通过后的公开内容尚未验证。
 
 ## 已知限制
 
-未运行 SkillHub CLI 的 `--dry-run`（本机没有可用的 SkillHub CLI 或 WSL）；SkillHub 安全审核尚未完成，公开详情 URL 尚未核实。Claude Code/Cursor 真实客户端未验收。当前仅交付 Windows x64 的 SoloWeave CLI。
+未运行 SkillHub CLI 的 `--dry-run`（本机没有可用的 SkillHub CLI 或 WSL）；SkillHub `0.1.1` 安全审核尚未完成，公开页仍可能是 `0.1.0`。Claude Code/Cursor 真实客户端未验收。当前仅交付 Windows x64 的 SoloWeave CLI。
 
 ## 下一步
 
-重新登录 SkillHub 查看当前审核结果；后续按平台更新流程同步中文概述，并核对是否需要递增版本。如通过，核对五个公开页面和安装体验，再把链接加入中英文文档。
+等待 SkillHub `0.1.1` 审核结果。通过后逐项核对五个公开页面的中文概述与下载内容；如退回，按具体原因修复。项目文档已加入五个详情页链接。
 
 ## Git 状态
 

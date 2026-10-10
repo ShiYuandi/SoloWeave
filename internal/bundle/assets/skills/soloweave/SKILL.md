@@ -2,7 +2,7 @@
 name: soloweave
 description: 在 SoloWeave 项目中开始或继续工作时使用；根据任务需要，引导至项目规划、功能开发、项目交接或质量检查流程。
 slug: shiyuandi-soloweave
-version: 0.1.0
+version: 0.1.1
 displayName: SoloWeave 项目入口
 summary: 在 Codex、Claude Code 和 Cursor 中延续项目决策、开发任务与交接信息。
 license: MIT

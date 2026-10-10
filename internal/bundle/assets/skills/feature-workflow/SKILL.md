@@ -2,7 +2,7 @@
 name: feature-workflow
 description: 在 SoloWeave 项目中开发功能或修复问题时使用；遵守已批准的架构，并优先检查可复用的现有代码。
 slug: shiyuandi-soloweave-feature-workflow
-version: 0.1.0
+version: 0.1.1
 displayName: SoloWeave 功能开发
 summary: 在已确认的架构下检查现有代码、复用合适实现并完成需求或修复。
 license: MIT
