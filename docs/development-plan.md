@@ -62,3 +62,9 @@
 - `scripts/package-windows.ps1` 从程序实际版本生成 ZIP，内含可执行文件、MIT 许可证及中英文 README，并生成 `SHA256SUMS`。本地解压后运行完整临时项目流程验收。
 - `.github/workflows/release-windows.yml` 仅能由维护者在默认分支手动启动，运行测试、静态检查、打包与校验后创建草稿 Release；公开发布仍由仓库所有者检查并执行。
 - 中英文 README 的普通用户入口改为 GitHub Releases 下载；源码构建移至贡献者部分。首个公开 Release 尚未发布；工作流只有进入默认分支后才能由维护者远程运行。
+
+## 发布与下载文档核对（2026-10-10）
+
+- `v0.1.0-preview` 已公开发布，包含 Windows x64 可运行 ZIP 与 `SHA256SUMS`；此前“尚未发布”是旧检查点记录。
+- 中英文 README 现直达可运行 ZIP，明确 GitHub 自动生成的 Source code 压缩包仅含源码；源码开发与构建要求归入贡献文档。
+- 已发布 Release 的标签快照和 ZIP 不会随 `master` 的 README 修改而自动更新；后续如需替换发布附件，应另行核对版本、校验和与发布说明。

@@ -4,6 +4,8 @@
 
 修改较大功能前，请阅读[开发计划](docs/development-plan.md)、[v0.2 设计基准](docs/design-v0.2.md)和[当前交接记录](.soloweave/context/HANDOFF.md)，再核对实际代码与 Git 状态。
 
+从源码开发需要 Go 1.27.2 或更新版本；普通用户请直接从 [Releases](https://github.com/ShiYuandi/SoloWeave/releases) 下载可运行的 Windows x64 安装包。
+
 - Skill 尽量简洁、与平台无关；平台差异放在安装适配和规则文件中。
 - 修改 CLI 行为时，补充针对行为的测试；不要用只复述实现的测试替代真实验证。
 - 重要改动及时更新 `.soloweave/context/STATUS.md`、`CHANGES.md`，交接时更新 `HANDOFF.md`。
@@ -12,6 +14,16 @@
 - Git commit 的提交信息使用中文，简要说明本次改动。
 
 提交中不要包含 `.tools/`、`dist/`、密钥或其他本机生成文件。目录用途见[目录说明](docs/directory-structure.md)。
+
+## 从源码构建
+
+在仓库根目录运行：
+
+```sh
+go test ./...
+go vet ./...
+go build -o soloweave.exe ./cmd/soloweave
+```
 
 ## Windows 下载包
 

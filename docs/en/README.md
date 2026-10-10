@@ -6,13 +6,33 @@
 
 SoloWeave is an AI engineering skills toolkit and CLI for solo developers and teams of 1–5. It keeps architecture decisions, task progress, and handoff notes in project files, so work can continue after an account change or a switch between Codex, Claude Code, and Cursor.
 
-**V0.1 is a local preview.** It includes a Go CLI, a YAML project contract that requires developer approval, five Agent Skills, platform rule installation, and a handoff workflow. It does not call a remote AI API or require a database. The [v0.2 design baseline](../design-v0.2.md) and [development plan](../development-plan.md) are maintained in Chinese.
+## Why I built SoloWeave
 
-## Download for Windows
+While using AI to write code, I found that getting one feature built is easy compared with keeping an entire project coherent over time. When I start a full-stack project from scratch, an AI agent may choose the stack and directory structure before I have weighed the options. Later, it may introduce a different approach or rewrite functionality that already exists.
 
-Download `soloweave-v*-windows-amd64.zip` from [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) under **Assets**. Extract it and run `soloweave.exe`; **Go and a local build are not required**. If no package is listed, the first release is still being prepared. The ZIP also includes Chinese and English READMEs and the MIT license. Use `SHA256SUMS` to check the downloaded archive.
+Losing context is even more frustrating. When I switch accounts, models, or coding tools, the next agent does not know the project's goal, approved architecture, completed work, or open problems. I have to explain the project again, sometimes starting with another full review of the code.
 
-The current package targets Windows x64. Maintainers can create and verify the same ZIP locally using the [contribution guide](CONTRIBUTING.md).
+I began to ask why that knowledge should live only in a chat history. If decisions, progress, code changes, actual verification results, and next steps live with the project, a new agent can check the files and continue from there.
+
+That is why I built SoloWeave. I want AI to discuss technical choices with me before implementation, follow the decisions I approve, reuse suitable code, and leave a useful handoff after important work. The developer keeps control of major decisions, and the workflow should stay proportionate to the project.
+
+SoloWeave started with my own development needs. I am sharing it so other independent developers and small teams can keep projects moving across AI tools, instead of starting over with each conversation.
+
+## Core capabilities
+
+- **Developer-approved architecture**: record technical choices and approve key decisions before implementation.
+- **Project continuity**: keep progress, changes, actual verification results, and next steps with the project.
+- **Consistent engineering**: help agents inspect existing code and follow approved project conventions.
+
+The **v0.1.0-preview Windows x64 build** includes the CLI, a YAML project contract that requires developer approval, five Agent Skills, platform rule installation, and a handoff workflow. It does not call a remote AI API or require a database. The [v0.2 design baseline](../design-v0.2.md) and [development plan](../development-plan.md) are maintained in Chinese.
+
+## Download and run on Windows
+
+1. [Download the v0.1.0-preview Windows x64 package](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.0-preview/soloweave-v0.1.0-preview-windows-amd64.zip). See [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) for other versions.
+2. Extract the ZIP to get `soloweave.exe`. **You do not need Go or a local build.**
+3. Run the quick-start commands below in PowerShell.
+
+Choose `soloweave-...-windows-amd64.zip` under **Assets**. GitHub's automatic `Source code (zip)` and `Source code (tar.gz)` archives contain source files, not a ready-to-run executable. The package also includes Chinese and English usage guides and the MIT license. Use [SHA256SUMS](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.0-preview/SHA256SUMS) to check the downloaded archive. Only Windows x64 is packaged today.
 
 ## Quick start
 
@@ -52,20 +72,8 @@ Project configuration, ADRs, and handoff files live in `.soloweave/`. Codex and 
 
 See the [repository directory guide](directory-structure.md) and [Skills guide](skills.md).
 
-## Build and test for contributors
-
-Source development requires Go 1.27.2 or newer. Users of the downloaded executable do not need Go. The module path is `github.com/ShiYuandi/SoloWeave`. From the repository root:
-
-```sh
-go test ./...
-go vet ./...
-go build -o soloweave.exe ./cmd/soloweave
-```
-
-`scripts/package-windows.ps1` creates the Windows x64 ZIP and SHA256 checksum under the Git-ignored `dist/` directory. The existing `scripts/build-preview.ps1` remains available for local preview builds. Cross-compilation does not verify runtime behavior on Linux or macOS.
-
 ## Verification status
 
-Go tests, vet, build, validation of the five Skills, and a complete Windows CLI smoke test in a temporary project have passed. Linux and macOS binaries have only been cross-compiled. Live handoffs in Claude Code and Cursor remain untested; see the [acceptance procedure](agent-acceptance.md). [GitHub Actions CI](https://github.com/ShiYuandi/SoloWeave/actions/runs/37946714081) passed for commit `b07d057`; check the CI result for later commits separately. Refer to the Releases page for current publication status.
+Go tests, vet, build, validation of the five Skills, and a complete Windows CLI smoke test in a temporary project have passed. Linux and macOS binaries have only been cross-compiled. Live handoffs in Claude Code and Cursor remain untested; see the [acceptance procedure](agent-acceptance.md). For source builds and development, see the [contribution guide](CONTRIBUTING.md).
 
 License: [MIT](../../LICENSE) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)

@@ -12,6 +12,8 @@
 - 2026-10-10：增加 Windows x64 免构建 ZIP、SHA256 校验与草稿 Release 工作流；从 ZIP 解压运行程序，在临时项目完成初始化、批准、安装和检查点流程。
 - 2026-10-10：为五个 Skill 准备 SkillHub 发布元数据和 ZIP，完成 Go 测试、静态检查、构建、打包与网页上传格式检查。SkillHub 网页已识别 GitHub 仓库中的五个旧版 Skill。
 - 2026-10-10：将五个内置 Skill 的 `description`、标题和正文改为中文；使用本仓库 Go 工具链运行 `go test ./... -count=1`，并重新生成五个 SkillHub 本地 ZIP，均通过。
+- 2026-10-10：核对已公开的 GitHub `v0.1.0-preview` Release 确有 Windows x64 ZIP；中英文 README 改为直达下载包并移除源码构建命令，明确区分安装包与 GitHub 自动生成的源码包。贡献文档保留开发者 Go 要求。
+- 2026-10-10：中英文 README 开头补充第一人称开发初衷与核心能力，说明架构选择、复用和跨 AI 工具交接的实际需求。
 
 ## 进行中
 
