@@ -4,9 +4,11 @@
 
 ## Unreleased: Skills-first migration
 
+- `project-setup` is now `0.3.0`: it discovers requirements and project type before comparing independently combinable choices by relevant dimension. Its guide offers decision questions and examples without limiting recommendations. SkillHub packages now include required reference files.
+- Following a two-window Codex trial, require a clear status and handoff when a new project is blocked, and resume known unfinished work before asking for a new direction. The three affected Skills are now `0.2.1`.
 - Added six new root Skills, including an ordinary-development entry and a debugging workflow; the Go CLI keeps its published legacy snapshot.
 - Changed the default guide to installing Skills once and then asking for development normally. Added bilingual usage and acceptance docs, a migration design, and an ADR.
-- Local SkillHub packaging now reads six root Skills and CI checks them. Public installation, live client invocation, and SkillHub updates remain to be tested.
+- Local SkillHub packaging now reads six root Skills and CI checks them. Codex files installed by an AI agent from public GitHub matched the source; observable automatic invocation, the revised two-window handoff, and SkillHub updates remain to be tested.
 
 ## 0.1.1-preview (released)
 

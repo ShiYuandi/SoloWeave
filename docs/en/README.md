@@ -38,14 +38,14 @@ Then ask for work normally, for example:
 
 You do not need to type a SoloWeave command for every task. The entry Skill routes to setup, feature development, debugging, review, or continuity as needed. The agent should inspect an existing project's code and records; you still approve major technical choices. Automatic skill selection depends on the agent and is not guaranteed. If needed, explicitly ask it to “use SoloWeave to continue this project.”
 
-**Verification status:** The standard installer discovered all six new Skills from the local repository and created the corresponding project Skill files for Codex, Claude Code, and Cursor in a disposable project. Live automatic invocation, installation from the public GitHub URL, and SkillHub updates still need separate acceptance. The current [SkillHub pages](skills.md#skillhub-publication-status) host the five previously published Skills; check their displayed versions.
+**Verification status:** The standard installer discovered all six new Skills from the local repository and created project Skill files for Codex, Claude Code, and Cursor in a disposable project. Six Codex Skills installed by an AI agent from public GitHub matched the source. A two-window trial exposed a handoff gap; the repository revision still needs a live retest. Observable automatic invocation, a direct standard-installer command against the public URL, and SkillHub updates need separate acceptance. The current [SkillHub pages](skills.md#skillhub-publication-status) host the five previously published Skills; check their displayed versions.
 
 ## What it does
 
 | When | Expected agent behavior |
 | --- | --- |
 | Enter an existing project | Read rules, goals, decisions, status, and code; check whether the handoff is stale. |
-| Create or adopt a project | Inspect what exists, explain key options, obtain your approval for major choices, and record an ADR. |
+| Create or adopt a project | Understand requirements and existing work, then compare independently combinable choices by relevant dimension. You approve major decisions before an ADR records them; examples do not limit the agent's choices. |
 | Develop or fix code | Search for suitable existing implementations, make the change, and run relevant checks. |
 | Finish important work or switch accounts | Update progress, significant changes, actual test results, and next steps for the next session. |
 

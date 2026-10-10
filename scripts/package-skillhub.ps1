@@ -47,13 +47,17 @@ foreach ($skill in $skills) {
     try {
         $archive = [System.IO.Compression.ZipArchive]::new($zipStream, [System.IO.Compression.ZipArchiveMode]::Create)
         try {
-            $entry = $archive.CreateEntry("$($skill.Name)/SKILL.md")
-            $entryStream = $entry.Open()
-            try {
-                $bytes = [System.IO.File]::ReadAllBytes($skillFile)
-                $entryStream.Write($bytes, 0, $bytes.Length)
-            } finally {
-                $entryStream.Dispose()
+            $sourceFiles = @(Get-ChildItem -LiteralPath $skill.FullName -File -Recurse | Sort-Object FullName)
+            foreach ($sourceFile in $sourceFiles) {
+                $relativePath = [System.IO.Path]::GetRelativePath($skill.FullName, $sourceFile.FullName).Replace('\', '/')
+                $entry = $archive.CreateEntry("$($skill.Name)/$relativePath")
+                $entryStream = $entry.Open()
+                try {
+                    $bytes = [System.IO.File]::ReadAllBytes($sourceFile.FullName)
+                    $entryStream.Write($bytes, 0, $bytes.Length)
+                } finally {
+                    $entryStream.Dispose()
+                }
             }
         } finally {
             $archive.Dispose()
