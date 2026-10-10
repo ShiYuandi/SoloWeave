@@ -6,7 +6,7 @@
 
 ## 当前状态
 
-SkillHub 的五个公开详情页原先均显示 `0.1.1`。五个 `0.1.2` 更新已在管理页提交并显示“安全审核中”，公开状态尚待核对。CLI 源码预备版本为 `0.1.1-preview`，本地 ZIP 已验证但尚未公开发布。`01ffaae` 已推送到 GitHub `master`。
+SkillHub 的五个 `0.1.2` 更新已通过审核，公开页均显示对应版本与下载入口，纯 Skills 正文可见。入口页的 GitHub URL 排版有误，源码已准备 `0.1.3` 修正。CLI 源码预备版本为 `0.1.1-preview`，本地 ZIP 已验证但尚未公开发布。`29c0852` 已推送到 GitHub `master`。
 
 ## 已提交的 Skill
 
@@ -49,6 +49,8 @@ Windows ZIP 改为用版本模板生成双语包内说明，避免复制仓库 R
 - Windows 本地候选 ZIP 解压后，`version` 显示 `0.1.1-preview`；`init`、`approve`、`install` 通过，安装的 Skill 为 `0.1.2`；初次 `check` 因缺少检查点失败，创建无虚构验证结果的检查点后通过，Git 状态为 `UNAVAILABLE`。重新打包后的双语包内 README 显示 `v0.1.1-preview`、没有旧版链接或未替换占位符；`SHA256SUMS` 匹配。
 - 最新 `go test ./... -count=1`、`go vet ./...`、`go build ./...` 均通过；Windows ZIP 再次打包，四个条目、版本、快速开始顺序与 `SHA256SUMS` 核对通过。GitHub 仓库首页已显示提交 `01ffaae` 和新 README。
 - SkillHub 管理页逐项上传五个 `0.1.2` ZIP、填写中文概述和变更说明，五项均显示“提交成功”及“安全审核中”；未将此当作审核通过或公开安装验收。
+- 随后管理页五项均显示 `0.1.2`“已发布”；逐个公开详情页核对版本、下载入口与正文，入口页确认 CLI 可选，但下载 URL 把末尾中文句号算入链接。未执行在线 AI 安装。
+- 入口链接修正后，`go test ./... -count=1` 通过；`scripts/package-skillhub.ps1` 生成入口 `0.1.3` 与其余四项 `0.1.2` ZIP，入口 ZIP 的版本和 Markdown 链接核对通过。Windows ZIP 重新打包并核对 SHA256SUMS；从 ZIP 在临时项目执行 `init`、`approve --yes`、Codex `install`，安装的入口 Skill 为 `0.1.3` 且链接正确。
 
 ## 已知限制
 
@@ -56,8 +58,8 @@ Windows ZIP 改为用版本模板生成双语包内说明，避免复制仓库 R
 
 ## 下一步
 
-GitHub 网页登录后创建并核对 `0.1.1-preview` Windows 发布草稿，再更新 README 下载链接与公开发布；SkillHub `0.1.2` 审核通过后核对公开页面并做真实在线安装。现有 Release 的标签快照和 ZIP 不会随源码改变。
+发布入口 Skill `0.1.3` 链接修正并核对公开页面；GitHub 网页登录后创建并核对 `0.1.1-preview` Windows 发布草稿，再更新 README 下载链接与公开发布。真实在线 AI 安装仍待执行。现有 Release 的标签快照和 ZIP 不会随源码改变。
 
 ## Git 状态
 
-分支：master。`01ffaae` 已推送到 `origin/master`；本轮发布状态更新以当前 `git status` 和远端记录为准。
+分支：master。`29c0852` 已推送到 `origin/master`；本轮链接修复以当前 `git status` 和远端记录为准。

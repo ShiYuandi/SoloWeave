@@ -21,6 +21,8 @@
 - 2026-10-10：五个本地 SkillHub ZIP 打包及内容核对通过；隔离临时项目的纯 Skills 演练、无旧会话资料的文件恢复检查通过。项目测试在 `node --test` 遇 `spawn EPERM` 后，用 `node src/name.test.js` 运行通过 2 项。Go 测试、静态检查、构建和相对链接检查通过。
 - 2026-10-10：Windows `0.1.1-preview` 本地候选 ZIP 的中英文说明按程序版本生成，包内版本与 `SHA256SUMS` 核对通过；快速开始先写检查点再运行 `check`。
 - 2026-10-10：提交 `01ffaae` 并推送到 `origin/master`；SkillHub 五个 `0.1.2` 更新均已提交，管理页显示安全审核中，尚不能称为公开可安装。
+- 2026-10-10：SkillHub 五个 `0.1.2` 均显示已发布；公开详情页核对版本、下载入口和纯 Skills 正文通过。入口页发现 GitHub URL 排版问题，源码已准备 `0.1.3` 修正。
+- 2026-10-10：入口 `0.1.3` 的本地 ZIP 与 Windows 安装包重新生成并核对，通过 Go 测试、SHA256SUMS、临时项目 `init`/`approve`/`install`，安装后的链接正确。
 
 ## 进行中
 
@@ -31,9 +33,9 @@
 
 - Claude Code、Cursor 的真实客户端验收尚未运行。
 - `0.1.1` 的五个公开详情页已显示可安装；本机没有可用的 SkillHub CLI 或 WSL，因此尚未运行 SkillHub CLI 的 `--dry-run` 或实际 AI 安装验收。GitHub 同步状态以当前 Git 记录为准。
-- `0.1.2` 的五个 SkillHub 更新已进入安全审核；尚未完成在线安装或真实 Codex、Claude Code、Cursor 客户端的纯 Skills 验收。`0.1.1-preview` CLI 尚未公开发布。
+- `0.1.2` 的五个 SkillHub 更新均已公开；尚未完成在线安装或真实 Codex、Claude Code、Cursor 客户端的纯 Skills 验收。`0.1.1-preview` CLI 尚未公开发布。
 - 用户决定暂不做跨平台实机验证。
 
 ## 下一步
 
-- 等待 SkillHub 五个 `0.1.2` 安全审核，公开后再核对内容并做在线安装验收；GitHub `0.1.1-preview` Windows CLI 发布仍待网页登录操作。在线安装和真实客户端的结果须与本地演练分开报告。
+- 提交入口 Skill `0.1.3` 链接修正并核对 SkillHub 公开页；GitHub `0.1.1-preview` Windows CLI 发布仍待网页登录操作。在线安装和真实客户端的结果须与本地演练分开报告。

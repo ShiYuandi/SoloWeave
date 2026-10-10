@@ -7,6 +7,7 @@
 - Added CLI-free planning, development, handoff, and quality-review paths to the five Skills, with a clear boundary between manual records and CLI checks.
 - Added bilingual Skills-only guidance and clearer explanations of the two usage paths and CLI commands.
 - Generate version-specific bilingual instructions inside the Windows ZIP and record a checkpoint before the quick-start project check.
+- Fix the GitHub download link in the entry Skill.
 
 ## 0.1.0-preview (released)
 
