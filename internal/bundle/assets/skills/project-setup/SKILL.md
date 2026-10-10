@@ -1,6 +1,12 @@
 ---
 name: project-setup
 description: Use when creating a new SoloWeave project or adopting an existing project, selecting its technology stack, and recording approved architecture decisions.
+slug: shiyuandi-soloweave-project-setup
+version: 0.1.0-preview
+displayName: SoloWeave 项目规划
+summary: 为新项目或现有项目确认技术选型，并记录开发者批准的架构决策。
+license: MIT
+homepage: https://github.com/ShiYuandi/SoloWeave
 ---
 
 # Project setup
