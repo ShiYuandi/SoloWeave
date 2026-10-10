@@ -2,7 +2,7 @@
 
 [English](docs/en/CHANGELOG.md)
 
-## 0.1.1-preview（开发中）
+## 0.1.1-preview（已发布）
 
 - 五个 Skill 增加无 CLI 时的规划、开发、交接与质量检查路径；人工记录与 CLI 机器校验的边界更加明确。
 - 补充只安装 Skills 的中英文指南，并解释两种使用方式与 CLI 命令。

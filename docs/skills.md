@@ -34,4 +34,4 @@ SkillHub 安装只提供 Skill 文件。没有 CLI 时，AI 可按[纯 Skills �
 
 发布时应提供五个 Skill：入口 `soloweave`、`project-setup`、`feature-workflow`、`project-continuity`、`quality-review`。入口会按任务调用其余四个，因此只安装入口并不构成完整流程。只用开发规范时无需 CLI；若要使用 `soloweave` 命令，则需从 [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) 单独下载并配置 `PATH`。当前只提供 Windows x64 程序；其他系统的可运行程序尚未交付。发布到 SkillHub 不等于 CLI 自动可用。
 
-SkillHub 网页实际要求数字 `X.Y.Z` 版本。首发的五个 Skill 为 `0.1.0`；中文更新版为 `0.1.1`。2026-10-10 已核对五个 `0.1.2` 公开详情页，均可下载安装，正文包含纯 Skills 路线。入口 Skill 的 GitHub 下载链接经 `0.1.3` 修复，公开页已显示正确链接和 `0.1.3` 下载包；其余四项保持 `0.1.2`。当前 CLI `0.1.0-preview` Windows x64 下载版仍包含打包时的旧 Skill；Skill 与 CLI 属于不同发布渠道。后续更新要调整受影响 Skill 的版本，说明兼容的程序版本；保留各自的 `slug`，重新生成包、校验并提交。上架状态以 SkillHub 实际页面为准。
+SkillHub 网页实际要求数字 `X.Y.Z` 版本。首发的五个 Skill 为 `0.1.0`；中文更新版为 `0.1.1`。2026-10-10 已核对五个 `0.1.2` 公开详情页，均可下载安装，正文包含纯 Skills 路线。入口 Skill 的 GitHub 下载链接经 `0.1.3` 修复，公开页已显示正确链接和 `0.1.3` 下载包；其余四项保持 `0.1.2`。当前 CLI `0.1.1-preview` Windows x64 下载版内含入口 `0.1.3` 与其余四项 `0.1.2`；Skill 与 CLI 属于不同发布渠道。后续更新要调整受影响 Skill 的版本，说明兼容的程序版本；保留各自的 `slug`，重新生成包、校验并提交。上架状态以 SkillHub 实际页面为准。

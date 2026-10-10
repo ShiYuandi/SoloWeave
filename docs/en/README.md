@@ -24,7 +24,7 @@ SoloWeave started with my own development needs. I am sharing it so other indepe
 - **Project continuity**: keep progress, changes, actual verification results, and next steps with the project.
 - **Consistent engineering**: help agents inspect existing code and follow approved project conventions.
 
-The **v0.1.0-preview Windows x64 build** includes the CLI, a YAML project contract that requires developer approval, five Agent Skills, platform rule installation, and a handoff workflow. It does not call a remote AI API or require a database. The [v0.2 design baseline](../design-v0.2.md) and [development plan](../development-plan.md) are maintained in Chinese.
+The **v0.1.1-preview Windows x64 build** includes the CLI, a YAML project contract that requires developer approval, five Agent Skills, platform rule installation, and a handoff workflow. It does not call a remote AI API or require a database. The [v0.2 design baseline](../design-v0.2.md) and [development plan](../development-plan.md) are maintained in Chinese.
 
 ## Skills only, or use the CLI?
 
@@ -55,11 +55,11 @@ If you choose the CLI path below, **you do not need to install from SkillHub fir
 
 ## Download and run on Windows
 
-1. [Download the v0.1.0-preview Windows x64 package](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.0-preview/soloweave-v0.1.0-preview-windows-amd64.zip). See [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) for other versions.
+1. [Download the v0.1.1-preview Windows x64 package](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.1-preview/soloweave-v0.1.1-preview-windows-amd64.zip). See [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) for other versions.
 2. Extract the ZIP to get `soloweave.exe`. **You do not need Go or a local build.**
 3. Run the quick-start commands below in PowerShell.
 
-Choose `soloweave-...-windows-amd64.zip` under **Assets**. GitHub's automatic `Source code (zip)` and `Source code (tar.gz)` archives contain source files, not a ready-to-run executable. The package also includes Chinese and English usage guides and the MIT license. Use [SHA256SUMS](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.0-preview/SHA256SUMS) to check the downloaded archive. Only Windows x64 is packaged today.
+Choose `soloweave-...-windows-amd64.zip` under **Assets**. GitHub's automatic `Source code (zip)` and `Source code (tar.gz)` archives contain source files, not a ready-to-run executable. The package also includes Chinese and English usage guides and the MIT license. Use [SHA256SUMS](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.1-preview/SHA256SUMS) to check the downloaded archive. Only Windows x64 is packaged today.
 
 ## What the CLI commands do
 

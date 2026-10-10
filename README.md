@@ -24,7 +24,7 @@ SoloWeave 最初源于我自己的开发需求。我将它开源，希望其他�
 - **延续项目上下文**：把进度、变更、实际验证结果和下一步保存在项目中。
 - **保持工程一致性**：让 Agent 先了解现有实现，并按已确认的约定开发与检查。
 
-当前提供 **v0.1.0-preview Windows x64 预览版**：包含命令行程序、需要人工确认的 YAML 项目配置、五个 Agent Skill、平台规则安装和任务交接流程。不调用远程 AI API，也不需要数据库。[v0.2 设计基准](docs/design-v0.2.md)与[开发计划](docs/development-plan.md)记录了范围和取舍。
+当前提供 **v0.1.1-preview Windows x64 预览版**：包含命令行程序、需要人工确认的 YAML 项目配置、五个 Agent Skill、平台规则安装和任务交接流程。不调用远程 AI API，也不需要数据库。[v0.2 设计基准](docs/design-v0.2.md)与[开发计划](docs/development-plan.md)记录了范围和取舍。
 
 ## 只装 Skills，还是使用 CLI？
 
@@ -55,11 +55,11 @@ CLI 是本地文件工具，不会替 AI 写业务代码，也不会替开发者
 
 ## 下载并使用 Windows 版
 
-1. [下载 v0.1.0-preview Windows x64 安装包](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.0-preview/soloweave-v0.1.0-preview-windows-amd64.zip)。其他版本见 [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases)。
+1. [下载 v0.1.1-preview Windows x64 安装包](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.1-preview/soloweave-v0.1.1-preview-windows-amd64.zip)。其他版本见 [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases)。
 2. 解压 ZIP，得到 `soloweave.exe`。**普通用户无需安装 Go，也无需自行构建。**
 3. 在 PowerShell 中运行下方的快速开始命令。
 
-请下载发布页 **Assets** 中的 `soloweave-...-windows-amd64.zip`；GitHub 自动提供的 `Source code (zip)` 和 `Source code (tar.gz)` 是源码包，不含可直接运行的程序。安装包还包含中英文使用说明和 MIT 许可证；[SHA256SUMS](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.0-preview/SHA256SUMS) 可用于核对下载文件。目前仅提供 Windows x64 安装包。
+请下载发布页 **Assets** 中的 `soloweave-...-windows-amd64.zip`；GitHub 自动提供的 `Source code (zip)` 和 `Source code (tar.gz)` 是源码包，不含可直接运行的程序。安装包还包含中英文使用说明和 MIT 许可证；[SHA256SUMS](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.1-preview/SHA256SUMS) 可用于核对下载文件。目前仅提供 Windows x64 安装包。
 
 ## CLI 命令做什么
 

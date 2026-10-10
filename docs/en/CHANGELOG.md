@@ -2,7 +2,7 @@
 
 [简体中文](../../CHANGELOG.md)
 
-## 0.1.1-preview (in development)
+## 0.1.1-preview (released)
 
 - Added CLI-free planning, development, handoff, and quality-review paths to the five Skills, with a clear boundary between manual records and CLI checks.
 - Added bilingual Skills-only guidance and clearer explanations of the two usage paths and CLI commands.
