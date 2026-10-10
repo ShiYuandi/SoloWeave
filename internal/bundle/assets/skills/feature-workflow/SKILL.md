@@ -1,6 +1,6 @@
 ---
 name: feature-workflow
-description: Use when implementing a feature or bug fix in a SoloWeave project while preserving its approved architecture and reusing existing code.
+description: 在 SoloWeave 项目中开发功能或修复问题时使用；遵守已批准的架构，并优先检查可复用的现有代码。
 slug: shiyuandi-soloweave-feature-workflow
 version: 0.1.0
 displayName: SoloWeave 功能开发
@@ -9,8 +9,8 @@ license: MIT
 homepage: https://github.com/ShiYuandi/SoloWeave
 ---
 
-# Feature workflow
+# 功能开发
 
-Read the approved project contract and current handoff. Inspect related modules, existing components, utilities, dependencies, and tests before designing a change. Reuse a suitable implementation; create new code when reuse would increase coupling or obscure responsibility. Keep the change as small as the requirement permits.
+先读取已批准的工程配置和当前交接记录。设计改动前，检查相关模块、现有组件、工具方法、依赖和测试。有合适的实现就复用；如果复用会增加耦合或模糊职责，则编写新代码。将改动控制在满足需求所需的范围内。
 
-State a short implementation plan for substantial work. Make the edit, run relevant verification, and report what actually ran. If the task changes an approved technology or architecture decision, pause that change for developer approval and a new ADR. At meaningful checkpoints update the project status and handoff using `project-continuity`.
+较大任务先简要说明实施计划。完成修改后运行相关验证，并如实报告实际执行的检查。如果任务涉及变更已批准的技术或架构决策，先取得开发者确认，再记录新的 ADR。在有意义的检查点使用 `project-continuity` 更新项目状态和交接信息。

@@ -2,11 +2,11 @@
 
 ## 当前任务
 
-跟进 skillhub.cn 对五个 SoloWeave Skill 的安全审核。
+跟进 skillhub.cn 对五个 SoloWeave Skill 的安全审核，并将五个 Skill 的概述更新为中文。
 
 ## 当前状态
 
-发布文件已推送至 GitHub `master`。2026-10-10 通过 SkillHub 的「从 GitHub 导入」流程提交五个 Skill；「我的 Skills」逐项显示版本 `0.1.0`、状态“安全审核中”，尚不能宣称已公开上架。
+原发布文件已推送至 GitHub `master`。2026-10-10 通过 SkillHub 的「从 GitHub 导入」流程提交五个 Skill；当时「我的 Skills」逐项显示版本 `0.1.0`、状态“安全审核中”，尚不能宣称已公开上架。本轮将五个 Skill 的 `description`、标题和正文改为中文；GitHub 同步情况以 Git 记录为准，SkillHub 尚未更新。浏览器未保留 SkillHub 登录状态，无法确认最新审核结果。
 
 ## 已提交的 Skill
 
@@ -20,7 +20,7 @@
 
 ## 最近改动
 
-五个 `SKILL.md` 增加发布信息；新增 `scripts/package-skillhub.ps1`；更新 `docs/skills.md`、`docs/en/skills.md` 和本仓库交接文档。代码与文档提交 `ce6c769`、`88f1d08` 已推送。
+此前五个 `SKILL.md` 增加发布信息；新增 `scripts/package-skillhub.ps1`；更新 `docs/skills.md`、`docs/en/skills.md`。本轮将五个 `SKILL.md` 的概述和正文改为中文。
 
 ## 实际验证
 
@@ -31,6 +31,8 @@
 - SkillHub 网页本地上传检查：修正后的 ZIP 被识别为包含 `SKILL.md`。
 - SkillHub 网页 GitHub 导入：识别五个 Skill；提交后账号页显示五项“安全审核中”。
 - `git diff --check`：通过。
+- 本轮 `.tools/go/bin/go.exe test ./... -count=1`：通过；本地 Go 缓存位于 `.tools/gocache`。
+- 本轮 `scripts/package-skillhub.ps1`：通过，五个本地 ZIP 已包含中文 Skill 文本。
 
 ## 已知限制
 
@@ -38,8 +40,8 @@
 
 ## 下一步
 
-查看 SkillHub 的实际审核结果；如通过，核对五个公开页面和安装体验，再把链接加入中英文文档。如有退回，按具体原因修复并提交后续版本。
+重新登录 SkillHub 查看当前审核结果；后续按平台更新流程同步中文概述，并核对是否需要递增版本。如通过，核对五个公开页面和安装体验，再把链接加入中英文文档。
 
 ## Git 状态
 
-分支：master。发布文件对应提交 `88f1d0880ac9ecb2b2194d03b2749c4b54ace3aa` 已在 `origin/master`；以当前 `git status` 为准。
+分支：master。中文概述的提交与推送状态以当前 `git status` 和远端记录为准。

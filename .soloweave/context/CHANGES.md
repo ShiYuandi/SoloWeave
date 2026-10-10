@@ -13,3 +13,4 @@
 - 2026-10-10：新增 Windows x64 ZIP 与 SHA256 打包脚本、手动草稿 Release 工作流；中英文 README 改为下载优先，并完成本地解压与 CLI 流程验收。
 - 2026-10-10：为五个内置 Skill 加入 SkillHub 发布元数据，明确入口 Skill 对其他 Skill 和 CLI 的依赖；新增 Windows 发布包脚本及中英文发布说明。网页上传暴露的 ZIP 路径问题已修复。
 - 2026-10-10：通过 skillhub.cn 的 GitHub 导入流程提交五个 Skill，均显示 `0.1.0` 且处于“安全审核中”；平台网页要求数字 `X.Y.Z` 版本，因此 Skill 版本与 CLI 预览版号分开记录。
+- 2026-10-10：将五个内置 Skill 的概述、标题和正文翻译为中文；本地测试和 SkillHub ZIP 打包通过。GitHub 同步情况以 Git 记录为准，SkillHub 尚未更新。

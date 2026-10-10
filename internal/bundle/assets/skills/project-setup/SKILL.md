@@ -1,6 +1,6 @@
 ---
 name: project-setup
-description: Use when creating a new SoloWeave project or adopting an existing project, selecting its technology stack, and recording approved architecture decisions.
+description: 创建新的 SoloWeave 项目或接入现有项目时使用；帮助确认技术选型并记录开发者批准的架构决策。
 slug: shiyuandi-soloweave-project-setup
 version: 0.1.0
 displayName: SoloWeave 项目规划
@@ -9,8 +9,8 @@ license: MIT
 homepage: https://github.com/ShiYuandi/SoloWeave
 ---
 
-# Project setup
+# 项目规划
 
-For an existing project, inspect source, dependency manifests, and tests before suggesting a configuration. Do not migrate its architecture as part of adoption. For a new project, clarify the product goal and MVP, then present a small set of fitting stack and architecture choices with tradeoffs. The developer makes the final selection.
+接入现有项目时，先查看源代码、依赖清单和测试，再建议工程配置。不要借接入之机迁移项目架构。创建新项目时，先明确产品目标和最小可行产品，再提出少量合适的技术栈与架构选项，说明各自取舍。最终选型由开发者决定。
 
-Use `soloweave init` to create a draft `.soloweave/project.yaml`. Review it with the developer before `soloweave approve`, which records the decision in an ADR. Do not silently approve or change a previously approved choice. Keep technology versions in each project's dependency files, not in the SoloWeave contract.
+使用 `soloweave init` 创建草稿版 `.soloweave/project.yaml`。与开发者核对配置后，再运行 `soloweave approve`，将决策记录为 ADR。不要自行批准草稿，也不要擅自更改此前已批准的选项。具体技术版本应记录在项目的依赖文件中，而不是 SoloWeave 工程配置中。

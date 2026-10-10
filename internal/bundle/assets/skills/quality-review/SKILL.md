@@ -1,6 +1,6 @@
 ---
 name: quality-review
-description: Use when checking a SoloWeave project's code changes, engineering contract, tests, or readiness to hand off or deliver.
+description: 检查 SoloWeave 项目的代码改动、工程配置、测试结果，或判断项目是否可以交接与交付时使用。
 slug: shiyuandi-soloweave-quality-review
 version: 0.1.0
 displayName: SoloWeave 质量检查
@@ -9,8 +9,8 @@ license: MIT
 homepage: https://github.com/ShiYuandi/SoloWeave
 ---
 
-# Quality review
+# 质量检查
 
-Inspect the actual change and the relevant project contract. Run the applicable tests and `soloweave check`; use `soloweave doctor` for setup or installation problems. Check for architecture drift, missing handoff details, and newly duplicated code where relevant.
+检查实际改动和相关工程配置。运行适用的测试与 `soloweave check`；遇到配置或安装问题时，使用 `soloweave doctor`。根据改动内容，检查是否出现架构偏移、交接信息缺失或新增的重复代码。
 
-Separate passed, failed, not run, and unavailable checks. Never describe an unrun test as passed. Report concrete findings with affected files and a practical next action. Update the handoff with verified results before an agent switch.
+分别列出通过、失败、未执行和工具不可用的检查。不要把未运行的测试说成已通过。报告具体问题、受影响文件和可执行的下一步。切换 Agent 前，将核实过的结果写入交接记录。

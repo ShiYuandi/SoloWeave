@@ -1,6 +1,6 @@
 ---
 name: soloweave
-description: Use when starting or resuming work in a SoloWeave project and the task needs routing to project setup, feature development, continuity, or quality review.
+description: 在 SoloWeave 项目中开始或继续工作时使用；根据任务需要，引导至项目规划、功能开发、项目交接或质量检查流程。
 slug: shiyuandi-soloweave
 version: 0.1.0
 displayName: SoloWeave 项目入口
@@ -11,8 +11,8 @@ homepage: https://github.com/ShiYuandi/SoloWeave
 
 # SoloWeave
 
-This skill is part of a five-skill set. Install `project-setup`, `feature-workflow`, `project-continuity`, and `quality-review` alongside it. The workflows also use the separate `soloweave` CLI; get the Windows x64 program and setup instructions from https://github.com/ShiYuandi/SoloWeave/releases. If the CLI is unavailable, explain which step could not run instead of claiming it succeeded.
+本 Skill 是五个 Skill 组成的套件入口。请同时安装 `project-setup`、`feature-workflow`、`project-continuity` 和 `quality-review`。这些流程还会使用独立的 `soloweave` 命令行程序；Windows x64 程序和安装说明见 https://github.com/ShiYuandi/SoloWeave/releases。如果命令行程序不可用，应说明哪些步骤无法执行，不要声称已完成。
 
-Read `.soloweave/project.yaml` for approved engineering decisions and `.soloweave/context/HANDOFF.md` for the current task. Check relevant source files and Git state before trusting the handoff. If no project contract exists, use `project-setup`. For a feature or fix, use `feature-workflow`; for a pause or agent switch, use `project-continuity`; for verification, use `quality-review`.
+读取 `.soloweave/project.yaml`，了解已批准的工程决策；读取 `.soloweave/context/HANDOFF.md`，了解当前任务。采信交接信息前，先核对相关源文件和 Git 状态。如果项目尚无工程配置，使用 `project-setup`；开发功能或修复问题时，使用 `feature-workflow`；暂停工作或切换 Agent 时，使用 `project-continuity`；需要验证时，使用 `quality-review`。
 
-The developer chooses major architecture changes. Do not treat a draft configuration as approved. Keep the response proportional to the task; a small edit need not invoke the full workflow.
+重大架构变更由开发者决定。不要把草稿配置当作已批准的配置。按任务规模安排流程；小改动无需执行全部步骤。
