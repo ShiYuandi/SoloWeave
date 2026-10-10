@@ -1,4 +1,4 @@
-module soloweave
+module github.com/ShiYuandi/SoloWeave
 
 go 1.27.2
 

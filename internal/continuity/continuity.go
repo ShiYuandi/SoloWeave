@@ -10,6 +10,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"sort"
 	"strings"
 	"time"
 )
@@ -23,11 +24,12 @@ type Input struct {
 }
 
 type GitState struct {
-	Available bool     `json:"available"`
-	Branch    string   `json:"branch,omitempty"`
-	Head      string   `json:"head,omitempty"`
-	Digest    string   `json:"digest,omitempty"`
-	Changes   []string `json:"changes,omitempty"`
+	Available      bool     `json:"available"`
+	Branch         string   `json:"branch,omitempty"`
+	Head           string   `json:"head,omitempty"`
+	Digest         string   `json:"digest,omitempty"`
+	SnapshotDigest string   `json:"snapshot_digest,omitempty"`
+	Changes        []string `json:"changes,omitempty"`
 }
 
 type Metadata struct {
@@ -123,7 +125,38 @@ func Git(root string) GitState {
 	}
 	sum := sha256.Sum256([]byte(strings.Join(relevant, "\n")))
 	state.Digest = hex.EncodeToString(sum[:])
+	state.SnapshotDigest, err = projectSnapshotDigest(root)
+	if err != nil {
+		return GitState{}
+	}
 	return state
+}
+
+// projectSnapshotDigest tracks project files instead of commit and staging metadata.
+// A commit of unchanged files must not invalidate a handoff checkpoint.
+func projectSnapshotDigest(root string) (string, error) {
+	out, err := exec.Command("git", "-C", root, "ls-files", "--cached", "--others", "--exclude-standard", "-z", "--").Output()
+	if err != nil {
+		return "", err
+	}
+	seen := make(map[string]bool)
+	var paths []string
+	for _, path := range strings.Split(string(out), "\x00") {
+		if path == "" || strings.HasPrefix(path, ".soloweave/context/") || seen[path] {
+			continue
+		}
+		seen[path] = true
+		paths = append(paths, path)
+	}
+	sort.Strings(paths)
+	h := sha256.New()
+	for _, path := range paths {
+		_, _ = io.WriteString(h, path)
+		_, _ = h.Write([]byte{0})
+		_, _ = io.WriteString(h, workingFileDigest(root, path))
+		_, _ = h.Write([]byte{0})
+	}
+	return hex.EncodeToString(h.Sum(nil)), nil
 }
 
 func workingFileDigest(root, rel string) string {
@@ -208,8 +241,17 @@ func Check(root string) []string {
 	if meta.Git.Available && !current.Available {
 		problems = append(problems, "Git unavailable since checkpoint")
 	}
-	if meta.Git.Available && current.Available && (meta.Git.Head != current.Head || meta.Git.Digest != current.Digest || meta.Git.Branch != current.Branch) {
-		problems = append(problems, "stale checkpoint: Git state changed")
+	if meta.Git.Available && current.Available {
+		stale := meta.Git.Branch != current.Branch
+		if meta.Git.SnapshotDigest != "" {
+			stale = stale || meta.Git.SnapshotDigest != current.SnapshotDigest
+		} else {
+			// Checkpoints created before snapshot_digest used commit and status metadata.
+			stale = stale || meta.Git.Head != current.Head || meta.Git.Digest != current.Digest
+		}
+		if stale {
+			problems = append(problems, "stale checkpoint: Git state changed")
+		}
 	}
 	return problems
 }

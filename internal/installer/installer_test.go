@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"soloweave/internal/config"
-	"soloweave/internal/project"
+	"github.com/ShiYuandi/SoloWeave/internal/config"
+	"github.com/ShiYuandi/SoloWeave/internal/project"
 )
 
 func approvedProject(t *testing.T) string {

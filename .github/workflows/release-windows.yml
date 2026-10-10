@@ -1,0 +1,60 @@
+name: Windows draft release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  package:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Test
+        shell: pwsh
+        run: |
+          go test ./...
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          go vet ./...
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Build Windows package
+        shell: pwsh
+        run: ./scripts/package-windows.ps1
+
+      - name: Test packaged executable
+        shell: pwsh
+        run: |
+          $version = (& ./dist/soloweave.exe version | Out-String).Trim()
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $archive = "dist/soloweave-v$version-windows-amd64.zip"
+          $smoke = Join-Path $env:RUNNER_TEMP 'soloweave-package-smoke'
+          Expand-Archive -LiteralPath $archive -DestinationPath $smoke -Force
+          $packedVersion = (& (Join-Path $smoke 'soloweave.exe') version | Out-String).Trim()
+          if ($LASTEXITCODE -ne 0 -or $packedVersion -ne $version) { throw 'Packaged version mismatch.' }
+          $expected = (Get-Content dist/SHA256SUMS -Raw).Trim()
+          $actual = '{0}  {1}' -f (Get-FileHash -Algorithm SHA256 -LiteralPath $archive).Hash.ToLowerInvariant(), (Split-Path $archive -Leaf)
+          if ($expected -ne $actual) { throw 'Package checksum mismatch.' }
+
+      - name: Create draft release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $version = (& ./dist/soloweave.exe version | Out-String).Trim()
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $archive = "dist/soloweave-v$version-windows-amd64.zip"
+          $releaseArgs = @(
+            'release', 'create', "v$version", $archive, 'dist/SHA256SUMS',
+            '--draft', '--title', "SoloWeave v$version", '--target', $env:GITHUB_SHA,
+            '--notes', 'Windows x64 安装包：下载 ZIP 并解压，按仓库 README 使用。'
+          )
+          if ($version.Contains('-')) { $releaseArgs += '--prerelease' }
+          gh @releaseArgs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

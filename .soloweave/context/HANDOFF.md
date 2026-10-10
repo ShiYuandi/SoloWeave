@@ -2,36 +2,38 @@
 
 ## 当前任务
 
-简化双语文档的语言切换标注，并记录中文 commit 信息约定。
+交付 Windows x64 免构建下载包
 
 ## 当前状态
 
-中英文公开文档保留双向链接，不再显示语言优先级标注。`AGENTS.md` 和中英文贡献说明记录了后续 commit 信息使用中文的约定。本仓库 Git 作者为 `ShiYuandi <shiyuandi@foxmail.com>`。
+检查点误报已修复，Go Module 路径已更新；Windows ZIP、SHA256 与手动草稿 Release 工作流已准备，并同步中英文下载说明。
 
 ## 最近改动
 
-- 清理中英文文档中的语言优先级标注，保留双向入口。
-- 更新仓库指引和中英文贡献说明，明确中文 commit 信息约定。
+CHANGELOG.md, CONTRIBUTING.md, README.md, cmd/soloweave/main.go, docs/development-plan.md, docs/directory-structure.md, docs/en/CHANGELOG.md, docs/en/CONTRIBUTING.md, docs/en/README.md, docs/en/directory-structure.md, docs/en/project-continuity.md, docs/project-continuity.md, go.mod, internal/catalog/catalog.go, internal/cli/cli.go, internal/continuity/continuity.go, internal/continuity/continuity_test.go, internal/installer/installer.go, internal/installer/installer_test.go, internal/project/project.go, internal/project/project_test.go, .github/workflows/release-windows.yml, scripts/package-windows.ps1
 
 ## 实际验证
 
-- 十组公开文档的英文对应文件与 Markdown 相对链接检查：通过。
-- `go test ./...`：通过。
-- `go vet ./...`：通过。
-- `go build ./...`：通过。
-- `git diff --cached --check`：通过。
-- 本轮 Markdown 相对链接与 `git diff --check`：通过；本轮未修改 Go 代码。
+go test ./... -count=1：通过
+go vet ./...：通过
+go build ./...：通过
+scripts/package-windows.ps1：通过
+解压 ZIP 后的完整临时项目流程：通过
+最终 ZIP 文件、版本和 SHA256：通过
+发布工作流 YAML 解析：通过；远程工作流未运行
 
 ## 已知限制
 
-- Claude Code、Cursor 的真实客户端交接及 Linux、macOS 预览程序的实际运行尚未验收。
-- 自动审批拒绝递归删除旧 `.tools/smoke-project/`；它已被 Git 忽略，不进入提交。
-- 本检查点保存于首次提交前。提交改变 Git HEAD 后，`context check` 可能报告过期；请以 `git log`、`git status` 和实际文件为准。
+GitHub 尚无公开 Release；Claude Code 与 Cursor 真实客户端交接未验收；本轮未做跨平台实机验证。
 
 ## 下一步
 
-按 `docs/agent-acceptance.md` 完成真实客户端验收；由仓库所有者决定何时推送、运行远程 CI 和发布 Release。
+核对本轮提交在 GitHub Actions 的 CI 结果；仓库所有者可手动运行 Windows draft release，审阅草稿后决定公开发布。
 
 ## Git 状态
 
-检查点元数据保存于首次提交前，已因提交变化过期。当前提交及作者请以 `git log -1` 核对，工作区以 `git status` 为准。
+分支：master
+
+HEAD: b07d05799c5abdba4d100c089155e718e331ae2e
+
+改动文件： CHANGELOG.md, CONTRIBUTING.md, README.md, cmd/soloweave/main.go, docs/development-plan.md, docs/directory-structure.md, docs/en/CHANGELOG.md, docs/en/CONTRIBUTING.md, docs/en/README.md, docs/en/directory-structure.md, docs/en/project-continuity.md, docs/project-continuity.md, go.mod, internal/catalog/catalog.go, internal/cli/cli.go, internal/continuity/continuity.go, internal/continuity/continuity_test.go, internal/installer/installer.go, internal/installer/installer_test.go, internal/project/project.go, internal/project/project_test.go, .github/workflows/release-windows.yml, scripts/package-windows.ps1

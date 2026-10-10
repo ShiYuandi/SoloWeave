@@ -8,7 +8,7 @@ This page describes the **SoloWeave source repository**. For directories created
 
 | Path | Purpose | Commit? |
 | --- | --- | --- |
-| `README.md` | Chinese project introduction, build, and quick start | Yes |
+| `README.md` | Chinese project introduction, download, and quick start | Yes |
 | `AGENTS.md` | Repository guidance for AI coding agents | Yes |
 | `go.mod`, `go.sum` | Go module declaration and dependency checksums | Yes |
 | `LICENSE` | Original MIT license text | Yes |
@@ -20,7 +20,7 @@ This page describes the **SoloWeave source repository**. For directories created
 | `.gitattributes` | Normalizes text line endings across platforms | Yes |
 | `.git/` | Local Git metadata, managed by the repository owner | No |
 | `.tools/` | Local Go toolchain, caches, validators, and other reproducible tools | No |
-| `dist/` | Local preview binaries and `SHA256SUMS` | No |
+| `dist/` | Windows download package, local preview binaries, and `SHA256SUMS` | No |
 
 `.tools/` and `dist/` stay on the development machine for continued work and verification. Cross-compiled artifacts in `dist/` do not prove that the binaries run on every target OS.
 
@@ -37,7 +37,9 @@ This page describes the **SoloWeave source repository**. For directories created
 | `internal/installer/` | Installation and checking for Codex, Claude Code, and Cursor, including preview and conflict handling |
 | `internal/bundle/` | Go-embedded resources: presets in `assets/catalogs/`, platform rules in `assets/rules/`, and the single source of five Skills in `assets/skills/` |
 | `scripts/build-preview.ps1` | Builds four preview targets and checksum file |
+| `scripts/package-windows.ps1` | Creates a Windows x64 ZIP with bilingual guides and a SHA256 checksum |
 | `.github/workflows/ci.yml` | Go tests, vet, and build on a remote repository |
+| `.github/workflows/release-windows.yml` | Manually tests and packages Windows, then creates a draft Release |
 
 Each `*_test.go` file tests its neighboring package. Rebuild the CLI after changing embedded assets; an older binary still contains its previous copies.
 
@@ -63,4 +65,4 @@ Each `*_test.go` file tests its neighboring package. Rebuild the CLI after chang
 | `.soloweave/context/checkpoint.json` | CLI-managed machine-readable Git checkpoint data |
 | `.soloweave/context/tasks/` | Optional durable task notes; an empty directory is not committed |
 
-`.soloweave/` is part of the project's durable knowledge and should be retained with source files. A checkpoint records Git state at the time it was saved; a later commit or edit can make `context check` report it as stale.
+`.soloweave/` is part of the project's durable knowledge and should be retained with source files. A checkpoint records the Git branch and project file contents. Editing a project file makes `context check` report staleness; committing identical contents does not invalidate a new checkpoint.

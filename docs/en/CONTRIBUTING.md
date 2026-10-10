@@ -12,3 +12,9 @@ Before a substantial change, read the [development plan](../development-plan.md)
 - Write Git commit messages in Chinese and briefly describe the change.
 
 Do not commit `.tools/`, `dist/`, secrets, or other machine-generated files. See the [directory guide](directory-structure.md).
+
+## Windows download package
+
+Run `./scripts/package-windows.ps1` in Windows PowerShell to create a Windows x64 ZIP and `SHA256SUMS` under the ignored `dist/` directory. The package name uses the version reported by `soloweave.exe version`, so it stays aligned with the executable. Before publishing, extract the ZIP, run its executable, and verify its checksum.
+
+After the code is committed and pushed to the default branch, the repository owner can manually run **Windows draft release** in GitHub Actions. The workflow runs Go tests and vet, packages and checks the executable, then creates a **draft Release** containing the ZIP and checksum file. The owner reviews and publishes the draft on GitHub; running the workflow does not publish it.

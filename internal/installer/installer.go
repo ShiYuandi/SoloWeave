@@ -12,8 +12,8 @@ import (
 	"sort"
 	"strings"
 
-	"soloweave/internal/bundle"
-	"soloweave/internal/project"
+	"github.com/ShiYuandi/SoloWeave/internal/bundle"
+	"github.com/ShiYuandi/SoloWeave/internal/project"
 )
 
 const Version = "0.1.0-preview"

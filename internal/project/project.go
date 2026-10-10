@@ -11,9 +11,9 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/ShiYuandi/SoloWeave/internal/config"
+	"github.com/ShiYuandi/SoloWeave/internal/continuity"
 	"go.yaml.in/yaml/v3"
-	"soloweave/internal/config"
-	"soloweave/internal/continuity"
 )
 
 type Approval struct {

@@ -1,6 +1,6 @@
 # SoloWeave V0.1 本地开发计划
 
-状态：V0.1 本地实现及自动化验收完成；公开仓库、Release 与真实 Claude Code/Cursor 客户端验收延后。基准：`docs/design-v0.2.md`（2026-10-09）。
+状态：V0.1 本地实现及自动化验收完成；GitHub Actions 已在 `b07d057` 提交通过。公开 Release 与真实 Claude Code/Cursor 客户端验收延后。基准：`docs/design-v0.2.md`（2026-10-09）。
 
 ## 目标与边界
 
@@ -48,3 +48,17 @@
 用户追加要求：将 README 等面向读者的文档改为中文，说明仓库目录，清理本机临时文件，完善 `.gitignore`，并明确授权创建本地 commit。此项覆盖本计划早期的“不提交”约束，但仍不授权推送、创建 Release 或宣称真实客户端验收已完成。
 
 用户随后要求公开文档提供英文版，并选择暂不逐段翻译 v0.2 设计基准与历史开发计划。英文版位于 `docs/en/`，与中文页面互相链接；根目录 README 使用中文。首次提交的 Git 作者姓名和邮箱以用户明确提供的 `ShiYuandi`、`shiyuandi@foxmail.com` 为准，仅配置在本仓库。
+
+## 检查点与模块路径后续修订（2026-10-10）
+
+- 当前仓库远程地址已由所有者配置为 `https://github.com/ShiYuandi/SoloWeave.git`，Go Module 从初期临时名 `soloweave` 调整为 `github.com/ShiYuandi/SoloWeave`。
+- 新检查点保存项目文件内容摘要及 Git 分支。项目内容变化仍提示过期；只提交相同内容不会造成误报。旧格式检查点仍按旧的 Git 状态规则检查，应重新创建以采用新规则。
+- 只读核对 GitHub Actions：`b07d057` 和 `237d268` 两次 CI 均已完成并通过。后续改动的远程 CI 以对应提交的结果为准。
+- 用户本轮要求暂不做跨平台实机与真实客户端验收；不推送或发布。
+
+## Windows 免构建交付（2026-10-10）
+
+- 用户确认普通用户应下载可直接运行的程序，并同意先提供 Windows x64 ZIP；跨平台实机验证继续延后。
+- `scripts/package-windows.ps1` 从程序实际版本生成 ZIP，内含可执行文件、MIT 许可证及中英文 README，并生成 `SHA256SUMS`。本地解压后运行完整临时项目流程验收。
+- `.github/workflows/release-windows.yml` 仅能由维护者在默认分支手动启动，运行测试、静态检查、打包与校验后创建草稿 Release；公开发布仍由仓库所有者检查并执行。
+- 中英文 README 的普通用户入口改为 GitHub Releases 下载；源码构建移至贡献者部分。首个公开 Release 尚未发布；工作流只有进入默认分支后才能由维护者远程运行。

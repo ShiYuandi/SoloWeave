@@ -9,13 +9,13 @@ import (
 	"os/exec"
 	"strings"
 
+	"github.com/ShiYuandi/SoloWeave/internal/catalog"
+	"github.com/ShiYuandi/SoloWeave/internal/config"
+	"github.com/ShiYuandi/SoloWeave/internal/continuity"
+	"github.com/ShiYuandi/SoloWeave/internal/installer"
+	"github.com/ShiYuandi/SoloWeave/internal/project"
 	"github.com/spf13/cobra"
 	"go.yaml.in/yaml/v3"
-	"soloweave/internal/catalog"
-	"soloweave/internal/config"
-	"soloweave/internal/continuity"
-	"soloweave/internal/installer"
-	"soloweave/internal/project"
 )
 
 type ExitError struct {

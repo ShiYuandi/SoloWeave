@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"soloweave/internal/cli"
+	"github.com/ShiYuandi/SoloWeave/internal/cli"
 )
 
 func main() {

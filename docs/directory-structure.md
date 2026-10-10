@@ -8,7 +8,7 @@
 
 | 路径 | 作用 | 是否纳入 Git |
 | --- | --- | --- |
-| `README.md` | 中文项目介绍、构建和快速开始 | 是 |
+| `README.md` | 中文项目介绍、下载和快速开始 | 是 |
 | `AGENTS.md` | 仓库内 AI Agent 的工作约定 | 是 |
 | `go.mod`、`go.sum` | Go 模块声明与依赖校验和 | 是 |
 | `LICENSE` | MIT 许可证原文 | 是 |
@@ -20,7 +20,7 @@
 | `.gitattributes` | 统一仓库文本文件换行，避免跨平台行尾差异 | 是 |
 | `.git/` | Git 的本地元数据，由仓库所有者管理 | 否 |
 | `.tools/` | 本机 Go 工具链、依赖缓存及验证器等，可再生 | 否 |
-| `dist/` | Windows、Linux、macOS 本地预览程序及 `SHA256SUMS`，可再生 | 否 |
+| `dist/` | Windows 下载包、本地预览程序及 `SHA256SUMS`，可再生 | 否 |
 
 `.tools/` 和 `dist/` 保留在本机，方便继续开发与验收；它们不应进入提交。`dist/` 是构建输出，不代表已经在所有目标系统上运行过程序。
 
@@ -37,7 +37,9 @@
 | `internal/installer/` | Codex、Claude Code、Cursor 文件安装、预览、冲突与完整性检查 |
 | `internal/bundle/` | 通过 Go `embed` 打包安装资源；`assets/catalogs/` 是预设，`assets/rules/` 是平台规则，`assets/skills/` 是五个 Skill 的唯一源文件 |
 | `scripts/build-preview.ps1` | 构建四个目标平台的本地预览程序并生成校验和 |
+| `scripts/package-windows.ps1` | 生成 Windows x64 ZIP、附带中英文说明并计算 SHA256 |
 | `.github/workflows/ci.yml` | 远程仓库启用后执行 Go 测试、静态检查与构建 |
+| `.github/workflows/release-windows.yml` | 手动运行 Windows 测试、打包并创建草稿 Release |
 
 各 `*_test.go` 文件与同目录代码对应。修改嵌入资源后需重新构建 CLI，安装器才会使用新内容。
 
@@ -63,4 +65,4 @@
 | `.soloweave/context/checkpoint.json` | 检查点的机器可读 Git 元数据；由 CLI 管理 |
 | `.soloweave/context/tasks/` | 有任务细节时再放长期记录；空目录不会单独进入 Git |
 
-`.soloweave/` 是项目知识的一部分，应随源码保留。检查点记录的是保存当时的 Git 状态；提交或修改代码后，`context check` 可能报告它过期，需要新的交接检查点。
+`.soloweave/` 是项目知识的一部分，应随源码保留。检查点记录保存时的 Git 分支和项目文件内容；修改项目文件后，`context check` 会提示过期，需要新的交接检查点。只提交相同内容不会使新格式检查点过期。

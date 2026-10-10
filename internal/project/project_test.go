@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"soloweave/internal/config"
+	"github.com/ShiYuandi/SoloWeave/internal/config"
 )
 
 func TestInitializeApproveAndDetectArchitectureDrift(t *testing.T) {

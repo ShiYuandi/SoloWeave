@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"soloweave/internal/bundle"
-	"soloweave/internal/config"
+	"github.com/ShiYuandi/SoloWeave/internal/bundle"
+	"github.com/ShiYuandi/SoloWeave/internal/config"
 )
 
 type Item struct {

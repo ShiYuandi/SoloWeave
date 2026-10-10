@@ -8,21 +8,22 @@ SoloWeave 是面向个人开发者和 1–5 人团队的 AI 工程技能包与�
 
 当前版本为 **V0.1 本地预览版**：提供 Go CLI、需要人工确认的 YAML 项目配置、五个 Agent Skill、平台规则安装和任务交接流程。不调用远程 AI API，也不需要数据库。[v0.2 设计基准](docs/design-v0.2.md)与[开发计划](docs/development-plan.md)记录了范围和取舍。
 
-## 构建与测试
+## 下载 Windows 版
 
-需要 Go 1.27.2 或更新版本。在仓库根目录运行：
+在 [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) 的 **Assets** 中下载 `soloweave-v*-windows-amd64.zip`，解压即可使用 `soloweave.exe`，**无需安装 Go 或自行构建**。如果页面还没有安装包，说明首版仍在准备中。压缩包还包含中英文 README 与 MIT 许可证，`SHA256SUMS` 可用于核对下载文件。
 
-```sh
-go test ./...
-go vet ./...
-go build -o soloweave ./cmd/soloweave
-```
-
-Windows 可将输出文件名改为 `soloweave.exe`。`scripts/build-preview.ps1` 会在本地生成 Windows、Linux、macOS 预览程序和 SHA256 校验文件，输出在不纳入 Git 的 `dist/`。交叉编译成功不等于已在 Linux 或 macOS 上运行验证。
+目前提供 Windows x64 安装包。维护者可按[贡献说明](CONTRIBUTING.md)在本地生成并验证同样的压缩包。
 
 ## 快速开始
 
-先将构建出的 `soloweave` 程序加入 `PATH`，然后在目标项目目录中运行：
+将解压目录加入 `PATH`，然后在目标项目目录中运行。以下 PowerShell 示例中的路径请换成自己的解压目录和项目目录：
+
+```powershell
+$env:PATH = "C:\Tools\SoloWeave;$env:PATH"
+cd C:\path\to\your-project
+```
+
+接着执行：
 
 ```sh
 soloweave init
@@ -51,8 +52,20 @@ soloweave context check
 
 本仓库各目录与文件的用途见[目录说明](docs/directory-structure.md)；Skill 和平台支持见[Skills 说明](docs/skills.md)。
 
+## 开发者构建与测试
+
+源码开发需要 Go 1.27.2 或更新版本；普通用户使用下载的程序无需 Go。Go Module 路径为 `github.com/ShiYuandi/SoloWeave`。在仓库根目录运行：
+
+```sh
+go test ./...
+go vet ./...
+go build -o soloweave.exe ./cmd/soloweave
+```
+
+`scripts/package-windows.ps1` 生成 Windows x64 ZIP 和 SHA256 校验文件，输出在不纳入 Git 的 `dist/`。原有 `scripts/build-preview.ps1` 用于本地预览构建；交叉编译成功不等于已在 Linux 或 macOS 上运行验证。
+
 ## 验证范围与后续
 
-Go 测试、静态检查、构建、五个 Skill 的格式校验，以及 Windows 预览程序在临时项目中的完整流程已通过。Linux、macOS 目前只完成交叉编译；Claude Code 与 Cursor 的真实客户端交接尚未实测，步骤见[跨 Agent 验收](docs/agent-acceptance.md)。远程 CI 与公开 Release 也尚未完成。
+Go 测试、静态检查、构建、五个 Skill 的格式校验，以及 Windows 预览程序在临时项目中的完整流程已通过。Linux、macOS 目前只完成交叉编译；Claude Code 与 Cursor 的真实客户端交接尚未实测，步骤见[跨 Agent 验收](docs/agent-acceptance.md)。[GitHub Actions CI](https://github.com/ShiYuandi/SoloWeave/actions/runs/37946714081) 已在 `b07d057` 提交通过；后续改动需以对应提交的 CI 结果为准。公开发布状态以 Releases 页面为准。
 
 许可证：[MIT](LICENSE) · [参与贡献](CONTRIBUTING.md) · [安全问题](SECURITY.md) · [变更记录](CHANGELOG.md)
