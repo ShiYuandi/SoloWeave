@@ -9,6 +9,7 @@ This page describes the **SoloWeave source repository**. For directories created
 | Path | Purpose | Commit? |
 | --- | --- | --- |
 | `README.md` | Chinese project introduction, download, and quick start | Yes |
+| `skills/` | Sole maintained source for the six new Agent Skills, discoverable by standard installers | Yes |
 | `AGENTS.md` | Repository guidance for AI coding agents | Yes |
 | `go.mod`, `go.sum` | Go module declaration and dependency checksums | Yes |
 | `LICENSE` | Original MIT license text | Yes |
@@ -35,7 +36,8 @@ This page describes the **SoloWeave source repository**. For directories created
 | `internal/continuity/` | Context documents, Git state, checkpoints, and recovery |
 | `internal/catalog/` | Optional stack preset catalog |
 | `internal/installer/` | Installation and checking for Codex, Claude Code, and Cursor, including preview and conflict handling |
-| `internal/bundle/` | Go-embedded resources: presets in `assets/catalogs/`, platform rules in `assets/rules/`, and the single source of five Skills in `assets/skills/` |
+| `internal/bundle/` | Legacy Go CLI embedded resources; `assets/skills/` is a release snapshot of five Skills, not the source for new edits |
+| `scripts/package-skillhub.ps1` | Packages six candidate Skills from root `skills/` |
 | `scripts/build-preview.ps1` | Builds four preview targets and checksum file |
 | `scripts/package-windows.ps1` | Creates a Windows x64 ZIP with bilingual guides and a SHA256 checksum |
 | `.github/workflows/ci.yml` | Go tests, vet, and build on a remote repository |
@@ -47,11 +49,12 @@ Each `*_test.go` file tests its neighboring package. Rebuild the CLI after chang
 
 | Path | Purpose |
 | --- | --- |
-| `docs/development-plan.md` | V0.1 scope, steps, and acceptance record; available in Chinese |
-| `docs/design-v0.2.md` | Product design baseline approved by the user; available in Chinese |
+| `docs/development-plan.md` | Historical V0.1 CLI scope, steps, and acceptance record; available in Chinese |
+| `docs/design-v0.2.md` | Earlier product design baseline; available in Chinese |
+| `docs/skills-first-design.md`, `docs/skills-first-plan.md` | New Skills-first design and migration plan; available in Chinese |
 | `docs/configuration.md` | Configuration fields and approval flow |
 | `docs/project-continuity.md` | Handoff files and checkpoints |
-| `docs/skills.md` | Five Skills and platform installation paths |
+| `docs/skills.md` | Roles, installation, and publication state of the six new Skills |
 | `docs/skill-only-workflow.md` | Planning, checks, and handoffs with Skills only and no CLI |
 | `docs/package-readme.zh-CN.md`, `docs/package-readme.en.md` | Versioned Chinese and English README templates included in the Windows ZIP |
 | `docs/agent-acceptance.md` | Pending live client handoff acceptance steps |

@@ -3,14 +3,17 @@ $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.IO.Compression
 
 $root = Split-Path -Parent $PSScriptRoot
-$sourceRoot = Join-Path $root 'internal/bundle/assets/skills'
-$outputRoot = Join-Path $root 'dist/skillhub'
+$sourceRoot = Join-Path $root 'skills'
+$outputRoot = Join-Path $root 'dist/skillhub/skills-first'
 New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
 
 $checksums = @()
 $slugs = @{}
 $skills = @(Get-ChildItem -LiteralPath $sourceRoot -Directory | Sort-Object Name)
-if ($skills.Count -ne 5) { throw "Expected five SoloWeave skills; found $($skills.Count)." }
+$expectedNames = @('feature-workflow', 'project-continuity', 'project-setup', 'quality-review', 'soloweave', 'systematic-debugging')
+if (@(Compare-Object -ReferenceObject $expectedNames -DifferenceObject @($skills.Name)).Count -ne 0) {
+    throw "Unexpected SoloWeave skills. Expected: $($expectedNames -join ', '); found: $($skills.Name -join ', ')."
+}
 
 foreach ($skill in $skills) {
     $skillFile = Join-Path $skill.FullName 'SKILL.md'
@@ -25,6 +28,10 @@ foreach ($skill in $skills) {
         $values[$key] = $field.Groups['value'].Value.Trim()
     }
     if ($values['name'] -cne $skill.Name) { throw "Skill name does not match directory: $skillFile" }
+    if ($values['name'] -cnotmatch '^[a-z0-9]+(?:-[a-z0-9]+)*$' -or $values['name'].Length -gt 64) {
+        throw "Invalid Agent Skills name: $($values['name'])"
+    }
+    if ($values['description'].Length -gt 1024) { throw "Skill description too long: $skillFile" }
     if ($values['slug'] -cnotmatch '^[a-z0-9]+(?:-[a-z0-9]+)*$' -or $values['slug'].Length -gt 128) {
         throw "Invalid SkillHub slug: $($values['slug'])"
     }

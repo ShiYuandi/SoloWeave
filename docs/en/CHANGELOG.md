@@ -2,6 +2,12 @@
 
 [简体中文](../../CHANGELOG.md)
 
+## Unreleased: Skills-first migration
+
+- Added six new root Skills, including an ordinary-development entry and a debugging workflow; the Go CLI keeps its published legacy snapshot.
+- Changed the default guide to installing Skills once and then asking for development normally. Added bilingual usage and acceptance docs, a migration design, and an ADR.
+- Local SkillHub packaging now reads six root Skills and CI checks them. Public installation, live client invocation, and SkillHub updates remain to be tested.
+
 ## 0.1.1-preview (released)
 
 - Added CLI-free planning, development, handoff, and quality-review paths to the five Skills, with a clear boundary between manual records and CLI checks.

@@ -1,5 +1,7 @@
 # SoloWeave V0.1 本地开发计划
 
+> 2026-10-10 起的产品方向以 [Skills 优先设计](skills-first-design.md) 和 [迁移实施计划](skills-first-plan.md) 为准。本文件保留 V0.1 CLI 开发历史，不再代表默认安装体验。
+
 状态：V0.1 本地实现及自动化验收完成；GitHub Actions 已在 `b07d057` 提交通过。公开 Release 与真实 Claude Code/Cursor 客户端验收延后。基准：`docs/design-v0.2.md`（2026-10-09）。
 
 ## 目标与边界

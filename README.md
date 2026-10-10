@@ -4,7 +4,7 @@
 
 **独立开发，稳妥交付。**
 
-SoloWeave 是面向个人开发者和 1–5 人团队的 AI 工程技能包与命令行工具。它把技术决策、任务进度和交接信息保存在项目文件中，让开发者切换账号或在 Codex、Claude Code、Cursor 之间切换时，能够从项目本身恢复上下文。
+SoloWeave 是面向个人开发者和 1–5 人团队的 AI 开发 Skills。安装后，你可以像平常一样提出开发需求；AI 会按任务读取项目事实、遵守已确认的决策、检查可复用代码，并在重要节点维护项目记录。
 
 ## 为什么我开发 SoloWeave
 
@@ -18,109 +18,53 @@ SoloWeave 是面向个人开发者和 1–5 人团队的 AI 工程技能包与�
 
 SoloWeave 最初源于我自己的开发需求。我将它开源，希望其他独立开发者和小团队也能在不同 AI 工具之间延续工作：**让 AI 帮我们持续推进项目，而不只是一次次生成代码。**
 
-## 核心能力
+## 快速开始
 
-- **开发者确认架构**：先记录技术选择，再由开发者批准关键决策。
-- **延续项目上下文**：把进度、变更、实际验证结果和下一步保存在项目中。
-- **保持工程一致性**：让 Agent 先了解现有实现，并按已确认的约定开发与检查。
+仓库根目录的 [`skills/`](skills/) 包含六个可独立安装的 Skill。可以让支持 [Agent Skills](https://agentskills.io/specification) 的 AI 工具从本仓库安装，也可以使用 [Skills CLI](https://github.com/vercel-labs/skills) 选择安装：
 
-当前提供 **v0.1.1-preview Windows x64 预览版**：包含命令行程序、需要人工确认的 YAML 项目配置、五个 Agent Skill、平台规则安装和任务交接流程。不调用远程 AI API，也不需要数据库。[v0.2 设计基准](docs/design-v0.2.md)与[开发计划](docs/development-plan.md)记录了范围和取舍。
-
-## 只装 Skills，还是使用 CLI？
-
-| 使用方式 | 你会得到什么 | 当前限制 |
-| --- | --- | --- |
-| **只安装五个 Skills** | AI 会按规范讨论架构、检查并复用现有代码，还能在项目文档中手工记录经你确认的决策、进度和交接。只想使用这些开发规范时，**不必安装 CLI**。 | 不会生成 CLI 的批准记录、安装记录和可自动检查的交接点；`soloweave check` 等 CLI 命令不可用。AI 应如实报告这些检查未运行。 |
-| **使用 CLI（由 CLI 安装 Skills）** | 在上述规范之外，用命令创建项目配置和交接文件、记录批准的架构决策、安装五个 Skills 与项目规则，并检查文件状态。 | 目前只提供 Windows x64 的可运行 CLI 包。 |
-
-CLI 是本地文件工具，不会替 AI 写业务代码，也不会替开发者批准技术方案或凭空判断测试通过。
-
-## 让 AI 安装 Skills
-
-如果你的 AI 编程工具可以访问网络并安装 Skill，可以把下面的提示词直接发送给它：
-
-```text
-请根据 https://skillhub.cn/install/skillhub.md，为当前 AI 编程工具安装以下五个 SoloWeave Skills：
-@user_38c0807e/shiyuandi-soloweave
-@user_38c0807e/shiyuandi-soloweave-project-setup
-@user_38c0807e/shiyuandi-soloweave-feature-workflow
-@user_38c0807e/shiyuandi-soloweave-project-continuity
-@user_38c0807e/shiyuandi-soloweave-quality-review
-安装前检查已有的同名文件，不要覆盖我修改过的内容。安装后核对五个 SKILL.md，并告诉我安装路径和版本。
+```sh
+npx skills@latest add ShiYuandi/SoloWeave
 ```
 
-入口 Skill 需要其余四个配合。这段提示词只安装 Skill 文件，**只用开发规范可以到此为止**。安装后，可以对 AI 说“请按 SoloWeave 的纯 Skills 流程开发，先检查现有实现；手工记录经我确认的决策和交接，说明未执行的 CLI 检查”。具体文件和验收方式见[纯 Skills 使用指南](docs/skill-only-workflow.md)。
+也可以把下面这段发给你的 AI，让它处理安装：
 
-如果选择下方的 CLI 路线，**不必先从 SkillHub 安装**：`soloweave install` 本身会安装五个 Skills 和平台规则。SkillHub 安装的文件不会被 CLI 的 `check`/`doctor` 视为 CLI 管理的项目安装；若两种方式已写入同一目录，先预览并处理同名文件冲突。详见 [Skills 说明](docs/skills.md)。
+```text
+请根据 https://github.com/vercel-labs/skills 的安装说明，从 https://github.com/ShiYuandi/SoloWeave 仓库的 skills/ 目录安装六个 SoloWeave Skills 到当前 AI 编程工具。先检查同名文件，不覆盖我的修改；安装后报告各 SKILL.md 的路径和版本。以后我正常提出开发需求时，请按适用的 SoloWeave Skill 工作。
+```
 
-## 下载并使用 Windows 版
+安装后直接提出普通需求，例如：
 
-1. [下载 v0.1.1-preview Windows x64 安装包](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.1-preview/soloweave-v0.1.1-preview-windows-amd64.zip)。其他版本见 [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases)。
-2. 解压 ZIP，得到 `soloweave.exe`。**普通用户无需安装 Go，也无需自行构建。**
-3. 在 PowerShell 中运行下方的快速开始命令。
+> 帮我给这个项目增加用户登录。先看已有实现，完成后运行相关测试，并留下下一次能接手的进度记录。
 
-请下载发布页 **Assets** 中的 `soloweave-...-windows-amd64.zip`；GitHub 自动提供的 `Source code (zip)` 和 `Source code (tar.gz)` 是源码包，不含可直接运行的程序。安装包还包含中英文使用说明和 MIT 许可证；[SHA256SUMS](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.1-preview/SHA256SUMS) 可用于核对下载文件。目前仅提供 Windows x64 安装包。
+无需每次输入 `/setup`、`/build` 或 `soloweave` 命令。入口 Skill 会按任务选择项目设置、功能开发、故障排查、质量检查或交接流程。首次进入长期开发的项目时，AI 会检查现有文档和代码；重大技术选型仍需你确认。自动调用由各 AI 工具决定，不能保证每次触发；必要时可明确说“使用 SoloWeave 继续这个项目”。
 
-## CLI 命令做什么
+**当前验证状态：**标准安装器已从本地仓库发现六个新版 Skill，并在隔离项目生成 Codex、Claude Code 和 Cursor 对应的 Skill 文件；真实客户端自动调用、公开 GitHub 地址安装与 SkillHub 更新仍待逐项验收。现有 [SkillHub 页面](docs/skills.md#skillhub-发布状态)提供的是此前发布的五个旧版 Skill，更新前请按页面版本识别。
 
-在目标项目目录运行这些命令；它们操作的是该项目中的文件。
+## 它会做什么
+
+| 时机 | AI 应做的事 |
+| --- | --- |
+| 进入已有项目 | 读取规则、目标、决策、状态和相关代码；核对交接是否过期。 |
+| 创建或接入项目 | 分析现状，说明必要选项；重大技术与架构选择由你确认，再写入 ADR。 |
+| 开发或修复 | 先查找可复用实现，再改代码并运行相关验证。 |
+| 完成重要任务或切换账号 | 更新项目状态、重要变更、真实测试结果和下一步，让新会话从文件接手。 |
+
+项目记录优先沿用已有文档；需要新建时放在 `.soloweave/context/` 和 `.soloweave/decisions/`。只装 Skills **不需要下载 Go CLI**。纯 Skills 路线不生成 CLI 的机器批准、安装或检查点文件，也不声称运行了 CLI 检查。详见[使用指南](docs/skill-only-workflow.md)和[六个 Skill 的分工](docs/skills.md)。
+
+## 旧版可选 CLI
+
+此前发布的 [v0.1.1-preview Windows x64 包](https://github.com/ShiYuandi/SoloWeave/releases/tag/v0.1.1-preview)仍可下载，无需自行构建。它提供 `init`（待确认配置）、`approve`（人工确认并记录 ADR）、`install`（安装当时内置的五个旧版 Skill）、`context checkpoint/resume/check`（交接）、`check`（项目校验）和 `doctor`（环境诊断）。该程序是发布时的快照，**不会自动获得根目录 `skills/` 中的新版流程**。已有用户可继续使用；新项目建议先使用上方 Skills 路线。CLI 的完整命令说明见[旧版配置文档](docs/configuration.md)与[项目连续性说明](docs/project-continuity.md)。
 
 | 命令 | 作用 |
 | --- | --- |
-| `soloweave catalog` | 查看可选的技术栈预设。 |
-| `soloweave init` | 创建**待确认**的 `.soloweave/project.yaml`，并初始化项目与交接文档；不会替你批准技术方案。 |
-| `soloweave approve` | 展示当前配置，征得开发者确认后标记为已批准，并生成架构决策记录（ADR）。 |
-| `soloweave install --dry-run` | 预览将写入的五个 Skills 和平台规则，不修改文件。正式 `install` 才写入，并保护已有或被修改的文件。 |
-| `soloweave context checkpoint` | 根据你或 AI 提供的任务摘要、下一步和**实际**验证结果写入交接记录；可用时采集 Git 状态，不自动推断进度或测试是否通过。 |
-| `soloweave context resume` / `context show` | 读取项目和交接资料，帮助新会话接手。 |
-| `soloweave context check` | 检查交接资料是否缺失或过期。 |
-| `soloweave check` | 检查项目配置、架构批准、CLI 安装记录和交接状态。 |
-| `soloweave doctor` | 报告 Git、项目配置和 CLI 安装状态，帮助定位环境问题。 |
-| `soloweave version` | 显示 CLI 版本。 |
+| `catalog` | 查看旧版技术栈预设。 |
+| `init` / `approve` | 创建待确认配置；开发者审阅后批准并生成 ADR。 |
+| `install --dry-run` / `install` | 预览或安装内置旧版 Skills 与平台规则。 |
+| `context checkpoint` / `resume` / `check` | 保存任务摘要与真实验证、读取交接、检查资料是否过期。 |
+| `check` / `doctor` / `version` | 校验项目文件、诊断环境、查看程序版本。 |
 
-## 快速开始
+## 验证与参与
 
-将解压目录加入 `PATH`，然后在目标项目目录中运行。以下 PowerShell 示例中的路径请换成自己的解压目录和项目目录：
-
-```powershell
-$env:PATH = "C:\Tools\SoloWeave;$env:PATH"
-cd C:\path\to\your-project
-```
-
-接着执行以下 **CLI 路线（包含 Skills）**。`--agents codex,claude,cursor` 表示为这三个平台安装项目文件；只用其中一部分时，改成需要的平台即可。
-
-```sh
-soloweave init
-soloweave approve
-soloweave install --agents codex,claude,cursor --dry-run
-soloweave install --agents codex,claude,cursor
-soloweave doctor
-soloweave context checkpoint --task "初始化项目" --summary "已确认配置并安装 Skills" --next "开始开发"
-soloweave check
-```
-
-`init` 可交互选择预设或自定义技术栈；`soloweave catalog` 列出预设。自动化场景可使用 `init --preset api-go --name demo` 或 `init --from path/to/project.yaml`。两种方式都先生成**待确认**配置，仍须单独运行 `approve`。`approve --yes` 仅适合已经审阅配置的非交互场景。
-
-任务暂停或切换 Agent 前，记录真实进度与验证结果：
-
-```sh
-soloweave context checkpoint --task "登录功能" --summary "表单已完成" --next "对接 API"
-soloweave context resume
-soloweave context check
-```
-
-只有实际运行了验证，才在 `context checkpoint` 中添加 `--verification "命令: 实际结果"`。
-
-没有运行测试时省略 `--verification`，交接记录会明确标为 `Not run`。没有 Git 仓库时，Git 状态会标为 `UNAVAILABLE`，不会假装已核验。详见[项目连续性](docs/project-continuity.md)和[配置说明](docs/configuration.md)。
-
-## 文件放在哪里
-
-目标项目的配置、架构决策记录和交接文件放在 `.soloweave/`。Codex 与 Cursor 共用 `.agents/skills/`，Claude Code 使用 `.claude/skills/`；平台规则分别写入 `AGENTS.md`、`CLAUDE.md` 与 `.cursor/rules/soloweave.mdc`。安装器预览改动并保护已有文件，发现冲突时停止覆盖。
-
-本仓库各目录与文件的用途见[目录说明](docs/directory-structure.md)；Skill 和平台支持见[Skills 说明](docs/skills.md)。
-
-## 验证范围与后续
-
-Go 测试、静态检查、构建、五个 Skill 的格式校验，以及 Windows 预览程序在临时项目中的完整流程已通过。Linux、macOS 目前只完成交叉编译；Claude Code 与 Cursor 的真实客户端交接尚未实测，步骤见[跨 Agent 验收](docs/agent-acceptance.md)。源码构建和参与开发的步骤见[贡献说明](CONTRIBUTING.md)。
+新版 Skills 的本地格式、打包和无 CLI 流程验收结果会记录在[验收文档](docs/agent-acceptance.md)；真实客户端结果以该页为准。[目录说明](docs/directory-structure.md)介绍仓库文件，[贡献说明](CONTRIBUTING.md)介绍源码开发。
 
 许可证：[MIT](LICENSE) · [参与贡献](CONTRIBUTING.md) · [安全问题](SECURITY.md) · [变更记录](CHANGELOG.md)

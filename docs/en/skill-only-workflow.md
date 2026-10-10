@@ -1,34 +1,17 @@
-# Use SoloWeave with Skills only
+# Develop with SoloWeave Skills
 
 [简体中文](../skill-only-workflow.md)
 
-This path needs the five SoloWeave Skills but no `soloweave.exe`. Your AI can follow the engineering conventions and keep approved decisions and handoffs in ordinary project files. It does not provide the CLI's automatic configuration checks, installation record, or stale-checkpoint detection.
+After installing the [six new Skills](skills.md), describe development tasks to your agent normally. Routine work does not require the SoloWeave CLI or a slash command in every conversation. The agent should inspect existing rules, source, and handoff notes, then choose an appropriate workflow. Automatic selection depends on the client; explicitly name `soloweave` if it does not trigger.
 
-## Get started
+## First visit to a project
 
-Use the [README prompt](README.md#let-your-ai-install-the-skills) to install all five Skills, then ask the AI to report the path and version of each `SKILL.md`. In your target project, say: “Follow SoloWeave's conventions. Inspect the existing code and project records first. Without the CLI, use the Skills-only workflow and tell me which CLI checks were not run.”
+The agent reads the README, dependencies, relevant code, and tests. If `.soloweave/` exists, it checks `PROJECT.md`, `STATUS.md`, `HANDOFF.md`, and ADRs against current files and Git. An existing project without SoloWeave records keeps its current conventions. Create only the minimal context files when work will continue over time or across sessions. The developer approves major architecture choices before an ADR records them; pending proposals remain pending.
 
-## Plan and approve decisions
+## Normal development and handoff
 
-The AI first reads the existing README, dependency files, code, and ADRs. It preserves established decisions. When a new record is needed, it writes the goal, users, main modules, technical choices, run commands, and open decisions in `.soloweave/context/PROJECT.md`. Technical choices remain “pending developer approval” until you explicitly confirm them.
+For a feature, search for suitable existing implementations. For a bug, seek observable reproduction evidence first. Run relevant available project checks and distinguish passed, failed, not run, and unavailable. After meaningful work, a blocker, or before switching accounts, the agent updates `STATUS.md`, `CHANGES.md`, and a short `HANDOFF.md` under `.soloweave/context/`. A new agent reads these notes and then checks Git and source files; current files win when they conflict with old notes.
 
-Only after you confirm a decision should the AI create `.soloweave/decisions/ADR-NNNN.md` with the date, options and trade-offs, decision, rationale, and approval fact, then link it from `PROJECT.md`. A major change needs another confirmation and ADR. A manual ADR is useful to the next AI, but **it is not CLI approval**: do not hand-create `approval.json` or change `project.yaml` to `approved` to imitate the CLI.
+`PROJECT.md` holds stable goals and approved decision links. `HANDOFF.md` should identify the current task, recent files, actual verification and outcome, open issues, next step, and check time. If Git is unavailable, say so. Do not store secrets. Skills-only work does not create the Go CLI's `approval.json`, `checkpoint.json`, or `installation.json`, or call manual review a passing `soloweave check`.
 
-## Develop, review, and hand off
-
-Before editing, ask the AI to inspect existing implementations, reusable components, and tests. After editing, run relevant project tests and report each command and actual result. Mark checks that did not run as “Not run”; without the CLI, mark `soloweave check` as “Tool unavailable,” never as passed.
-
-At a handoff, update the files under `.soloweave/context/`. Use equivalent existing records first instead of making duplicates:
-
-| File | Minimum content |
-| --- | --- |
-| `PROJECT.md` | Goal, approved decisions and ADRs, key entry points, and run commands |
-| `STATUS.md` | Completed, in progress, blocked, and next work |
-| `CHANGES.md` | Date, important changes, and affected files |
-| `HANDOFF.md` | Current task, recent changes, actual and unrun checks, issues, next step, review time, and Git state |
-
-If Git is available, check and record the branch, HEAD, and working-tree changes; otherwise write “Git unavailable.” Keep passwords, tokens, and private keys out of handoff files. A new AI reads these records and then checks the source files and Git. If they disagree, prefer the actual files and flag the record as possibly stale. Skills-only mode does not generate `checkpoint.json` or automatically detect stale checkpoints.
-
-## If you add the CLI later
-
-On Windows x64, download the ready-to-run ZIP from [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases); no source build is needed. Review existing files, then follow the [README CLI path](README.md#quick-start) to initialize, explicitly approve, and preview installation. The CLI does not automatically convert a manual ADR into its `approval.json`. Resolve any conflicting files before writing over existing work.
+See [cross-agent acceptance](agent-acceptance.md) for the test procedure.

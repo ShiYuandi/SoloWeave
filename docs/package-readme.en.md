@@ -2,6 +2,8 @@
 
 This ZIP contains a ready-to-run `soloweave.exe`, Chinese and English instructions, and the MIT license. **You do not need Go or a source build.**
 
+This executable is a legacy CLI snapshot with five earlier Skills. The six new Skills live under `skills/` in the [SoloWeave repository](https://github.com/ShiYuandi/SoloWeave) and are not added to this executable automatically.
+
 ## Get started
 
 1. Extract the ZIP and add its directory to the current terminal's `PATH`, or use the full path to `soloweave.exe` in the commands below.

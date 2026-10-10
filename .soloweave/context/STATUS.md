@@ -1,43 +1,25 @@
 # 当前状态
 
+核对日期：2026-10-10。
+
 ## 已完成
 
-- 保存 V0.1 开发计划与 v0.2 设计基准。
-- 完成 CLI、项目配置及 ADR 批准、上下文交接、技术栈预设、五个 Skill、三平台安装器、检查命令、基础文档、CI 工作流及本地预览构建。
-- 2026-10-09：Go 测试、静态检查、构建、Skill 格式校验、交叉编译及 Windows 临时项目流程验收通过。
-- 将面向读者的文档改为中文，补充目录说明，并在 `docs/en/` 提供公开文档的英文版；完善忽略规则。
-- 完成首次本地提交；按用户提供的姓名与邮箱修正作者身份。双语链接、Go 测试、静态检查及构建均已验证。
-- 2026-10-10：修复相同项目文件内容提交后检查点误报过期的问题，保留旧格式检查点兼容检查；将 Go Module 路径调整为 `github.com/ShiYuandi/SoloWeave`。
-- 2026-10-10：本轮 Go 测试、静态检查及构建通过；只读核对 GitHub Actions，`b07d057` 与 `237d268` 两次 CI 均通过。
-- 2026-10-10：增加 Windows x64 免构建 ZIP、SHA256 校验与草稿 Release 工作流；从 ZIP 解压运行程序，在临时项目完成初始化、批准、安装和检查点流程。
-- 2026-10-10：为五个 Skill 准备 SkillHub 发布元数据和 ZIP，完成 Go 测试、静态检查、构建、打包与网页上传格式检查。SkillHub 网页已识别 GitHub 仓库中的五个旧版 Skill。
-- 2026-10-10：将五个内置 Skill 的 `description`、标题和正文改为中文；使用本仓库 Go 工具链运行 `go test ./... -count=1`，并重新生成五个 SkillHub 本地 ZIP，均通过。
-- 2026-10-10：核对已公开的 GitHub `v0.1.0-preview` Release 确有 Windows x64 ZIP；中英文 README 改为直达下载包并移除源码构建命令，明确区分安装包与 GitHub 自动生成的源码包。贡献文档保留开发者 Go 要求。
-- 2026-10-10：中英文 README 开头补充第一人称开发初衷与核心能力，说明架构选择、复用和跨 AI 工具交接的实际需求。
-- 2026-10-10：中英文 README 与 Skills 说明加入“把提示词发给 AI 从 SkillHub 安装五个 Skill”的用法，区分 SkillHub 文件与 CLI 管理的完整项目安装。
-- 2026-10-10：中英文 README 进一步说明“只用 Skills”与“Skills + CLI”的适用范围和限制，并逐条解释 CLI 命令。
-- 2026-10-10：中英文 README 的开发初衷章节突出架构失控、重复实现、上下文丢失及项目内记录决策与交接的解决方向。
-- 2026-10-10：五个 Skill 更新为 `0.1.2` 本地候选版，加入无 CLI 的规划、开发、交接和质量检查路径；新增双语纯 Skills 指南，并将 CLI 预备版本设为 `0.1.1-preview`。
-- 2026-10-10：五个本地 SkillHub ZIP 打包及内容核对通过；隔离临时项目的纯 Skills 演练、无旧会话资料的文件恢复检查通过。项目测试在 `node --test` 遇 `spawn EPERM` 后，用 `node src/name.test.js` 运行通过 2 项。Go 测试、静态检查、构建和相对链接检查通过。
-- 2026-10-10：Windows `0.1.1-preview` 本地候选 ZIP 的中英文说明按程序版本生成，包内版本与 `SHA256SUMS` 核对通过；快速开始先写检查点再运行 `check`。
-- 2026-10-10：提交 `01ffaae` 并推送到 `origin/master`；SkillHub 五个 `0.1.2` 更新均已提交，管理页显示安全审核中，尚不能称为公开可安装。
-- 2026-10-10：SkillHub 五个 `0.1.2` 均显示已发布；公开详情页核对版本、下载入口和纯 Skills 正文通过。入口页发现 GitHub URL 排版问题，源码已准备 `0.1.3` 修正。
-- 2026-10-10：入口 `0.1.3` 的本地 ZIP 与 Windows 安装包重新生成并核对，通过 Go 测试、SHA256SUMS、临时项目 `init`/`approve`/`install`，安装后的链接正确。
-- 2026-10-10：入口 `0.1.3` 修复已通过提交 `d66de70` 推送 GitHub，SkillHub 管理页显示提交成功、安全审核中。
-- 2026-10-10：入口 `0.1.3` 已通过 SkillHub 审核；公开页核对版本、下载包及 GitHub Releases 链接正确，其余四项保持公开 `0.1.2`。
+- 用户确认 SoloWeave 改为 Skills 优先、普通开发请求由 AI 主动使用、项目上下文在重要节点自动维护、Go CLI 逐步退出。方向记录于 `docs/skills-first-design.md`、`docs/skills-first-plan.md` 和 `ADR-0002.md`。
+- 根目录 `skills/` 新增六个新版 Skill：入口、项目设置、功能开发、故障排查、质量检查和项目交接。五个原名称保留，Go CLI 的旧版嵌入资源未改。
+- 中英文 README、Skills 使用说明、目录、贡献和验收文档改为 Skills 优先；旧版 CLI 的下载与功能仍有说明。
+- `scripts/package-skillhub.ps1` 改从根目录打包六个 Skill；CI 增加打包校验步骤。
+- 本地六个 ZIP 和 SHA256SUMS 核对通过，改动 Markdown 的相对文件链接与 `git diff --check` 通过。旧版 Go `test ./... -count=1`、`vet ./...`、`build ./...` 退出码均为 0。
+- 标准安装器 `add . --list` 在本地识别六个 Skill；临时项目完成 Codex、Claude Code、Cursor 的安装，所有安装后的 `SKILL.md` 与源文件一致；Windows 默认模式也完成 Codex 六个 Skill 的安装。
+- 在无 SoloWeave CLI、无 Git 的临时项目中，人工完成测试先失败、复用已有函数后两项检查通过的开发流程，并写入项目和交接记录；单独读取后重新运行测试仍通过。
+- 推送前重新运行旧版 Go CLI 的 `test ./... -count=1`、`vet ./...`、`build ./...`，均以退出码 0 完成；远端 `master` 在推送前与本地 HEAD `5d8f22b` 一致。
 
-## 进行中
+## 未完成或待外部验证
 
-- 五个 Skill 的 `0.1.0` 已在 SkillHub 公开发布；公开详情页和下载入口均已出现。
-- 五个 Skill 的中文概述、标题和正文已作为 `0.1.1` 上传到 SkillHub；2026-10-10 五个公开详情页均显示 `0.1.1` 和对应安装提示词。
-
-## 待外部条件
-
-- Claude Code、Cursor 的真实客户端验收尚未运行。
-- `0.1.1` 的五个公开详情页已显示可安装；本机没有可用的 SkillHub CLI 或 WSL，因此尚未运行 SkillHub CLI 的 `--dry-run` 或实际 AI 安装验收。GitHub 同步状态以当前 Git 记录为准。
-- `0.1.2` 的五个 SkillHub 更新均已公开；尚未完成在线安装或真实 Codex、Claude Code、Cursor 客户端的纯 Skills 验收。`0.1.1-preview` CLI 尚未公开发布。
-- 用户决定暂不做跨平台实机验证。
+- 标准安装器首次尝试遇到 npm 连接拒绝，重试后的本地发现及安装已通过；公开 GitHub 安装尚未验证。
+- 辅助 `quick_validate.py` 缺少 PyYAML，未完成该工具的校验；仓库打包脚本已执行名称、字段、版本和 slug 检查。
+- 新版 Skill 在 Codex、Claude Code、Cursor 的真实自动触发与跨客户端交接尚未实测；新版尚未推送 GitHub 或更新 SkillHub。
+- 旧版 `checkpoint.json` 对当前工作区可能过期，不能据此称机器检查点有效。
 
 ## 下一步
 
-- GitHub `0.1.1-preview` Windows CLI 发布仍待网页登录操作；SkillHub 在线 AI 安装和真实客户端的结果须与本地演练分开报告。
+按 `docs/skills-first-plan.md` 的下一轮顺序，先验证公开 GitHub 安装，再于真实客户端验收普通请求自动选择、重大决策确认、重要任务后的交接和新会话恢复。SkillHub 更新仍需另行明确要求。

@@ -9,6 +9,7 @@
 | 路径 | 作用 | 是否纳入 Git |
 | --- | --- | --- |
 | `README.md` | 中文项目介绍、下载和快速开始 | 是 |
+| `skills/` | 六个新版 Agent Skill 的唯一维护位置，可由标准安装器发现 | 是 |
 | `AGENTS.md` | 仓库内 AI Agent 的工作约定 | 是 |
 | `go.mod`、`go.sum` | Go 模块声明与依赖校验和 | 是 |
 | `LICENSE` | MIT 许可证原文 | 是 |
@@ -35,7 +36,8 @@
 | `internal/continuity/` | 项目文档、Git 状态采集、检查点和恢复 |
 | `internal/catalog/` | 可选技术栈预设目录的读取 |
 | `internal/installer/` | Codex、Claude Code、Cursor 文件安装、预览、冲突与完整性检查 |
-| `internal/bundle/` | 通过 Go `embed` 打包安装资源；`assets/catalogs/` 是预设，`assets/rules/` 是平台规则，`assets/skills/` 是五个 Skill 的唯一源文件 |
+| `internal/bundle/` | 旧版 Go CLI 的嵌入资源；`assets/skills/` 是发布时的五个 Skill 快照，今后不作为新版源码编辑 |
+| `scripts/package-skillhub.ps1` | 从根目录 `skills/` 打包六个新版 Skill 的本地候选 ZIP |
 | `scripts/build-preview.ps1` | 构建四个目标平台的本地预览程序并生成校验和 |
 | `scripts/package-windows.ps1` | 生成 Windows x64 ZIP、附带中英文说明并计算 SHA256 |
 | `.github/workflows/ci.yml` | 远程仓库启用后执行 Go 测试、静态检查与构建 |
@@ -47,11 +49,12 @@
 
 | 路径 | 作用 |
 | --- | --- |
-| `docs/development-plan.md` | V0.1 范围、步骤和验收记录 |
-| `docs/design-v0.2.md` | 用户确认的产品设计基准 |
+| `docs/development-plan.md` | V0.1 CLI 范围、步骤和验收历史 |
+| `docs/design-v0.2.md` | 早期产品设计基准 |
+| `docs/skills-first-design.md`、`docs/skills-first-plan.md` | 新版 Skills 优先设计与迁移计划 |
 | `docs/configuration.md` | `project.yaml` 配置字段及批准流程 |
 | `docs/project-continuity.md` | 项目交接文件和检查点说明 |
-| `docs/skills.md` | 五个 Skill 与平台安装路径 |
+| `docs/skills.md` | 六个新版 Skill 的分工、安装与发布状态 |
 | `docs/skill-only-workflow.md` | 无 CLI 时只用 Skills 的规划、检查与交接流程 |
 | `docs/package-readme.zh-CN.md`、`docs/package-readme.en.md` | Windows ZIP 内双语说明的版本化模板 |
 | `docs/agent-acceptance.md` | 尚待执行的真实客户端交接验收步骤 |

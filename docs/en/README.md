@@ -4,123 +4,67 @@
 
 **Build independently. Ship confidently.**
 
-SoloWeave is an AI engineering skills toolkit and CLI for solo developers and teams of 1–5. It keeps architecture decisions, task progress, and handoff notes in project files, so work can continue after an account change or a switch between Codex, Claude Code, and Cursor.
+SoloWeave is a set of AI development Skills for solo developers and teams of 1–5. After installation, ask for development work normally. The agent should read project facts, follow approved decisions, look for reusable code, and maintain a useful handoff after meaningful work.
 
 ## Why I built SoloWeave
 
-While using AI to write code, I found that **building one feature is easier than keeping an entire project coherent over time**. When I start a full-stack project from scratch, an AI agent may **choose the stack and directory structure before I approve them**. Later, it may introduce a different approach or **rewrite functionality that already exists**.
+While using AI to write code, I found that **building one feature is easier than keeping an entire project coherent over time**. An agent may **choose a stack or directory structure before I approve it**, then introduce another approach later or **rewrite functionality that already exists**.
 
-**Losing development context** is even more frustrating. When I switch accounts, models, or coding tools, the next agent does not know the project's goal, approved architecture, completed work, or open problems. I have to **explain the project again and ask the AI to reexamine existing work**.
+**Losing development context** is even more frustrating. After I switch accounts, models, or tools, the next agent does not know the project's goal, approved architecture, completed work, or open problems. I have to **explain the project again and ask the AI to reexamine existing work**.
 
-I began to ask why that knowledge should live only in a chat history. If **decisions, progress, code changes, actual verification results, and next steps live with the project**, a new agent can check the files and continue from there.
+I began to ask why that knowledge should live only in chat history. If **decisions, progress, code changes, actual verification results, and next steps live with the project**, another agent can check the files and continue from there.
 
-That is why I built SoloWeave. I want AI to **discuss technical and architectural choices with me before implementation**, **follow approved decisions and reuse suitable code**, and **leave a useful handoff after important work**. The developer keeps control of major decisions, and the workflow should stay proportionate to the project.
+That is why I built SoloWeave. I want AI to **discuss important technical choices with me before implementation**, **follow approved decisions and reuse suitable code**, and **leave a clear handoff after important work**. The developer retains control of major decisions, and the process should stay proportionate to the task.
 
-SoloWeave started with my own development needs. I am sharing it so other independent developers and small teams can **keep projects moving across AI tools instead of starting over with each conversation**.
-
-## Core capabilities
-
-- **Developer-approved architecture**: record technical choices and approve key decisions before implementation.
-- **Project continuity**: keep progress, changes, actual verification results, and next steps with the project.
-- **Consistent engineering**: help agents inspect existing code and follow approved project conventions.
-
-The **v0.1.1-preview Windows x64 build** includes the CLI, a YAML project contract that requires developer approval, five Agent Skills, platform rule installation, and a handoff workflow. It does not call a remote AI API or require a database. The [v0.2 design baseline](../design-v0.2.md) and [development plan](../development-plan.md) are maintained in Chinese.
-
-## Skills only, or use the CLI?
-
-| Option | What you get | Current limitation |
-| --- | --- | --- |
-| **Install the five Skills only** | Your AI can discuss architecture, inspect and reuse code, and manually record decisions you approve, progress, and handoffs in project files. **You do not need the CLI** if you only want these conventions. | This path does not create CLI approval or installation records or automatically checkable checkpoints. CLI commands such as `soloweave check` are unavailable; the AI must report them as not run. |
-| **Use the CLI (which installs the Skills)** | The same guidance, plus commands that create project and handoff files, record approved decisions, install the five Skills and project rules, and check file state. | A ready-to-run CLI package is currently available only for Windows x64. |
-
-The CLI works with local files. It does not write application code for the AI, approve technical choices for the developer, or assume tests passed.
-
-## Let your AI install the Skills
-
-If your coding agent can access the internet and install Skills, send it this prompt:
-
-```text
-Follow https://skillhub.cn/install/skillhub.md to install these five SoloWeave Skills for the current coding agent:
-@user_38c0807e/shiyuandi-soloweave
-@user_38c0807e/shiyuandi-soloweave-project-setup
-@user_38c0807e/shiyuandi-soloweave-feature-workflow
-@user_38c0807e/shiyuandi-soloweave-project-continuity
-@user_38c0807e/shiyuandi-soloweave-quality-review
-Check for existing files with the same names first. Do not overwrite my changes. After installation, verify all five SKILL.md files and report their paths and versions.
-```
-
-The entry Skill needs the other four. This prompt installs Skill files only; **you can stop here if you only want the development conventions**. After installation, you can tell your AI: “Use SoloWeave's Skills-only workflow. Inspect the existing code first, manually record decisions I approve and handoffs, and tell me which CLI checks were not run.” See the [Skills-only guide](skill-only-workflow.md) for file locations and acceptance steps.
-
-If you choose the CLI path below, **you do not need to install from SkillHub first**: `soloweave install` installs all five Skills and the platform rules. The CLI's `check` and `doctor` commands do not count a SkillHub installation as a CLI-managed project installation. If both methods have written to the same directory, preview and resolve any conflicts first. See the [Skills guide](skills.md).
-
-## Download and run on Windows
-
-1. [Download the v0.1.1-preview Windows x64 package](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.1-preview/soloweave-v0.1.1-preview-windows-amd64.zip). See [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) for other versions.
-2. Extract the ZIP to get `soloweave.exe`. **You do not need Go or a local build.**
-3. Run the quick-start commands below in PowerShell.
-
-Choose `soloweave-...-windows-amd64.zip` under **Assets**. GitHub's automatic `Source code (zip)` and `Source code (tar.gz)` archives contain source files, not a ready-to-run executable. The package also includes Chinese and English usage guides and the MIT license. Use [SHA256SUMS](https://github.com/ShiYuandi/SoloWeave/releases/download/v0.1.1-preview/SHA256SUMS) to check the downloaded archive. Only Windows x64 is packaged today.
-
-## What the CLI commands do
-
-Run these commands in the target project directory; they operate on that project's files.
-
-| Command | Purpose |
-| --- | --- |
-| `soloweave catalog` | List optional stack presets. |
-| `soloweave init` | Create a **draft** `.soloweave/project.yaml` and initial project and handoff documents. It does not approve the technical choices for you. |
-| `soloweave approve` | Show the configuration and, after developer confirmation, mark it approved and create an architecture decision record (ADR). |
-| `soloweave install --dry-run` | Preview the five Skills and platform rules without writing files. A regular `install` writes them while protecting existing or edited files. |
-| `soloweave context checkpoint` | Write a handoff from a task summary, next step, and **actual** verification supplied by you or the AI. It captures Git state when available; it does not infer progress or test results. |
-| `soloweave context resume` / `context show` | Read project and handoff information so a new session can take over. |
-| `soloweave context check` | Check for missing or stale handoff information. |
-| `soloweave check` | Check the project configuration, architecture approval, CLI installation record, and handoff state. |
-| `soloweave doctor` | Report Git, project configuration, and CLI installation status to help diagnose setup issues. |
-| `soloweave version` | Print the CLI version. |
+I am sharing it so other independent developers and small teams can **keep projects moving across AI tools instead of starting over with each conversation**.
 
 ## Quick start
 
-Add the extracted directory to `PATH`, then run these commands inside the target project. Replace the example paths with your own in PowerShell:
-
-```powershell
-$env:PATH = "C:\Tools\SoloWeave;$env:PATH"
-cd C:\path\to\your-project
-```
-
-Then follow this **CLI path (including the Skills)**. `--agents codex,claude,cursor` installs project files for all three platforms; list only the ones you use if you need fewer.
+The repository's [`skills/`](../../skills/) directory contains six independent Skills. Ask a compatible AI tool to install them from this repository, or use the [Skills CLI](https://github.com/vercel-labs/skills):
 
 ```sh
-soloweave init
-soloweave approve
-soloweave install --agents codex,claude,cursor --dry-run
-soloweave install --agents codex,claude,cursor
-soloweave doctor
-soloweave context checkpoint --task "project setup" --summary "configuration approved and Skills installed" --next "start development"
-soloweave check
+npx skills@latest add ShiYuandi/SoloWeave
 ```
 
-`init` offers stack presets and a custom setup. Run `soloweave catalog` to list presets. For non-interactive use, try `init --preset api-go --name demo` or `init --from path/to/project.yaml`. Both create a **draft** and still require a separate `approve`. Use `approve --yes` only after reviewing the configuration.
+Or send this prompt to your coding agent and let it handle installation:
 
-Before pausing a task or switching agents, record the actual progress and verification:
-
-```sh
-soloweave context checkpoint --task "login" --summary "form complete" --next "connect API"
-soloweave context resume
-soloweave context check
+```text
+Follow https://github.com/vercel-labs/skills to install all six SoloWeave Skills from the skills/ directory of https://github.com/ShiYuandi/SoloWeave for this coding agent. Check for existing files with the same names and do not overwrite my changes. Report the path and version of each installed SKILL.md. For future ordinary development requests, use the applicable SoloWeave workflow.
 ```
 
-Add `--verification "command: actual result"` to `context checkpoint` only after running that check.
+Then ask for work normally, for example:
 
-Omit `--verification` if no check ran; the handoff will say `Not run`. Without a Git repository, Git state is reported as `UNAVAILABLE`. See [project continuity](project-continuity.md) and [configuration](configuration.md).
+> Add user login to this project. Inspect existing code first, run the relevant tests, and leave a progress note another agent can use.
 
-## Installed files
+You do not need to type a SoloWeave command for every task. The entry Skill routes to setup, feature development, debugging, review, or continuity as needed. The agent should inspect an existing project's code and records; you still approve major technical choices. Automatic skill selection depends on the agent and is not guaranteed. If needed, explicitly ask it to “use SoloWeave to continue this project.”
 
-Project configuration, ADRs, and handoff files live in `.soloweave/`. Codex and Cursor share `.agents/skills/`; Claude Code uses `.claude/skills/`. Platform rules go to `AGENTS.md`, `CLAUDE.md`, and `.cursor/rules/soloweave.mdc`. The installer previews changes and stops on conflicting user files instead of silently overwriting them.
+**Verification status:** The standard installer discovered all six new Skills from the local repository and created the corresponding project Skill files for Codex, Claude Code, and Cursor in a disposable project. Live automatic invocation, installation from the public GitHub URL, and SkillHub updates still need separate acceptance. The current [SkillHub pages](skills.md#skillhub-publication-status) host the five previously published Skills; check their displayed versions.
 
-See the [repository directory guide](directory-structure.md) and [Skills guide](skills.md).
+## What it does
 
-## Verification status
+| When | Expected agent behavior |
+| --- | --- |
+| Enter an existing project | Read rules, goals, decisions, status, and code; check whether the handoff is stale. |
+| Create or adopt a project | Inspect what exists, explain key options, obtain your approval for major choices, and record an ADR. |
+| Develop or fix code | Search for suitable existing implementations, make the change, and run relevant checks. |
+| Finish important work or switch accounts | Update progress, significant changes, actual test results, and next steps for the next session. |
 
-Go tests, vet, build, validation of the five Skills, and a complete Windows CLI smoke test in a temporary project have passed. Linux and macOS binaries have only been cross-compiled. Live handoffs in Claude Code and Cursor remain untested; see the [acceptance procedure](agent-acceptance.md). For source builds and development, see the [contribution guide](CONTRIBUTING.md).
+Use existing project documentation where possible. New records live in `.soloweave/context/` and `.soloweave/decisions/`. **Go CLI is not required** for the Skills path. Skills do not create the CLI's machine approval, installation, or checkpoint records and do not claim to have run CLI checks. See the [Skills-only guide](skill-only-workflow.md) and [Skill roles](skills.md).
+
+## Optional legacy CLI
+
+The previously released [v0.1.1-preview Windows x64 package](https://github.com/ShiYuandi/SoloWeave/releases/tag/v0.1.1-preview) remains available without a local build. It provides `init` (draft configuration), `approve` (developer approval and ADR), `install` (the five Skills embedded at release time), `context checkpoint/resume/check` (handoffs), `check` (project validation), and `doctor` (environment diagnostics). The executable is a release snapshot and **does not automatically include the new workflows under `skills/`**. Existing users can keep using it; new projects should start with the Skills path above. See the [legacy configuration guide](configuration.md) and [continuity guide](project-continuity.md) for command details.
+
+| Command | Purpose |
+| --- | --- |
+| `catalog` | List legacy technology presets. |
+| `init` / `approve` | Create a draft; after review, record developer approval and an ADR. |
+| `install --dry-run` / `install` | Preview or install embedded legacy Skills and project rules. |
+| `context checkpoint` / `resume` / `check` | Save a task summary and actual verification, read a handoff, or check staleness. |
+| `check` / `doctor` / `version` | Validate project files, diagnose the environment, or show the executable version. |
+
+## Verification and contribution
+
+The [acceptance guide](agent-acceptance.md) records local validation and separates it from live client tests. See the [directory guide](directory-structure.md) and [contribution guide](CONTRIBUTING.md) for the repository and source development.
 
 License: [MIT](../../LICENSE) · [Contributing](CONTRIBUTING.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)

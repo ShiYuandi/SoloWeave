@@ -2,6 +2,8 @@
 
 本压缩包已包含可运行的 `soloweave.exe`、中英文使用说明和 MIT 许可证。**无需安装 Go，也无需自行构建。**
 
+此程序是旧版 CLI 快照，内置五个旧版 Skill；新版六个 Skills 位于 [SoloWeave 仓库](https://github.com/ShiYuandi/SoloWeave) 的 `skills/`，不会自动进入本程序。
+
 ## 开始使用
 
 1. 解压 ZIP，将所在目录加入当前终端的 `PATH`，或在下面的命令中使用 `soloweave.exe` 的完整路径。

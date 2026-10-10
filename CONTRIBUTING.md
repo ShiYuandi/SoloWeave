@@ -2,22 +2,22 @@
 
 [English](docs/en/CONTRIBUTING.md)
 
-修改较大功能前，请阅读[开发计划](docs/development-plan.md)、[v0.2 设计基准](docs/design-v0.2.md)和[当前交接记录](.soloweave/context/HANDOFF.md)，再核对实际代码与 Git 状态。
+修改较大功能前，请阅读[Skills 优先设计](docs/skills-first-design.md)、[迁移计划](docs/skills-first-plan.md)和[当前交接记录](.soloweave/context/HANDOFF.md)，再核对实际代码与 Git 状态。早期 CLI 范围保留在[开发计划](docs/development-plan.md)和[v0.2 设计基准](docs/design-v0.2.md)。
 
-从源码开发需要 Go 1.27.2 或更新版本；普通用户请直接从 [Releases](https://github.com/ShiYuandi/SoloWeave/releases) 下载可运行的 Windows x64 安装包。
+修改根目录 `skills/` 中的新版 Skill 不需要 Go。只有维护旧版 CLI 才需要 Go 1.27.2 或更新版本；普通用户可直接安装 Skills，不必下载程序或自行构建。
 
-- Skill 尽量简洁、与平台无关；平台差异放在安装适配和规则文件中。
+- 新版 Skill 只在根目录 `skills/` 编辑；`internal/bundle/assets/skills/` 是旧版 CLI 快照。Skill 尽量简洁、与平台无关。
 - 修改 CLI 行为时，补充针对行为的测试；不要用只复述实现的测试替代真实验证。
 - 重要改动及时更新 `.soloweave/context/STATUS.md`、`CHANGES.md`，交接时更新 `HANDOFF.md`。
-- 有意改变已批准的关键架构时，重新审阅项目配置，执行 `soloweave approve` 并保留新的 ADR。
-- 提交前运行 `go test ./...`、`go vet ./...`、`go build ./...`，如实说明未运行的检查。
+- 有意改变已批准的关键架构时，先取得开发者明确确认并新增 ADR；旧版 CLI 自身配置变更仍按其 `approve` 流程处理。
+- 修改新版 Skill 时，运行 `scripts/package-skillhub.ps1` 并核对 ZIP；修改旧版 CLI 时再运行 `go test ./...`、`go vet ./...`、`go build ./...`。如实说明未运行的检查。
 - Git commit 的提交信息使用中文，简要说明本次改动。
 
 提交中不要包含 `.tools/`、`dist/`、密钥或其他本机生成文件。目录用途见[目录说明](docs/directory-structure.md)。
 
 ## 从源码构建
 
-在仓库根目录运行：
+以下命令仅用于维护旧版 Go CLI，在仓库根目录运行：
 
 ```sh
 go test ./...
