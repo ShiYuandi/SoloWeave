@@ -32,6 +32,6 @@ SkillHub 安装只提供 Skill 文件。没有 CLI 时，AI 可按[纯 Skills �
 
 更新已发布的 Skill 时，管理页的「更新」表单支持上传新 ZIP。保留原 `slug`，递增版本号并填写变更说明；提交后新版本重新进入安全审核，审核期间公开页仍可能展示旧版内容。
 
-发布时应提供五个 Skill：入口 `soloweave`、`project-setup`、`feature-workflow`、`project-continuity`、`quality-review`。入口会按任务调用其余四个，因此只安装入口并不构成完整流程。此外，SkillHub 安装的是 Skill 文件，`soloweave` 命令行程序仍需用户从 [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) 单独下载并配置 `PATH`。当前只提供 Windows x64 程序；其他系统的可运行程序尚未交付。发布到 SkillHub 不等于 CLI 自动可用。
+发布时应提供五个 Skill：入口 `soloweave`、`project-setup`、`feature-workflow`、`project-continuity`、`quality-review`。入口会按任务调用其余四个，因此只安装入口并不构成完整流程。只用开发规范时无需 CLI；若要使用 `soloweave` 命令，则需从 [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) 单独下载并配置 `PATH`。当前只提供 Windows x64 程序；其他系统的可运行程序尚未交付。发布到 SkillHub 不等于 CLI 自动可用。
 
-SkillHub 网页实际要求数字 `X.Y.Z` 版本。首发的五个 Skill 为 `0.1.0`；2026-10-10 已逐页核对，中文概述和正文对应的 `0.1.1` 均显示为公开可安装。源码中的五个 Skill 已准备 `0.1.2` 纯 Skills 路线更新，**尚未因此自动上架**。当前 CLI `0.1.0-preview` Windows x64 下载版仍包含打包时的旧 Skill；Skill 与 CLI 属于不同发布渠道。后续更新要同时调整五个 Skill 的版本，说明兼容的程序版本；保留各自的 `slug`，重新生成包、校验并提交新版本。上架状态以 SkillHub 实际页面为准。
+SkillHub 网页实际要求数字 `X.Y.Z` 版本。首发的五个 Skill 为 `0.1.0`；2026-10-10 已逐页核对，中文概述和正文对应的 `0.1.1` 均显示为公开可安装。五个 `0.1.2` 更新已从本地校验过的 ZIP 逐项提交，管理页均显示**安全审核中**；公开页在通过审核前仍可能提供 `0.1.1`。当前 CLI `0.1.0-preview` Windows x64 下载版仍包含打包时的旧 Skill；Skill 与 CLI 属于不同发布渠道。后续更新要同时调整五个 Skill 的版本，说明兼容的程序版本；保留各自的 `slug`，重新生成包、校验并提交新版本。上架状态以 SkillHub 实际页面为准。

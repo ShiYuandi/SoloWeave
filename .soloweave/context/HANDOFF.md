@@ -6,7 +6,7 @@
 
 ## 当前状态
 
-SkillHub 的五个公开详情页均显示 `0.1.1` 和对应安装提示词。五个源 Skill 已准备 `0.1.2` 纯 Skills 候选版，CLI 源码预备版本为 `0.1.1-preview`；两者尚未据此公开发布。GitHub 同步情况以 Git 记录为准。
+SkillHub 的五个公开详情页原先均显示 `0.1.1`。五个 `0.1.2` 更新已在管理页提交并显示“安全审核中”，公开状态尚待核对。CLI 源码预备版本为 `0.1.1-preview`，本地 ZIP 已验证但尚未公开发布。`01ffaae` 已推送到 GitHub `master`。
 
 ## 已提交的 Skill
 
@@ -16,7 +16,7 @@ SkillHub 的五个公开详情页均显示 `0.1.1` 和对应安装提示词。�
 - `shiyuandi-soloweave-project-continuity`：SoloWeave 项目交接。
 - `shiyuandi-soloweave-quality-review`：SoloWeave 质量检查。
 
-入口 Skill 需要另外四个 Skill；`soloweave` CLI 还需从 GitHub Releases 单独安装。SkillHub 首发版为 `0.1.0`，中文更新版为 `0.1.1`，两者均对应当前 CLI 的 `0.1.0-preview` Windows x64 下载版。
+入口 Skill 需要另外四个 Skill；只有使用 `soloweave` 命令时才需从 GitHub Releases 单独安装 CLI。SkillHub 首发版为 `0.1.0`，中文更新版为 `0.1.1`，两者均可配合当前 CLI 的 `0.1.0-preview` Windows x64 下载版。
 
 ## 本轮纯 Skills 改动
 
@@ -47,6 +47,8 @@ Windows ZIP 改为用版本模板生成双语包内说明，避免复制仓库 R
 - `scripts/package-skillhub.ps1`：生成五个 `0.1.2` 本地候选 ZIP；逐包核对 `SKILL.md` 与版本号通过。
 - 系统临时目录的纯 Skills 演练：从五个本地 ZIP 安装，无 CLI/无 Git，记录待确认架构、复用已有函数、写交接文档；`node --test src/name.test.js` 遇 `spawn EPERM`，改用 `node src/name.test.js` 后 2 项通过；仅依据项目文件的恢复核对与再次运行测试通过。未实际通过 SkillHub 在线安装。
 - Windows 本地候选 ZIP 解压后，`version` 显示 `0.1.1-preview`；`init`、`approve`、`install` 通过，安装的 Skill 为 `0.1.2`；初次 `check` 因缺少检查点失败，创建无虚构验证结果的检查点后通过，Git 状态为 `UNAVAILABLE`。重新打包后的双语包内 README 显示 `v0.1.1-preview`、没有旧版链接或未替换占位符；`SHA256SUMS` 匹配。
+- 最新 `go test ./... -count=1`、`go vet ./...`、`go build ./...` 均通过；Windows ZIP 再次打包，四个条目、版本、快速开始顺序与 `SHA256SUMS` 核对通过。GitHub 仓库首页已显示提交 `01ffaae` 和新 README。
+- SkillHub 管理页逐项上传五个 `0.1.2` ZIP、填写中文概述和变更说明，五项均显示“提交成功”及“安全审核中”；未将此当作审核通过或公开安装验收。
 
 ## 已知限制
 
@@ -54,8 +56,8 @@ Windows ZIP 改为用版本模板生成双语包内说明，避免复制仓库 R
 
 ## 下一步
 
-核对本地候选包和公开文档，再按用户授权处理提交、GitHub 与 SkillHub 更新。若要声称真实在线 AI 安装通过，需在公开 `0.1.2` 后另做实际安装；现有 Release 的标签快照和 ZIP 不会随源码改变。
+GitHub 网页登录后创建并核对 `0.1.1-preview` Windows 发布草稿，再更新 README 下载链接与公开发布；SkillHub `0.1.2` 审核通过后核对公开页面并做真实在线安装。现有 Release 的标签快照和 ZIP 不会随源码改变。
 
 ## Git 状态
 
-分支：master。上一笔已推送提交为 `9b02f55`；此轮文档变更的提交与推送状态以当前 `git status` 和远端记录为准。
+分支：master。`01ffaae` 已推送到 `origin/master`；本轮发布状态更新以当前 `git status` 和远端记录为准。
