@@ -10,18 +10,18 @@
 - 2026-10-10：修复相同项目文件内容提交后检查点误报过期的问题，保留旧格式检查点兼容检查；将 Go Module 路径调整为 `github.com/ShiYuandi/SoloWeave`。
 - 2026-10-10：本轮 Go 测试、静态检查及构建通过；只读核对 GitHub Actions，`b07d057` 与 `237d268` 两次 CI 均通过。
 - 2026-10-10：增加 Windows x64 免构建 ZIP、SHA256 校验与草稿 Release 工作流；从 ZIP 解压运行程序，在临时项目完成初始化、批准、安装和检查点流程。
+- 2026-10-10：为五个 Skill 准备 SkillHub 发布元数据和 ZIP，完成 Go 测试、静态检查、构建、打包与网页上传格式检查。SkillHub 网页已识别 GitHub 仓库中的五个旧版 Skill。
 
 ## 进行中
 
-- 本地 V0.1 范围内无进行中的功能开发。
+- 五个 Skill 已通过 SkillHub 的 GitHub 导入流程提交，账号页目前均显示“安全审核中”；待查看审核结果。
 
 ## 待外部条件
 
 - Claude Code、Cursor 的真实客户端验收尚未运行。
-- 本轮改动的远程 CI 结果须按对应提交核对；公开 Release 尚未发布。
-- 新增的草稿 Release 工作流尚未在 GitHub Actions 上运行；公开下载入口须在仓库所有者发布 Release 后才可使用。
+- 本轮发布文件已推送到 GitHub；尚未运行 SkillHub CLI 的 `--dry-run`，因为本机没有可用的 SkillHub CLI 或 WSL。网页提交成功，安全审核尚未完成。
 - 用户决定暂不做跨平台实机验证。
 
 ## 下一步
 
-- 核对本轮远程 CI；仓库所有者可手动运行 Windows 草稿 Release 工作流，审阅后再决定公开发布。真实客户端验收另行安排。
+- 查看 SkillHub 的实际审核结果。通过后核对五个公开页面及安装说明；若退回，按具体意见修复并发布新版本。真实 Claude Code/Cursor 客户端验收另行安排。
