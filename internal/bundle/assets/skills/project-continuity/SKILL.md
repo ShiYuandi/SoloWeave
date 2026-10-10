@@ -2,7 +2,7 @@
 name: project-continuity
 description: Use when recording a development checkpoint, handing a SoloWeave project to another AI account or coding agent, or resuming after lost chat context.
 slug: shiyuandi-soloweave-project-continuity
-version: 0.1.0-preview
+version: 0.1.0
 displayName: SoloWeave 项目交接
 summary: 记录真实开发进度，让新会话或不同编程 Agent 能接续项目。
 license: MIT

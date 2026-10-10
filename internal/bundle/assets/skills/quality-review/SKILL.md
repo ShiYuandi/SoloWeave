@@ -2,7 +2,7 @@
 name: quality-review
 description: Use when checking a SoloWeave project's code changes, engineering contract, tests, or readiness to hand off or deliver.
 slug: shiyuandi-soloweave-quality-review
-version: 0.1.0-preview
+version: 0.1.0
 displayName: SoloWeave 质量检查
 summary: 核对代码、配置与真实测试结果，并明确报告失败或未执行的检查。
 license: MIT

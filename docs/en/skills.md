@@ -26,4 +26,4 @@ Local upload is a fallback. On Windows, run `scripts/package-skillhub.ps1` in Po
 
 Publish all five skills together. The `soloweave` entry skill calls the other four. SkillHub installs skill files, but users must separately download the `soloweave` CLI from [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) and add it to `PATH`. Only a Windows x64 executable is currently delivered. A SkillHub installation alone does not make the CLI available.
 
-For updates, keep each `slug` stable, update the five skill versions to match the compatible SoloWeave release, rebuild the packages, validate, and submit the new versions. Check the actual SkillHub review result before claiming a listing is live.
+The SkillHub website currently requires a numeric `X.Y.Z` version. These five skills use `0.1.0` and are intended for the `0.1.0-preview` SoloWeave CLI download; the two release channels have separate versions. For updates, keep each `slug` stable, update the five skill versions, document CLI compatibility, rebuild the packages, validate, and submit the new versions. Check the actual SkillHub review result before claiming a listing is live.

@@ -26,4 +26,4 @@
 
 发布时应提供五个 Skill：入口 `soloweave`、`project-setup`、`feature-workflow`、`project-continuity`、`quality-review`。入口会按任务调用其余四个，因此只安装入口并不构成完整流程。此外，SkillHub 安装的是 Skill 文件，`soloweave` 命令行程序仍需用户从 [GitHub Releases](https://github.com/ShiYuandi/SoloWeave/releases) 单独下载并配置 `PATH`。当前只提供 Windows x64 程序；其他系统的可运行程序尚未交付。发布到 SkillHub 不等于 CLI 自动可用。
 
-后续更新要同时调整五个 Skill 的版本，保持与所依赖的 SoloWeave 程序版本相符；保留各自的 `slug`，重新生成包、校验并提交新版本。上架状态以 SkillHub 实际审核结果为准。
+SkillHub 网页实际要求数字 `X.Y.Z` 版本，当前五个 Skill 使用 `0.1.0`，对应 SoloWeave CLI 的 `0.1.0-preview` 下载版；两者是不同的发布渠道。后续更新要同时调整五个 Skill 的版本，说明兼容的程序版本；保留各自的 `slug`，重新生成包、校验并提交新版本。上架状态以 SkillHub 实际审核结果为准。

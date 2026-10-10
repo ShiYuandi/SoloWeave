@@ -28,8 +28,8 @@ foreach ($skill in $skills) {
     if ($values['slug'] -cnotmatch '^[a-z0-9]+(?:-[a-z0-9]+)*$' -or $values['slug'].Length -gt 128) {
         throw "Invalid SkillHub slug: $($values['slug'])"
     }
-    if ($values['version'] -cnotmatch '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?$') {
-        throw "Invalid SemVer version: $($values['version'])"
+    if ($values['version'] -cnotmatch '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$') {
+        throw "SkillHub requires a numeric X.Y.Z version: $($values['version'])"
     }
     if ($slugs.ContainsKey($values['slug'])) { throw "Duplicate SkillHub slug: $($values['slug'])" }
     $slugs[$values['slug']] = $true
