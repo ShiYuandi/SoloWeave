@@ -16,7 +16,7 @@ import (
 	"github.com/ShiYuandi/SoloWeave/internal/project"
 )
 
-const Version = "0.1.0-preview"
+const Version = "0.1.1-preview"
 
 type Change struct {
 	Path   string

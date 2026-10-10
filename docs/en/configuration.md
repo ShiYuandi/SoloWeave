@@ -24,3 +24,5 @@ agents: [codex, claude, cursor]
 `init --from FILE` reads an existing YAML file, but even an input marked `approved` is saved as a draft and requires separate approval. Agent Skills should read the contract before substantial development. Dependency versions remain in the target project's manifests and lock files.
 
 `soloweave catalog` lists optional presets; `init --preset ID --name NAME` creates a draft from one. Current examples include a TypeScript frontend, Go API, and TypeScript fullstack app. Presets are starting points, not a restriction on custom frameworks. SoloWeave rejects a few known incompatible combinations, such as NestJS with a Go backend, Next.js with a non-JavaScript frontend, or Prisma without a JavaScript/TypeScript backend.
+
+With Skills only, do not fabricate CLI configuration or `approval.json`. Follow the [Skills-only guide](skill-only-workflow.md) to record developer-approved architecture in `PROJECT.md` and an ADR. If you adopt the CLI later, run `init` and `approve` to establish its machine-checkable configuration and approval record.

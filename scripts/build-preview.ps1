@@ -12,11 +12,15 @@ $targets = @(
 )
 Push-Location $root
 try {
+    $version = (& $go run ./cmd/soloweave version | Out-String).Trim()
+    if ($LASTEXITCODE -ne 0 -or $version -notmatch '^[0-9]+\.[0-9]+\.[0-9]+(?:-[0-9A-Za-z.-]+)?$') {
+        throw "Invalid version reported by SoloWeave: $version"
+    }
     $env:CGO_ENABLED = '0'
     foreach ($target in $targets) {
         $env:GOOS = $target.OS
         $env:GOARCH = $target.Arch
-        $output = Join-Path $dist ("soloweave-v0.1.0-preview-{0}-{1}{2}" -f $target.OS, $target.Arch, $target.Ext)
+        $output = Join-Path $dist ("soloweave-v{0}-{1}-{2}{3}" -f $version, $target.OS, $target.Arch, $target.Ext)
         & $go build -o $output ./cmd/soloweave
         if ($LASTEXITCODE -ne 0) { throw "Build failed: $($target.OS)/$($target.Arch)" }
         Write-Output $output

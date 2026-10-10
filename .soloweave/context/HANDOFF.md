@@ -2,11 +2,11 @@
 
 ## 当前任务
 
-跟进 skillhub.cn 对五个 SoloWeave Skill `0.1.1` 中文版的安全审核，并维护 GitHub 下载说明。
+补全五个 Skill 的无 CLI 路线，验证纯 Skills 使用与交接，并准备后续发布。
 
 ## 当前状态
 
-五个 Skill 的 `0.1.0` 已在 SkillHub 公开发布。2026-10-10 将五个 Skill 的中文 `description`、标题和正文打包为 `0.1.1`，在管理页逐项提交更新；页面均显示“安全审核中”。公开详情页在审核通过前可能继续显示旧版英文正文。GitHub 同步情况以 Git 记录为准。
+SkillHub 的五个公开详情页均显示 `0.1.1` 和对应安装提示词。五个源 Skill 已准备 `0.1.2` 纯 Skills 候选版，CLI 源码预备版本为 `0.1.1-preview`；两者尚未据此公开发布。GitHub 同步情况以 Git 记录为准。
 
 ## 已提交的 Skill
 
@@ -18,9 +18,15 @@
 
 入口 Skill 需要另外四个 Skill；`soloweave` CLI 还需从 GitHub Releases 单独安装。SkillHub 首发版为 `0.1.0`，中文更新版为 `0.1.1`，两者均对应当前 CLI 的 `0.1.0-preview` Windows x64 下载版。
 
+## 本轮纯 Skills 改动
+
+五个 Skill 均支持 CLI 不可用时的人工流程：决策经开发者明确确认才记入 ADR，状态与交接写入项目文档，质量报告区分通过、失败、未运行和工具不可用。人工流程不生成 `approval.json`、`checkpoint.json` 或 CLI 安装记录。新增中英文 `skill-only-workflow.md` 和真实客户端验收步骤；README、配置、连续性、Skills 与目录文档同步说明。`CHANGELOG.md` 修正旧版已发布状态，CLI 版本预备升级为 `0.1.1-preview`。
+
+Windows ZIP 改为用版本模板生成双语包内说明，避免复制仓库 README 后出现旧版下载链接。公开与包内快速开始已把检查点放在 `check` 前，且示例不虚构测试结果。
+
 ## 最近改动
 
-五个 `SKILL.md` 的 `version` 增至 `0.1.1`，重新生成五个本地 ZIP 并逐项上传 SkillHub；`docs/skills.md` 与 `docs/en/skills.md` 加入五个公开详情页链接、更新流程和审核状态。针对用户指出的 README 混淆，已核对公开 Release 有 Windows x64 安装包；中英文 README 改为直达下载，并将源码开发要求留在贡献文档。README 开头补充第一人称开发初衷和核心能力，说明架构选择、代码复用与跨 Agent 上下文延续的需求。
+五个 `SKILL.md` 的 `version` 增至 `0.1.1`，重新生成五个本地 ZIP 并逐项上传 SkillHub；`docs/skills.md` 与 `docs/en/skills.md` 加入五个公开详情页链接和更新流程。针对用户指出的 README 混淆，已核对公开 Release 有 Windows x64 安装包；中英文 README 改为直达下载，并将源码开发要求留在贡献文档。README 开头补充第一人称开发初衷和核心能力，并用加粗突出痛点与解决方向。此轮中英文 README 与 Skills 说明加入五个 Skill 的 AI 安装提示词；README 进一步区分“只用 Skills”与“使用 CLI”，并逐条说明 CLI 命令的用途和限制。
 
 ## 实际验证
 
@@ -33,18 +39,23 @@
 - `git diff --check`：通过。
 - 本轮 `.tools/go/bin/go.exe test ./... -count=1`：通过；本地 Go 缓存位于 `.tools/gocache`。
 - 本轮 `scripts/package-skillhub.ps1`：通过，五个本地 ZIP 已包含中文 Skill 文本。
-- 本轮 SkillHub 管理页更新：五个 `0.1.1` 均显示“安全审核中”；审核通过后的公开内容尚未验证。
+- 先前 SkillHub 管理页更新：五个 `0.1.1` 当时均显示“安全审核中”。本轮逐个打开五个公开详情页，均显示 `0.1.1` 和各自的安装提示词；未实际运行 AI 安装流程。
 - GitHub 公开发布页核对：`v0.1.0-preview` 有 `soloweave-v0.1.0-preview-windows-amd64.zip` 与 `SHA256SUMS`；仓库首页 README 此前同时出现下载步骤与源码构建命令。
 - 本轮仅修改文档；`git diff --check` 通过，未重跑 Go 测试、静态检查或构建。
+- 本轮 README 使用方式与命令说明：`git diff --check` 通过；四份相关公开 Markdown 的相对链接检查通过。未重新运行 Go 测试、静态检查或构建。
+- 本轮 `.tools/go/bin/go.exe test ./... -count=1`、`go vet ./...`、`go build ./...`：通过（Go 缓存均在 `.tools/`）；初次未设置 `GOMODCACHE` 的测试尝试因默认目录拒绝写入而失败，设置工作区缓存后通过。
+- `scripts/package-skillhub.ps1`：生成五个 `0.1.2` 本地候选 ZIP；逐包核对 `SKILL.md` 与版本号通过。
+- 系统临时目录的纯 Skills 演练：从五个本地 ZIP 安装，无 CLI/无 Git，记录待确认架构、复用已有函数、写交接文档；`node --test src/name.test.js` 遇 `spawn EPERM`，改用 `node src/name.test.js` 后 2 项通过；仅依据项目文件的恢复核对与再次运行测试通过。未实际通过 SkillHub 在线安装。
+- Windows 本地候选 ZIP 解压后，`version` 显示 `0.1.1-preview`；`init`、`approve`、`install` 通过，安装的 Skill 为 `0.1.2`；初次 `check` 因缺少检查点失败，创建无虚构验证结果的检查点后通过，Git 状态为 `UNAVAILABLE`。重新打包后的双语包内 README 显示 `v0.1.1-preview`、没有旧版链接或未替换占位符；`SHA256SUMS` 匹配。
 
 ## 已知限制
 
-未运行 SkillHub CLI 的 `--dry-run`（本机没有可用的 SkillHub CLI 或 WSL）；SkillHub `0.1.1` 安全审核尚未完成，公开页仍可能是 `0.1.0`。Claude Code/Cursor 真实客户端未验收。当前仅交付 Windows x64 的 SoloWeave CLI。
+未运行 SkillHub CLI 的 `--dry-run`（本机没有可用的 SkillHub CLI 或 WSL）；也未实际运行 SkillHub 提示词的在线 AI 安装流程。Claude Code/Cursor 真实客户端未验收。公开的 SoloWeave CLI 仍只有 `0.1.0-preview` Windows x64 包；`0.1.1-preview` 目前仅在源码中。
 
 ## 下一步
 
-等待 SkillHub `0.1.1` 审核结果。通过后逐项核对五个公开页面的中文概述与下载内容；如退回，按具体原因修复。项目文档已加入五个详情页链接。README 改动发布到 GitHub 后，核对仓库首页；既有 Release 的标签快照和 ZIP 需另行更新才会改变。
+核对本地候选包和公开文档，再按用户授权处理提交、GitHub 与 SkillHub 更新。若要声称真实在线 AI 安装通过，需在公开 `0.1.2` 后另做实际安装；现有 Release 的标签快照和 ZIP 不会随源码改变。
 
 ## Git 状态
 
-分支：master。中文概述的提交与推送状态以当前 `git status` 和远端记录为准。
+分支：master。上一笔已推送提交为 `9b02f55`；此轮文档变更的提交与推送状态以当前 `git status` 和远端记录为准。

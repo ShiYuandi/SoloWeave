@@ -68,3 +68,19 @@
 - `v0.1.0-preview` 已公开发布，包含 Windows x64 可运行 ZIP 与 `SHA256SUMS`；此前“尚未发布”是旧检查点记录。
 - 中英文 README 现直达可运行 ZIP，明确 GitHub 自动生成的 Source code 压缩包仅含源码；源码开发与构建要求归入贡献文档。
 - 已发布 Release 的标签快照和 ZIP 不会随 `master` 的 README 修改而自动更新；后续如需替换发布附件，应另行核对版本、校验和与发布说明。
+
+## 纯 Skills 路线补全（2026-10-10）
+
+- 目标：只从 SkillHub 安装五个 Skills、没有 `soloweave` CLI 时，Agent 仍能执行架构讨论、代码复用、质量报告和可交接的项目记录；CLI 路线保持原有命令与机器校验。
+- 无 CLI 时，先复用项目已有文档；需要新建记录时用 `.soloweave/context/PROJECT.md`、`STATUS.md`、`HANDOFF.md`、`CHANGES.md` 和 `.soloweave/decisions/ADR-NNNN.md`。选型在开发者明确确认前标记待确认，ADR 记录被确认的决定及依据；不得伪造 CLI 的 `approval.json` 或 `checkpoint.json`，也不得声称通过 CLI 检查。
+- 修改五个内置 Skill：入口识别有无 CLI 与项目文档；规划、功能开发、交接、质量检查各自提供可执行的无 CLI 路径。CLI 可用时继续使用原命令。变更发布元数据版本，保持现有 slug；中英文公开文档说明两种模式的真实能力边界。
+- 验收：在全新临时项目中仅提供五个 Skill 文件，不放入 CLI，走完规划记录、开发记录、交接与恢复；核对没有虚构批准或验证结果。运行 Skill 格式/打包校验和相关 Go 测试。真实 SkillHub AI 安装及客户端验收须如实标注是否执行。
+- 发布顺序：先核对本地结果和现有未提交文档，再提交源码；GitHub、SkillHub 的推送或公开更新按仓库约定及用户授权执行，不把本地 ZIP 当作已发布版本。
+
+### 本地验收记录
+
+- 五个 Skill 源文件改为 `0.1.2` 候选版；SkillHub 打包脚本生成五个 ZIP，逐包核对内含 `SKILL.md` 与版本号。
+- 在系统临时目录中解压五个本地候选 ZIP，确认没有 `soloweave` CLI、Git 仓库或 CLI 管理的批准/检查点文件。按 Skills 流程记录待确认架构，不虚构 ADR；实现一个复用已有函数的小改动，记录真实测试结果与 Git/CLI 不可用状态。仅凭项目文件重新读取并复测，能定位目标、改动和下一步。
+- 该演练不是 SkillHub 在线安装，也不等于独立 Codex、Claude Code 或 Cursor 客户端验收。首次 `node --test` 因当前沙箱无法启动子进程而报 `spawn EPERM`；改用 `node src/name.test.js` 后 2 个项目测试通过，交接文件分别记录两次结果。
+- Go 测试、`go vet`、`go build` 与中英文相对链接检查通过；CLI 预备版本改为 `0.1.1-preview`，公开发布状态需另行核对。
+- Windows 本地 ZIP 解压后，程序显示 `0.1.1-preview`，CLI 安装了内置 `0.1.2` Skill；首次 `check` 因尚无检查点失败，补建检查点后通过。原打包脚本复制仓库 README，容易在下一版 ZIP 留下旧下载链接；现已改为按实际程序版本生成双语包内 README，重新打包后核对版本、无旧链接和 SHA256SUMS 均通过。公开及包内快速开始已改为先记录检查点再运行 `check`。

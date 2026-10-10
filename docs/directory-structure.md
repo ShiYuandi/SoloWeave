@@ -52,6 +52,8 @@
 | `docs/configuration.md` | `project.yaml` 配置字段及批准流程 |
 | `docs/project-continuity.md` | 项目交接文件和检查点说明 |
 | `docs/skills.md` | 五个 Skill 与平台安装路径 |
+| `docs/skill-only-workflow.md` | 无 CLI 时只用 Skills 的规划、检查与交接流程 |
+| `docs/package-readme.zh-CN.md`、`docs/package-readme.en.md` | Windows ZIP 内双语说明的版本化模板 |
 | `docs/agent-acceptance.md` | 尚待执行的真实客户端交接验收步骤 |
 | `docs/directory-structure.md` | 本页 |
 | `docs/en/` | README 和公开使用、贡献文档的英文版 |

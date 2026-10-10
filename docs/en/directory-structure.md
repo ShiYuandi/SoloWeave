@@ -52,6 +52,8 @@ Each `*_test.go` file tests its neighboring package. Rebuild the CLI after chang
 | `docs/configuration.md` | Configuration fields and approval flow |
 | `docs/project-continuity.md` | Handoff files and checkpoints |
 | `docs/skills.md` | Five Skills and platform installation paths |
+| `docs/skill-only-workflow.md` | Planning, checks, and handoffs with Skills only and no CLI |
+| `docs/package-readme.zh-CN.md`, `docs/package-readme.en.md` | Versioned Chinese and English README templates included in the Windows ZIP |
 | `docs/agent-acceptance.md` | Pending live client handoff acceptance steps |
 | `docs/directory-structure.md` | Chinese version of this guide |
 | `docs/en/` | English versions of public reader-facing documents |

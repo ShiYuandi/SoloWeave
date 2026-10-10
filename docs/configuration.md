@@ -24,3 +24,5 @@ agents: [codex, claude, cursor]
 `init --from FILE` 可以读取已有 YAML，但即使输入写着 `approved`，初始化仍会保存为待确认状态，并要求另行批准。Agent Skill 在进行较大开发前应读取这份配置。具体依赖版本以目标项目的包清单和锁文件为准。
 
 `soloweave catalog` 列出可选预设；`init --preset ID --name NAME` 用预设生成待确认配置。目前包括 TypeScript 前端、Go API 和 TypeScript 全栈示例。预设只是起点，自定义框架仍可使用。SoloWeave 会拒绝少数已知不兼容组合，例如 Go 后端使用 NestJS、非 JavaScript/TypeScript 前端使用 Next.js，或非 JavaScript/TypeScript 后端使用 Prisma。
+
+只安装 Skills 时，不必伪造 CLI 配置和 `approval.json`。按[纯 Skills 使用指南](skill-only-workflow.md)把开发者确认的架构记录在 `PROJECT.md` 与 ADR；以后接入 CLI 时，仍须运行 `init` 与 `approve` 建立可机器检查的配置和批准状态。

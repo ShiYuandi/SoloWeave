@@ -15,3 +15,5 @@ SoloWeave 把可供下一个 Agent 恢复的上下文放在 `.soloweave/context/
 `context checkpoint` 写入 `HANDOFF.md` 和供 CLI 检查的 `checkpoint.json`。业务进度与实际验证结果由 Agent 或开发者提供；Git 可用时，CLI 采集分支、HEAD、工作区状态和项目文件内容摘要。`context check` 在分支或项目文件内容变化时提示过期；仅把相同内容提交到 Git 不会使新检查点过期。旧格式检查点仍使用原有 Git 状态判断，建议重新创建检查点。无 Git 时如实报告不可用。CLI 无法恢复检查点之后未记录的工作，也无法从代码自动推断业务意图。
 
 新 Agent 应先运行 `context resume`，读取项目配置和任务记录，再检查代码及 Git 状态。如果实际文件与交接文档不一致，应按可能过期处理。不要在这些文件中写入 API Key、令牌、密码、私钥或真实密钥值。
+
+只安装 Skills、没有 CLI 时，可按[纯 Skills 使用指南](skill-only-workflow.md)人工维护同一组项目文档，并在接手时核对真实文件和 Git。人工交接不会生成 `checkpoint.json`，不能声称通过 CLI 的自动过期检查。

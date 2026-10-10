@@ -29,8 +29,14 @@ try {
     $readmeZh = Join-Path $dist 'README.zh-CN.md'
     $readmeEn = Join-Path $dist 'README.en.md'
     Copy-Item -LiteralPath (Join-Path $root 'LICENSE') -Destination $license -Force
-    Copy-Item -LiteralPath (Join-Path $root 'README.md') -Destination $readmeZh -Force
-    Copy-Item -LiteralPath (Join-Path $root 'docs/en/README.md') -Destination $readmeEn -Force
+    $utf8 = [System.Text.UTF8Encoding]::new($false)
+    $zhTemplate = [System.IO.File]::ReadAllText((Join-Path $root 'docs/package-readme.zh-CN.md'))
+    $enTemplate = [System.IO.File]::ReadAllText((Join-Path $root 'docs/package-readme.en.md'))
+    foreach ($template in @($zhTemplate, $enTemplate)) {
+        if (-not $template.Contains('{{VERSION}}')) { throw 'Package README version placeholder missing.' }
+    }
+    [System.IO.File]::WriteAllText($readmeZh, $zhTemplate.Replace('{{VERSION}}', $version), $utf8)
+    [System.IO.File]::WriteAllText($readmeEn, $enTemplate.Replace('{{VERSION}}', $version), $utf8)
 
     $archiveName = "soloweave-v$version-windows-amd64.zip"
     $archive = Join-Path $dist $archiveName
