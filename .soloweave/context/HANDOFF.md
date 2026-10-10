@@ -6,7 +6,7 @@
 
 ## 当前状态
 
-SkillHub 的五个 `0.1.2` 更新已通过审核，公开页均显示对应版本与下载入口，纯 Skills 正文可见。入口页的 GitHub URL 排版有误，源码已准备 `0.1.3` 修正。CLI 源码预备版本为 `0.1.1-preview`，本地 ZIP 已验证但尚未公开发布。`29c0852` 已推送到 GitHub `master`。
+SkillHub 的五个 `0.1.2` 更新已通过审核，公开页均显示对应版本与下载入口，纯 Skills 正文可见。入口页的 GitHub URL 排版经 `0.1.3` 修正，公开页已核对链接与下载入口；其余四项保持 `0.1.2`。CLI 源码预备版本为 `0.1.1-preview`，本地 ZIP 已验证但尚未公开发布。`d66de70` 已推送到 GitHub `master`。
 
 ## 已提交的 Skill
 
@@ -51,6 +51,7 @@ Windows ZIP 改为用版本模板生成双语包内说明，避免复制仓库 R
 - SkillHub 管理页逐项上传五个 `0.1.2` ZIP、填写中文概述和变更说明，五项均显示“提交成功”及“安全审核中”；未将此当作审核通过或公开安装验收。
 - 随后管理页五项均显示 `0.1.2`“已发布”；逐个公开详情页核对版本、下载入口与正文，入口页确认 CLI 可选，但下载 URL 把末尾中文句号算入链接。未执行在线 AI 安装。
 - 入口链接修正后，`go test ./... -count=1` 通过；`scripts/package-skillhub.ps1` 生成入口 `0.1.3` 与其余四项 `0.1.2` ZIP，入口 ZIP 的版本和 Markdown 链接核对通过。Windows ZIP 重新打包并核对 SHA256SUMS；从 ZIP 在临时项目执行 `init`、`approve --yes`、Codex `install`，安装的入口 Skill 为 `0.1.3` 且链接正确。
+- 入口 `0.1.3` ZIP 在 SkillHub 管理页提交成功并通过安全审核；公开页显示 `0.1.3` 下载包，GitHub Releases 链接不再包含中文句号。
 
 ## 已知限制
 
@@ -58,8 +59,8 @@ Windows ZIP 改为用版本模板生成双语包内说明，避免复制仓库 R
 
 ## 下一步
 
-发布入口 Skill `0.1.3` 链接修正并核对公开页面；GitHub 网页登录后创建并核对 `0.1.1-preview` Windows 发布草稿，再更新 README 下载链接与公开发布。真实在线 AI 安装仍待执行。现有 Release 的标签快照和 ZIP 不会随源码改变。
+GitHub 网页登录后创建并核对 `0.1.1-preview` Windows 发布草稿，再更新 README 下载链接与公开发布。真实在线 AI 安装仍待执行。现有 Release 的标签快照和 ZIP 不会随源码改变。
 
 ## Git 状态
 
-分支：master。`29c0852` 已推送到 `origin/master`；本轮链接修复以当前 `git status` 和远端记录为准。
+分支：master。`d66de70` 已推送到 `origin/master`；本轮审核状态更新以当前 `git status` 和远端记录为准。
