@@ -22,6 +22,27 @@ That is why I built SoloWeave. I want AI to **discuss important technical choice
 
 I am sharing it so other independent developers and small teams can **keep projects moving across AI tools instead of starting over with each conversation**.
 
+## Six Skills: roles and when to use them
+
+Each Skill covers one part of development. **Install the full set or select individual Skills.** The agent should choose what fits the task; it does not need to run all six every time.
+
+| Skill | What it does | When it applies |
+| --- | --- | --- |
+| **Entry** [soloweave](../../skills/soloweave/SKILL.md) | Reads the directory, rules, and project records; distinguishes new and existing projects and selects a workflow. | Starting development, planning, debugging, review, or asking to continue a project. |
+| **Setup** [project-setup](../../skills/project-setup/SKILL.md) | Clarifies requirements and compares relevant technology and architecture choices; records major decisions and reasons after your confirmation. | Creating a project in an empty directory, establishing conventions for an existing project, or making major technical choices. Existing implementations remain the starting point. |
+| **Feature development** [feature-workflow](../../skills/feature-workflow/SKILL.md) | Searches for reusable code, follows agreed conventions, implements changes, runs relevant checks, and records progress. | Adding features or changing existing code. New projects first clarify requirements and confirm major choices. |
+| **Debugging** [systematic-debugging](../../skills/systematic-debugging/SKILL.md) | Reproduces the issue, gathers evidence, locates its cause, makes a focused repair, and verifies it. | Errors, failing tests, unexpected behavior, or performance regressions. |
+| **Quality review** [quality-review](../../skills/quality-review/SKILL.md) | Checks actual changes, project decisions, and verification evidence; reports specific issues, locations, and remaining gaps. | Requesting code review, checking delivery quality, or assessing readiness for handoff. |
+| **Continuity** [project-continuity](../../skills/project-continuity/SKILL.md) | Saves actual progress, changes, verification, and next steps; checks files before resuming known work. | Starting a new session, finishing important work, encountering a blocker, or switching accounts, models, or tools. |
+
+### How they work together
+
+- **“Build a todo app from scratch.”** Entry identifies a new project → setup clarifies requirements and compares choices → feature development starts after you confirm major decisions → meaningful checkpoints leave handoff records.
+- **“This endpoint fails; fix it.”** Entry checks the current state → debugging reproduces, diagnoses, and repairs → verification and handoff record the result; quality review applies when a review is needed.
+- **“I switched accounts; continue this project.”** Continuity reads goals, status, and next steps, verifies actual code and checks, then resumes feature development or debugging as appropriate. Remaining blockers stay explicit.
+
+Automatic selection depends on the client and is not guaranteed. If needed, name a Skill explicitly, such as “use project-setup to help me compare technologies.” See [Skill details](skills.md).
+
 ## Quick start
 
 The repository's [`skills/`](../../skills/) directory contains six independent Skills. Ask a compatible AI tool to install them from this repository, or use the [Skills CLI](https://github.com/vercel-labs/skills):
@@ -44,14 +65,7 @@ After installation, describe your development task normally. The entry Skill rou
 
 **Verification status:** Independent installation file checks, static checks, and packaging passed. Current source versions also passed six standalone minimal scenarios, empty-directory routing, and blocked handoff in real Codex CLI sessions. See the [12-session results](../codex-behavior-results.md) and [acceptance](agent-acceptance.md). Earlier Claude Code evidence used older revisions and the actual model `glm-5.3`; Cursor and Anthropic models were not tested in this round. Actual GitHub and SkillHub progress is recorded in [delivery status](../release-status.md).
 
-## What it does
-
-| When | Expected agent behavior |
-| --- | --- |
-| Enter an existing project | Read rules, goals, decisions, status, and code; check whether the handoff is stale. |
-| Create or adopt a project | Route an empty directory through project setup first. Understand requirements, compare independently combinable choices, and obtain your approval before implementing major decisions or recording an ADR. Examples do not limit the agent's choices. |
-| Develop or fix code | Search for suitable existing implementations, make the change, and run relevant checks. |
-| Finish important work or switch accounts | Update progress, significant changes, actual test results, and next steps for the next session. |
+## Where project records live
 
 Use existing project documentation where possible. New records live in `.soloweave/context/` and `.soloweave/decisions/`. **Install Skills directly; there is no program to download or build.** Skills maintain Markdown records and use the target project's existing checks. See the [workflow](skill-only-workflow.md) and [Skill roles](skills.md).
 
