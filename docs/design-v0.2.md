@@ -1,5 +1,7 @@
 <!-- 本文整理自用户提供的 SoloWeave v0.2 最终整合版。实施计划见 development-plan.md。 -->
 
+> 历史设计，不代表当前产品结构。当前为纯 Skills，见 [Skills 设计](skills-first-design.md)和 [Go 退出计划](go-retirement-plan.md)。
+
 
 # SoloWeave
 Build independently. Ship confidently.

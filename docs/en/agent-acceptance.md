@@ -24,7 +24,7 @@ Use these prompts in a fresh session with the revised Skill installed. Record it
 
 | Prompt or condition | Expected behavior |
 | --- | --- |
-| “Build a simple persistent todo app in an empty directory.” | Clarify a project-shape decision such as whether a separate backend is needed before assuming a static page. |
+| “Build a simple persistent todo app in an empty directory; start from the current files.” | Clarify project-shape decisions such as platform and whether a separate backend is needed before writing a static page. Even if the agent selected `feature-workflow`, it should route to `project-setup` first. |
 | “Build a separated frontend/backend todo app; recommend technologies.” | Compare applicable frontend, backend, data, architecture, and delivery dimensions with independently combinable choices and reasons, not three bundled stacks. |
 | “Build a mobile app with a backend API.” | Cover mobile and API concerns, check their interface and delivery, and avoid assuming one or multiple repositories. |
 | “Build a cross-platform file-organizing CLI.” | Cover runtime, distribution, configuration, and failure handling without forcing Web frameworks. |
@@ -53,8 +53,30 @@ The `quick_validate.py` attempt did not complete because PyYAML is missing, so t
 - Window 1 reported that local pnpm policy blocked the `better-sqlite3` and `esbuild` build scripts, so a full build had not completed. Inspection of the disposable `test/` project outside this repository found only `PROJECT.md` and an ADR, with no `STATUS.md`, `HANDOFF.md`, or `CHANGES.md`; its README did not record that startup blocker.
 - In window 2, the ordinary request “continue this project” received a claim that the app was runnable and a question about which direction to take. It did not address the known startup blocker or use a handoff checkpoint. The cross-session continuity check **failed**. This reply alone cannot establish whether window 2 loaded or invoked the Skill; automatic invocation still needs observable client evidence.
 
-The repository sources of `soloweave`, `feature-workflow`, and `project-continuity` have since been revised to `0.2.1` to require a checkpoint when blocked and resumption from known unfinished work. **The revision has not yet been retested in a live client.** The user's global installation still contains the `0.2.0` trial version and must be updated before the two-window regression.
+The repository sources of `soloweave`, `feature-workflow`, and `project-continuity` were revised to `0.2.1` to require a checkpoint when blocked and resumption from known unfinished work. This paragraph records the status at that time; a later Claude Code CLI retest is described below.
 
-Separately, `project-setup` is now `0.3.0` with an on-demand selection guide. The local packaging run succeeded; checks of the six current ZIP files verified SHA256SUMS, entries, and byte-for-byte source matches, including both `SKILL.md` and the guide in the `project-setup` ZIP. The standard installer `skills@1.7.1 add . --list` discovered all six locally. A copied installation in an isolated project contained both `project-setup` files with matching SHA256 hashes. **The new selection behavior has not been retested in a fresh live agent session.** Static and installation checks do not establish agent behavior. `quick_validate.py` still cannot run because PyYAML is unavailable here.
+Separately, `project-setup` was revised to `0.3.0` with an on-demand selection guide. The local packaging run succeeded; checks of the six ZIP files verified SHA256SUMS, entries, and byte-for-byte source matches, including both `SKILL.md` and the guide in the `project-setup` ZIP. The standard installer `skills@1.7.1 add . --list` discovered all six locally. A copied installation in an isolated project contained both `project-setup` files with matching SHA256 hashes. Static and installation checks do not establish agent behavior. `quick_validate.py` still cannot run because PyYAML is unavailable here.
 
-**Public-GitHub standard-installer commands, SkillHub updates, and live Claude Code/Cursor behavior remain independently unverified.**
+### User-provided empty-directory todo trial (2026-10-11)
+
+The user asked for a todo app in an empty directory. The agent said it would use `soloweave` and `feature-workflow`, then chose a dependency-free static page and created five application files. Inspection of the test directory found no SoloWeave project decision record. It did not route through `project-setup` to clarify the project shape, so **the selection workflow failed acceptance**. The transcript does not prove the internal Skill invocation or installed version. The user clarified that the currently missing global Skill files were deleted after the trial; their present absence says nothing about whether they were installed during it.
+
+The source now revises `soloweave` and `feature-workflow` to `0.2.2` with an empty-project routing gate, and the `project-setup` description explicitly covers empty directories at `0.3.1`. It had not been retested at that point; the later Claude Code CLI result follows.
+
+### Isolated Claude Code CLI retest (2026-10-11)
+
+The user brought back a [full report](../claude-code-回测结果.md) and [raw session evidence](../claude-code-evidence/2026-10-11/) from another computer. This machine imported and inspected the report, JSONL sessions, and screenshot; it did not rerun the disposable application. Of 81 ordinary repository files compared from the ZIP, only `STATUS.md` and `HANDOFF.md` differed from this checkout; all six Skill sources matched.
+
+- In the empty-directory todo scenario, the JSONL contains actual `Skill` tool calls in the order `soloweave → project-setup → feature-workflow`. The agent discussed and confirmed project shape before writing application code. The report records eight passing Node API assertions, persistence across a server restart, and Edge headless browser interaction.
+- In the technology selection scenario, the JSONL contains `soloweave → project-setup` calls. The agent clarified requirements and offered combinable choices across frontend, backend, data, authentication, architecture, and delivery without writing application code.
+- In the blocked handoff scenario, two separate sessions invoked `soloweave` and preserved the unfinished state from project records. Build commands inside the sessions were blocked by permissions; an independent terminal run of `npm run build` exited 1. No `project-continuity` `Skill` tool call was observed, so this establishes handoff behavior, **not automatic invocation of that separate Skill**.
+
+The client was real Claude Code CLI 2.1.218, but the session records identify the actual model as `glm-5.3` (despite a `--model sonnet` launch argument). Results apply to that client/model combination, not to Anthropic Sonnet. The revised Codex flow, Cursor, public-GitHub standard-installer command, SkillHub update, and Anthropic-model behavior remain unverified.
+
+### Current verification after Go retirement (2026-10-11)
+
+See [current versions](skills.md). The six independently installed Skills and all resources matched their sources in isolated projects; see the [installation record](../independent-skills-acceptance.md). This does not establish independent live behavior.
+
+The first [Codex attempt](../codex-retest.md) was blocked and remains a historical record. Later fresh sessions preserved the workspace sandbox and execution rules and passed the current candidates' six standalone minimal scenarios, empty-directory routing, and blocked handoff. See the [12-session results](../codex-behavior-results.md), including actual file reads and independent assertions. Cursor, Anthropic models, and broader project types remain untested in this round.
+
+Maintenance now uses PowerShell 7 scripts: check-skills.ps1, check-docs.ps1, test-tooling.ps1, and package-skillhub.ps1. No Go is required. The checker validates repository-specific single-line metadata and SkillHub extensions, not general YAML. The optional quick_validate.py attempt still failed because PyYAML is missing. Remote CI and public installation require later verification after a push.

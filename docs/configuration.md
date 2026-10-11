@@ -1,28 +1,21 @@
-# 项目配置
+# 项目记录与技术决策
 
 [English](en/configuration.md)
 
-`.soloweave/project.yaml` 是项目技术和架构选型的结构化事实来源。当前使用 `schema_version: 1`，初始化后的 `project.status` 为 `draft`（待确认）。开发者审阅配置并执行 `soloweave approve` 后，CLI 会生成 `.soloweave/decisions/ADR-NNNN.md` 和批准摘要。日后修改了已批准的关键字段，`soloweave check` 会报告不一致；有意变更时需再次审阅并执行 `approve`。
+当前 SoloWeave 使用 Skills 和 Markdown 项目记录，不需要初始化命令、YAML 配置或专用程序。
 
-纯后端项目示例：
+优先沿用项目已有的 README、开发计划、状态和决策文档。需要建立持续交接记录时，默认使用：
 
-```yaml
-schema_version: 1
-project:
-  name: demo-api
-  type: backend
-  status: draft
-  team_size: 1
-backend:
-  language: go
-  framework: custom
-agents: [codex, claude, cursor]
-```
+| 文件 | 内容 |
+| --- | --- |
+| `.soloweave/context/PROJECT.md` | 项目目标、主要模块、运行入口及已确认选型。 |
+| `.soloweave/context/STATUS.md` | 当前任务、已完成、阻塞和下一步。 |
+| `.soloweave/context/HANDOFF.md` | 最近修改、真实验证、风险及接手步骤。 |
+| `.soloweave/context/CHANGES.md` | 重要修改与涉及文件。 |
+| `.soloweave/decisions/ADR-NNNN.md` | 关键选择、候选、理由、约束和开发者确认事实。 |
 
-`project.type` 可设为 `frontend`、`backend` 或 `fullstack`，并须填写对应技术栈。纯前端项目不能同时声明独立后端，纯后端项目同理。框架名称可自定义；`workspace` 路径必须位于项目内。JSON Schema 检查字段和值，Go 代码进一步检查跨字段组合和路径。
+候选技术和架构在开发者确认前保持“待确认”；确认后由 Agent 记录，不需要 `approve` 命令。后续重大变化另建 ADR，说明取代的决定。类型和参考指南不限制可选择的技术。
 
-`init --from FILE` 可以读取已有 YAML，但即使输入写着 `approved`，初始化仍会保存为待确认状态，并要求另行批准。Agent Skill 在进行较大开发前应读取这份配置。具体依赖版本以目标项目的包清单和锁文件为准。
+Skills 不提供机器批准摘要或自动过期检测。接手时核对记录、实际文件和 Git 状态；不能仅凭文档里的“已完成”判断项目可运行。详见[项目连续性](project-continuity.md)。
 
-`soloweave catalog` 列出可选预设；`init --preset ID --name NAME` 用预设生成待确认配置。目前包括 TypeScript 前端、Go API 和 TypeScript 全栈示例。预设只是起点，自定义框架仍可使用。SoloWeave 会拒绝少数已知不兼容组合，例如 Go 后端使用 NestJS、非 JavaScript/TypeScript 前端使用 Next.js，或非 JavaScript/TypeScript 后端使用 Prisma。
-
-只安装 Skills 时，不必伪造 CLI 配置和 `approval.json`。按[纯 Skills 使用指南](skill-only-workflow.md)把开发者确认的架构记录在 `PROJECT.md` 与 ADR；以后接入 CLI 时，仍须运行 `init` 与 `approve` 建立可机器检查的配置和批准状态。
+已有旧 CLI 项目请按[迁移指南](cli-migration.md)处理；[旧 YAML 字段说明](archive/go-cli/configuration.md)仅供历史参考。

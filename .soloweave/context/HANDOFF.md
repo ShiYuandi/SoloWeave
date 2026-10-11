@@ -1,38 +1,41 @@
 # 项目交接
 
-核对日期：2026-10-10。
+核对日期：2026-10-11。
 
-## 当前任务
+## 当前任务与结果
 
-将 SoloWeave 从 CLI 为主迁移为 Skills 优先、AI 主动使用的开发工作流。本轮完成项目选型规则的本地修订，下一阶段是按验收场景在真实新会话复测推荐与交接行为。
+开发者已批准实施直到移除 Go 的八阶段计划，并要求继续补齐验收。本地迁移、六项独立最小行为与受阻跨会话接手已完成；下一步按明确指令提交和发布。Cursor、Anthropic 模型及更广场景另外记录；不要把本地检查通过写成在线发布完成。
 
-## 当前事实
+先读 `docs/go-retirement-plan.md`、`docs/skills-first-design.md`、ADR-0003，再核对实际文件和 Git。旧 `docs/development-plan.md` 与 `docs/design-v0.2.md` 已标为历史。
 
-分支 `master`，Skills 优先基线已以 `5bc8f1e` 推送；三个 Skill 的 `0.2.1` 修订、`project-setup` `0.3.0`、项目选型设计与计划、双语文档和交接记录尚未提交，以 Git 状态为准。最新公开的 GitHub Release 仍为 `v0.1.1-preview` 旧版 CLI；SkillHub 仍是五个旧版 Skill，尚无新版发布。本仓库 `project.yaml` 和 `approval.json` 仍代表旧版 Go 子工程；整体新方向见 `ADR-0002.md`。
+## 工作区事实
 
-## 最近修改
+- 分支 master，HEAD 仍为 fd6e04a77e32bdff0d121fda753be4231a6f1333。本轮未提交、推送或修改远端。
+- 原有未提交的空目录路由修订、Claude Code 报告与证据被保留；当前 Git 差异还包含 Go 删除和新维护脚本。
+- `skills/` 是唯一当前 Skill 来源；入口/功能开发 0.2.3，设置 0.3.2，连续性 0.2.2，质量 0.2.1，调试 0.1.0。
+- cmd/、internal/、go.mod、go.sum、Go 构建脚本和旧 CLI Release 工作流已删除；本地 Go 工具链与 CLI 包也已清理。
+- 旧机器文件在 `docs/archive/go-cli/repository-state/`；当前没有机器批准或检查点。不要恢复旧文件来描述新工程，也不要删除其他项目的资料。
+- `dist/skills/` 有六个本地候选 ZIP 与 SHA256SUMS，受 .gitignore 忽略。维护者需 PowerShell 7，用户只需安装 Skills。
+- 上次记录的公开 Release 为旧 CLI v0.1.1-preview，SkillHub 为五个旧版 Skill；本轮未重新在线核对或更新。
 
-- `skills/`：六个新版 Skill，普通开发入口负责路由，其他 Skill 分别处理设置、功能、调试、质量与交接。
-- `docs/skills-first-design.md`、`docs/skills-first-plan.md`：迁移设计和阶段计划。
-- `README.md`、`docs/en/README.md`、使用、贡献与验收文档：Skills 安装和自然语言使用作为默认入口；CLI 列为旧版可选工具。
-- `scripts/package-skillhub.ps1`、`.github/workflows/ci.yml`：从根目录打包六个 Skill 并加入 CI 校验。
+## 实际验证与边界
 
-## 实际验证
+1. check-skills.ps1 通过：六项单行元数据、唯一 slug、版本与本地资源边界；不是通用 YAML 校验。
+2. test-tooling.ps1 的 15 项检查通过：负例拒绝、包输出边界、六包校验和与全部资源字节、重复打包一致。
+3. package-skillhub.ps1 成功；check-docs.ps1 相对文件链接与 git diff --check 通过。网页链接、标题锚点及远端 CI 未验证。
+4. 标准安装器 skills@1.7.1 在六个全新临时项目分别复制一个 Skill，并选择 Codex/Claude Code/Cursor；安装资源与源码 SHA256 一致。未测试覆盖现有用户修改。
+5. 三个归档机器文件与 HEAD 原内容一致（换行归一化）。原返回 ZIP 目前已不在先前路径，不能重复声称本轮又做过 ZIP 字节比对。
+6. 导入的 Claude Code CLI 原始证据来自前一组版本、实际模型 glm-5.3；场景一看到 soloweave → project-setup → feature-workflow，场景二看到 soloweave → project-setup，受阻场景只看到 soloweave。本机未重跑应用。
+7. 首次 Codex CLI 读取拒绝保留为历史；后续使用当前候选版、默认配置模型 gpt-6.1-sol，保留沙箱和执行规则，完成 12 个真实临时会话。六项独立行为、全套新项目路由、缺失工具双会话、获准修复通过。每项都有实际读取本地 Skill 的事件；独立断言、原测试和构建指令哈希、失败/修复结果经外部核对。详见 docs/codex-behavior-results.md，公开收据在 docs/codex-evidence/2026-10-11.json，原始日志在 dist/acceptance/codex-retirement-followup/。
+8. quick_validate.py 缺 PyYAML 未成功。用户全局 Skills 未重装。
 
-- `pwsh -File scripts/package-skillhub.ps1`：通过，生成六个 ZIP；逐包核对单个 `SKILL.md` 条目和 SHA256SUMS 通过。
-- `.tools/go/bin/go.exe test ./... -count=1`、`vet ./...`、`build ./...`：退出码均为 0。Go 运行时另有无法写入本机遥测令牌的提示，不影响上述退出码。
-- `git diff --check`：通过。改动 Markdown 的相对文件链接检查：通过。
-- `quick_validate.py`：未完成，本机缺少 PyYAML。标准安装器本地 `--list`：未完成，连接 npm 注册表时收到 `ECONNREFUSED`。
-- 标准安装器重试：`add . --list` 发现六个 Skill；临时项目的 Codex、Claude Code、Cursor 安装完成，安装后的各 `SKILL.md` 与源文件一致；Windows 默认模式安装 Codex 六个 Skill 完成。此前 npm 连接拒绝已不再阻断本地验证。
-- 无 Go CLI、无 Git 的临时项目人工开发演练：初次测试因缺少模块失败；实现复用已有函数后，两项检查通过；写入 `PROJECT.md`、`STATUS.md`、`CHANGES.md`、`HANDOFF.md`，单独读取并复测通过。此项不属于真实 Agent 自动调用测试。
-- 推送前重新运行 `.tools/go/bin/go.exe test ./... -count=1`、`vet ./...`、`build ./...`：均以退出码 0 完成。首次复检的临时目录位于本仓库内，使无 Git 场景的测试错误继承了仓库 Git 状态；改用系统临时目录复测后通过。Go 遥测令牌写入仍有权限提示，不影响退出码。
-- 推送前 `git ls-remote origin refs/heads/master` 为 `5d8f22bff18aa76fad5271141c76331d3fecf26b`，与本地基线一致。
-- 用户提供的 Codex 双窗口试用：六个全局安装 `SKILL.md` 与根目录源文件 SHA256 一致；仓库外 `test/` 项目只有 `PROJECT.md` 与 ADR，缺少 `STATUS.md`、`HANDOFF.md`、`CHANGES.md`。窗口 1 明确报告本机 pnpm 阻止原生构建脚本；窗口 2 对“请继续这个项目”称应用可运行并要求另选方向。此样本的跨会话交接未通过，内部 Skill 自动调用状态不可由摘要确定。详情见 `docs/agent-acceptance.md`。
-- 用户确认受阻交接与接手行为的有限修正；已修改三个仓库 Skill，版本均为 `0.2.1`，并更新中英文验收与版本说明。`pwsh -NoProfile -File scripts/package-skillhub.ps1` 通过；六个当前 ZIP 的条目与源文件内容、SHA256SUMS 核对通过；`git diff --check` 通过。尚未用修订版在真实 Codex 客户端复测。
-- 用户指出 `project-setup` 的技术推荐仅有少量固定组合。经设计与实施计划确认，已修订 `skills/project-setup/SKILL.md` 至 `0.3.0`，新增 `references/selection-guide.md`，并修改 `scripts/package-skillhub.ps1` 打包全部所需文件。类型用于发现决策维度，参考示例不限制 AI 选型。同步了中英文使用、验收及版本文档；真实 Agent 新会话行为尚未验收。
-- 本轮运行 `pwsh -NoProfile -File scripts/package-skillhub.ps1` 成功；核对六个 ZIP 的 SHA256SUMS、条目和逐文件字节一致，其中 `project-setup` 有两个文件。标准安装器 `skills@1.7.1 add . --list` 找到六个 Skill；隔离项目复制安装的 `project-setup` 两个文件与源码 SHA256 一致。改动 Markdown 相对链接检查通过。首次普通 `npx` 因命令不存在、`pnpm dlx` 因 npm 连接拒绝失败；后来经授权的标准安装器运行成功。`quick_validate.py` 缺少 PyYAML，未完成。
-- 新版 Skill 的真实自动调用事件不可由现有对话摘要确认；修订后的 `0.2.1` 尚未在客户端复测。SkillHub 在线更新与 Claude Code/Cursor 真实客户端接手未运行。
+## 继续执行
 
-## 下一步与限制
+- 本轮最小验收已完成。按 docs/behavior-testing.md 可用准备与运行脚本复跑；夹具拒绝覆盖已有目录，证据拒绝覆盖同名文件，结果需人工核对，退出码 0 不能自动算通过。
+- 不能把 Claude Code 等同于 Anthropic 模型。Cursor、Anthropic 模型及更广场景尚未完成，不从 Codex 的通过推断其他客户端相同。
+- 提交前审阅 docs/claude-code-evidence/ 的原始会话及路径信息，按 docs/releasing.md 执行明确授权的发布步骤。提交信息中文。
+- 不要因客户端权限问题无依据改写路由，不要自动全局安装，不要自行提交、推送或更新 SkillHub。
 
-用户已明确要求将本轮修改提交并推送到 GitHub，结果以 Git 状态及远端为准；尚未要求更新 SkillHub。之后将 `project-setup` `0.3.0` 安装到真实新会话，按双语验收文档复测需求澄清、维度推荐、表外技术和确认边界；另需将三个 `0.2.1` Skill 安装到测试客户端复测交接，并核对是否真实触发。用户全局安装的 Skill 仍是先前试用版。旧版 CLI 的 `checkpoint.json` 不应视为本轮有效检查点。
+## 本轮线上操作授权
+
+开发者已明确授权中文提交、推送，确认 GitHub CI 与公开安装后提交六项 SkillHub 审核。当前正在执行，实际进度见 docs/release-status.md；不把待审核写成已发布。

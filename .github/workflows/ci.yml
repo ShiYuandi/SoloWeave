@@ -2,17 +2,27 @@ name: CI
 on:
   push:
   pull_request:
+permissions:
+  contents: read
 jobs:
-  test:
+  skills:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version-file: go.mod
-      - run: go test ./...
-      - run: go vet ./...
-      - run: go build ./...
-      - name: Validate and package Skills
+      - name: Validate Skills
+        shell: pwsh
+        run: ./scripts/check-skills.ps1
+      - name: Check documentation links
+        shell: pwsh
+        run: ./scripts/check-docs.ps1
+      - name: Test validation and packaging
+        shell: pwsh
+        run: ./scripts/test-tooling.ps1
+      - name: Package Skills
         shell: pwsh
         run: ./scripts/package-skillhub.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: soloweave-skills
+          path: dist/skills/
+          if-no-files-found: error

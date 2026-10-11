@@ -1,0 +1,7 @@
+.claude\skills\feature-workflow\SKILL.md
+.claude\skills\project-continuity\SKILL.md
+.claude\skills\project-setup\SKILL.md
+.claude\skills\project-setup\references\selection-guide.md
+.claude\skills\quality-review\SKILL.md
+.claude\skills\soloweave\SKILL.md
+.claude\skills\systematic-debugging\SKILL.md

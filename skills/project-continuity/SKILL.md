@@ -2,7 +2,7 @@
 name: project-continuity
 description: 在软件项目开始新会话、完成重要任务、遇到阻塞或切换 AI 账号与 Agent 时使用；核对真实状态并维护可供下一位 Agent 接手的项目记录。
 slug: shiyuandi-soloweave-project-continuity
-version: 0.2.1
+version: 0.2.2
 displayName: SoloWeave 项目交接
 summary: 自动保存真实进度、验证和下一步，让新会话从项目文件接手。
 license: MIT
@@ -28,4 +28,4 @@ homepage: https://github.com/ShiYuandi/SoloWeave
 
 在结束回复前完成这次检查点；即使因构建、权限或依赖问题未能继续，也要在 `STATUS.md` 和 `HANDOFF.md` 写清具体阻塞、已经验证的事实与下一步。只有代码或重要文件确有变化时才追加 `CHANGES.md`；不要为无变化的接手凭空记一条改动。
 
-只记录经过核对的事实，不写入凭据、令牌或私钥。纯 Skills 流程不生成 CLI 的 `checkpoint.json`、`approval.json` 或安装记录，也不宣称完成机器过期检查。小型无持续影响的改动无需扩大成冗长日志，但应让下一次接手能识别重要进展。
+只记录经过核对的事实，不写入凭据、令牌或私钥。上下文使用 Markdown；人工核对不等于机器过期检查，不伪造其他工具的检查点、批准或安装记录。小型无持续影响的改动无需扩大成冗长日志，但应让下一次接手能识别重要进展。

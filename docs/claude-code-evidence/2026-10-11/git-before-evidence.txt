@@ -1,0 +1,20 @@
+## master...origin/master
+ M .soloweave/context/CHANGES.md
+ M .soloweave/context/HANDOFF.md
+ M .soloweave/context/STATUS.md
+ M CHANGELOG.md
+ M README.md
+ M docs/agent-acceptance.md
+ M docs/en/CHANGELOG.md
+ M docs/en/README.md
+ M docs/en/agent-acceptance.md
+ M docs/en/skill-only-workflow.md
+ M docs/en/skills.md
+ M docs/skill-only-workflow.md
+ M docs/skills.md
+ M skills/feature-workflow/SKILL.md
+ M skills/project-setup/SKILL.md
+ M skills/soloweave/SKILL.md
+?? docs/claude-code-evidence/
+?? docs/claude-code-回测结果.md
+?? docs/跨设备-Claude-Code-交接与回测.md

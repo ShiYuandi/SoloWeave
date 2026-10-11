@@ -9,13 +9,13 @@
 ## 产品边界
 
 - 默认使用路径只有 Agent Skills 和项目内的 Markdown 文件，不依赖 Go 程序、远程服务或特定聊天记录。
-- 已发布的 Go CLI 继续可用，但作为旧版可选工具维护；新版 Skills 不调用它，也不把 CLI 的机器检查视为已运行。
+- Go CLI 已按 ADR-0003 停止维护并从当前源码移除；历史下载保留，新版 Skills 不调用它。
 - Skills 可以被 Agent 自动选择，但格式规范不保证每次调用。项目规则可提高发现概率，仍需在真实客户端验收。手动点名入口 Skill 是补救方式，不是日常前提。
 - 不自动批准架构，不覆盖现有项目规则或文档，不替用户执行提交、推送、发布等需单独授权的操作。
 
 ## 仓库结构与兼容
 
-`skills/` 是今后唯一编辑的 Skill 源码目录，包含 `soloweave` 入口及 `project-setup`、`feature-workflow`、`systematic-debugging`、`quality-review`、`project-continuity`。标准安装器从根目录发现它们。`internal/bundle/assets/skills/` 暂保留为 Go CLI v0.1.1-preview 的旧版内置快照，不同步新版内容；后续在纯 Skills 验收完成后再决定移除 Go。发布脚本从根目录 `skills/` 打包。
+`skills/` 是唯一 Skill 源码目录，包含六个独立 Skill。标准安装器从根目录发现它们。旧内置快照随 Go 源码退出；发布脚本只从根目录 `skills/` 打包。旧项目迁移见 [迁移指南](cli-migration.md)，实施见 [Go 退出计划](go-retirement-plan.md)。
 
 五个既有 Skill 保持名称与 SkillHub slug，以便逐项更新。新增调试 Skill 在实际发布前只作为 GitHub 仓库中的新 Skill；不能把本地打包成功描述为 SkillHub 已上架。所有面向读者的中文文档为主要入口，英文版覆盖 README 和使用说明。
 
@@ -43,4 +43,4 @@
 - 不提供 Go CLI 的干净项目中，Agent 可完成项目分析、经确认的决策记录、开发或修复、真实验证和交接。
 - 无旧聊天记录的新会话能定位目标、当前任务、最近改动、验证结果与下一步，并识别过期记录。
 - 普通开发请求的自动选择在可用客户端实测；未实测的平台明确标注。自动调用不能宣称百分之百保证。
-- Go CLI 旧版测试保持通过，现有用户的安装文件和数据不会被迁移脚本覆盖。
+- 无 Go 环境可完成维护脚本的校验和打包；迁移说明不自动覆盖其他项目的安装文件或数据。

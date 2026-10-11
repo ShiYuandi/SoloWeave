@@ -1,5 +1,5 @@
 * text=auto eol=lf
 
-# 本地二进制如果日后有意提交，保持原始字节
-*.exe binary
+# 包与截图保持原始字节
 *.zip binary
+*.png binary

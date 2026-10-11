@@ -10,7 +10,7 @@ The agent reads the README, dependencies, relevant code, and tests. If `.solowea
 
 ## Choosing technologies for a new project
 
-Describe what you want to build, where it will run, and any choices already made. The agent should identify the project type and consequential gaps, then discuss applicable technology and architecture dimensions. A separated Web project might consider frontend, backend, data, and delivery separately; mobile, desktop, CLI, and data projects have different concerns. Types can be combined or extended beyond the guide's examples.
+Describe what you want to build, where it will run, and any choices already made. Development in an empty directory starts with project setup; “start working” does not authorize the agent to choose the platform or whether a separate backend is needed. The agent should identify the project type and consequential gaps, then discuss applicable technology and architecture dimensions. A separated Web project might consider frontend, backend, data, and delivery separately; mobile, desktop, CLI, and data projects have different concerns. Types can be combined or extended beyond the guide's examples.
 
 The agent should offer independently combinable candidates with tradeoffs and a reasoned recommendation. You can choose each part, ask for more options, or suggest technology absent from the guide. **Examples do not limit the agent's choices**; there are no preset bundles. The agent checks compatibility, and records major decisions in an ADR only after your confirmation. It should not repeat choices you already supplied or migrate an existing project merely because the Skill was installed.
 

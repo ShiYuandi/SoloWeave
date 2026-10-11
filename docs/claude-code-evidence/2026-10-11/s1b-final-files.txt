@@ -1,0 +1,16 @@
+server.js
+test-api.mjs
+.claude\skills\feature-workflow\SKILL.md
+.claude\skills\project-continuity\SKILL.md
+.claude\skills\project-setup\SKILL.md
+.claude\skills\project-setup\references\selection-guide.md
+.claude\skills\quality-review\SKILL.md
+.claude\skills\soloweave\SKILL.md
+.claude\skills\systematic-debugging\SKILL.md
+.soloweave\context\CHANGES.md
+.soloweave\context\HANDOFF.md
+.soloweave\context\PROJECT.md
+.soloweave\context\STATUS.md
+.soloweave\decisions\ADR-0001.md
+data\todos.db
+public\index.html

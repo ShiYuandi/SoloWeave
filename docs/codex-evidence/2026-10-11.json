@@ -1,0 +1,112 @@
+[
+  {
+    "event_sha256": "2ef5bd83e5c12854e6ace0aea99f11bc11007056da62e35330ac2c2c992952e6",
+    "completed_turn": true,
+    "case": "soloweave",
+    "observed_local_skill_reads": [
+      "soloweave"
+    ],
+    "command_count": 2
+  },
+  {
+    "event_sha256": "ba0c6bfcc73a8adbfd4444de9ec384db9b42d82358563c26c8c00b221090b455",
+    "completed_turn": true,
+    "case": "all-skills",
+    "observed_local_skill_reads": [
+      "project-continuity",
+      "project-setup",
+      "soloweave"
+    ],
+    "command_count": 3
+  },
+  {
+    "event_sha256": "8798d1f71a3b43d7605b469a9cab894ab7cd5dc5f8fb4fbffa4ceb39945bac64",
+    "completed_turn": true,
+    "case": "blocked-continuity-resume",
+    "observed_local_skill_reads": [
+      "project-continuity"
+    ],
+    "command_count": 4
+  },
+  {
+    "event_sha256": "f09b582680b72798fb42e1b3f802c1d0457bf569cc619fc5716dbd397660bf76",
+    "completed_turn": true,
+    "case": "blocked-continuity",
+    "observed_local_skill_reads": [
+      "project-continuity"
+    ],
+    "command_count": 4
+  },
+  {
+    "event_sha256": "b43d5d3a5b4fe40b54d42839a6cf687b273adad6f12e84e5dc80de6ff55b3605",
+    "completed_turn": true,
+    "case": "feature-workflow",
+    "observed_local_skill_reads": [
+      "feature-workflow"
+    ],
+    "command_count": 3
+  },
+  {
+    "event_sha256": "4b4c2260835abf207c17451af6882dc596168e8c0354936c835a68af736cb1a3",
+    "completed_turn": true,
+    "case": "project-continuity-repair",
+    "observed_local_skill_reads": [
+      "project-continuity"
+    ],
+    "command_count": 5
+  },
+  {
+    "event_sha256": "09b926a0299f50cf00ceb2ebd19579f904cd1895b60a054c9b59650bb0212b22",
+    "completed_turn": true,
+    "case": "project-continuity-resume",
+    "observed_local_skill_reads": [
+      "project-continuity"
+    ],
+    "command_count": 4
+  },
+  {
+    "event_sha256": "56c8227c3a91c3e39c1588bd57b983db0ad1d7d32d4477190669839e943f47f0",
+    "completed_turn": true,
+    "case": "project-continuity",
+    "observed_local_skill_reads": [
+      "project-continuity"
+    ],
+    "command_count": 5
+  },
+  {
+    "event_sha256": "545ab87ebf7416e97372fc352b2a13786470d516f3bd6c76c723c7678fb6d64f",
+    "completed_turn": true,
+    "case": "project-setup-followup",
+    "observed_local_skill_reads": [
+      "project-setup"
+    ],
+    "command_count": 2
+  },
+  {
+    "event_sha256": "b11171d9c52c19e6c4326fa6c325fb9e8f54bd7a65cc8ccedf9843a753ef7235",
+    "completed_turn": true,
+    "case": "project-setup",
+    "observed_local_skill_reads": [
+      "project-setup"
+    ],
+    "command_count": 2
+  },
+  {
+    "event_sha256": "ba64cef677c493956a9603fb1b6e96a4676b55369f3051e2ec323bc180f7393f",
+    "completed_turn": true,
+    "case": "quality-review",
+    "observed_local_skill_reads": [
+      "quality-review"
+    ],
+    "command_count": 5
+  },
+  {
+    "event_sha256": "5b1af379b312e0222e4943e25a5e5cbc97cb8c47ecb55c0c976bdfbf4e1541f9",
+    "completed_turn": true,
+    "case": "systematic-debugging",
+    "observed_local_skill_reads": [
+      "systematic-debugging"
+    ],
+    "command_count": 5
+  }
+]

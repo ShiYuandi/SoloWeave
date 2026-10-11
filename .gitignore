@@ -1,14 +1,6 @@
-# 仅保存在本机的工具链、缓存与构建产物
+# 本机缓存、候选包和原始验证记录
 /.tools/
 /dist/
-/bin/
-/soloweave
-/soloweave.exe
-/coverage/
-/coverage.txt
-*.test
-*.out
-*.prof
 
 # 本机编辑器与操作系统文件
 .idea/

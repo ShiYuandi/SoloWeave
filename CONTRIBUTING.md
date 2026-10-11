@@ -2,31 +2,27 @@
 
 [English](docs/en/CONTRIBUTING.md)
 
-修改较大功能前，请阅读[Skills 优先设计](docs/skills-first-design.md)、[迁移计划](docs/skills-first-plan.md)和[当前交接记录](.soloweave/context/HANDOFF.md)，再核对实际代码与 Git 状态。早期 CLI 范围保留在[开发计划](docs/development-plan.md)和[v0.2 设计基准](docs/design-v0.2.md)。
+较大改动前阅读 [Skills 设计](docs/skills-first-design.md)、[Go 退出计划](docs/go-retirement-plan.md)和[交接记录](.soloweave/context/HANDOFF.md)，再核对实际文件与 Git 状态。早期 Go 设计保留为历史资料。
 
-修改根目录 `skills/` 中的新版 Skill 不需要 Go。只有维护旧版 CLI 才需要 Go 1.27.2 或更新版本；普通用户可直接安装 Skills，不必下载程序或自行构建。
+普通用户直接安装 Skills。维护者运行仓库脚本需要 **PowerShell 7**，不需要 Go、Python 或自行构建程序。
 
-- 新版 Skill 只在根目录 `skills/` 编辑；`internal/bundle/assets/skills/` 是旧版 CLI 快照。Skill 尽量简洁、与平台无关。
-- 修改 CLI 行为时，补充针对行为的测试；不要用只复述实现的测试替代真实验证。
-- 重要改动及时更新 `.soloweave/context/STATUS.md`、`CHANGES.md`，交接时更新 `HANDOFF.md`。
-- 有意改变已批准的关键架构时，先取得开发者明确确认并新增 ADR；旧版 CLI 自身配置变更仍按其 `approve` 流程处理。
-- 修改新版 Skill 时，运行 `scripts/package-skillhub.ps1` 并核对 ZIP；修改旧版 CLI 时再运行 `go test ./...`、`go vet ./...`、`go build ./...`。如实说明未运行的检查。
-- Git commit 的提交信息使用中文，简要说明本次改动。
+- 只在根目录 `skills/` 编辑 Skill。保持说明简洁，按需链接同一 Skill 内的参考资料。
+- `SKILL.md` 中的 `name`、`description`、`license` 用于 Agent Skills；`slug`、`version`、`displayName`、`summary`、`homepage` 保留为 SkillHub 扩展元数据。修改内容时更新对应 Skill 的数字版本，不要求六个 Skill 同时升级。
+- 重要行为变化用真实客户端场景验证；静态检查和安装成功不能代替实际调用。区分通过、失败、未运行和工具不可用。
+- 完成重要修改后更新项目状态与交接；架构变化经开发者确认后写 ADR。
+- 提交信息使用中文；提交、推送和发布须有开发者明确指令。
 
-提交中不要包含 `.tools/`、`dist/`、密钥或其他本机生成文件。目录用途见[目录说明](docs/directory-structure.md)。
+在仓库根目录运行：
 
-## 从源码构建
-
-以下命令仅用于维护旧版 Go CLI，在仓库根目录运行：
-
-```sh
-go test ./...
-go vet ./...
-go build -o soloweave.exe ./cmd/soloweave
+```powershell
+pwsh -NoProfile -File scripts/check-skills.ps1
+pwsh -NoProfile -File scripts/check-docs.ps1
+pwsh -NoProfile -File scripts/test-tooling.ps1
+pwsh -NoProfile -File scripts/package-skillhub.ps1
 ```
 
-## Windows 下载包
+校验器检查本仓库采用的单行元数据格式和资源边界，不是通用 YAML 解析器。工具测试覆盖无效元数据、缺失或越界资源、ZIP 内容、SHA256 及重复打包的一致性。输出在忽略的 `dist/skills/`。
 
-在 Windows PowerShell 中运行 `./scripts/package-windows.ps1`，会在忽略的 `dist/` 下生成 Windows x64 ZIP 和 `SHA256SUMS`。版本号直接取自包内 `soloweave.exe version`，避免包名与程序版本不一致。发布前请解压 ZIP、运行其中的程序并核对校验值。
+发布步骤见[发布指南](docs/releasing.md)，客户端验证见[验收说明](docs/agent-acceptance.md)。不要提交工具缓存、构建产物、凭据或未审阅的本机会话日志。
 
-代码提交并推送到默认分支后，仓库所有者可在 GitHub Actions 手动运行 **Windows draft release**。工作流会运行 Go 测试与静态检查，打包并验证程序，然后创建带有 ZIP 和校验文件的**草稿 Release**。核对草稿内容后，由仓库所有者在 GitHub 上发布；运行工作流本身不会公开发布草稿。
+按[行为回测指南](docs/behavior-testing.md)生成隔离夹具并运行已登录的 Codex CLI；此流程独立于不需要 Node.js 的静态 CI。

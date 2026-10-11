@@ -1,8 +1,8 @@
 ---
 name: project-setup
-description: 创建或接入软件项目、选择技术或架构时使用；先了解需求与现状，按适用维度比较可组合方案，经开发者确认后记录关键决定。
+description: 在空目录创建软件项目、接入已有项目或选择技术架构时使用；先了解需求与现状，按适用维度比较可组合方案，经开发者确认后再实施关键选型。
 slug: shiyuandi-soloweave-project-setup
-version: 0.3.0
+version: 0.3.2
 displayName: SoloWeave 项目设置
 summary: 先识别项目需求，再逐项比较和确认可组合的技术与架构选择。
 license: MIT
@@ -27,4 +27,4 @@ homepage: https://github.com/ShiYuandi/SoloWeave
 
 确认后优先更新项目已有的等价文档。需要新文件时，用 `.soloweave/context/PROJECT.md` 记录目标、运行入口、主要模块、已确认选型及 ADR 链接；在 `.soloweave/decisions/ADR-NNNN.md` 写明问题、候选、决定、理由、组合约束和开发者确认事实。未确认方案标为“待确认”，不写成已批准 ADR。重大选型变化另建 ADR，指出被替代的决定；持续开发或受阻时按 `project-continuity` 记录状态和下一步，若未安装该 Skill 至少记录当前任务与下一步；不覆盖用户现有内容。
 
-如果项目已有 CLI 管理的 `.soloweave/project.yaml` 与 `approval.json`，先核对其约束及是否被后续 ADR 取代。纯 Skills 流程不手工生成或修改这些机器批准文件，也不伪造 `checkpoint.json`。没有 CLI 仍可完成上述 Markdown 记录。
+如果项目已有结构化配置或机器生成的批准记录，先核对其约束及是否被后续 ADR 取代。通过 Markdown 保存经确认的决定，不伪造其他工具的批准记录。

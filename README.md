@@ -38,33 +38,25 @@ npx skills@latest add ShiYuandi/SoloWeave
 
 无需每次输入 `/setup`、`/build` 或 `soloweave` 命令。入口 Skill 会按任务选择项目设置、功能开发、故障排查、质量检查或交接流程。首次进入长期开发的项目时，AI 会检查现有文档和代码；重大技术选型仍需你确认。自动调用由各 AI 工具决定，不能保证每次触发；必要时可明确说“使用 SoloWeave 继续这个项目”。
 
-**当前验证状态：**标准安装器已从本地仓库发现六个新版 Skill，并在隔离项目生成 Codex、Claude Code 和 Cursor 对应的 Skill 文件。用户通过 AI 从公开 GitHub 仓库安装的六个 Codex Skill 已核对与源码一致；双窗口试用发现交接缺口，仓库修订版待复测。真实自动调用事件、公开地址的标准安装器命令与 SkillHub 更新仍待逐项验收。现有 [SkillHub 页面](docs/skills.md#skillhub-发布状态)提供的是此前发布的五个旧版 Skill，更新前请按页面版本识别。
+**当前验证状态：**已移除 Go CLI，六项独立安装文件核对、静态检查与打包通过；当前源码版本也通过了真实 Codex CLI 的六项独立最小场景、空目录路由及受阻接手回测。12 个会话的证据和边界见[行为结果](docs/codex-behavior-results.md)与[验收记录](docs/agent-acceptance.md)。此前 Claude Code CLI 的证据使用较早版本，实际模型为 `glm-5.3`；Cursor 和 Anthropic 模型本轮未实测。GitHub 与 SkillHub 的实际更新进度见[交付状态](docs/release-status.md)。
 
 ## 它会做什么
 
 | 时机 | AI 应做的事 |
 | --- | --- |
 | 进入已有项目 | 读取规则、目标、决策、状态和相关代码；核对交接是否过期。 |
-| 创建或接入项目 | 先了解需求和现状，识别项目类型；按适用维度比较可组合的技术与架构，重大决定由你确认后再写入 ADR。参考示例不限制 AI 选型。 |
+| 创建或接入项目 | 空目录先进入项目设置：了解需求和项目类型，按适用维度比较可组合的技术与架构；重大决定由你确认后再实施并写入 ADR。参考示例不限制 AI 选型。 |
 | 开发或修复 | 先查找可复用实现，再改代码并运行相关验证。 |
 | 完成重要任务或切换账号 | 更新项目状态、重要变更、真实测试结果和下一步，让新会话从文件接手。 |
 
-项目记录优先沿用已有文档；需要新建时放在 `.soloweave/context/` 和 `.soloweave/decisions/`。只装 Skills **不需要下载 Go CLI**。纯 Skills 路线不生成 CLI 的机器批准、安装或检查点文件，也不声称运行了 CLI 检查。详见[使用指南](docs/skill-only-workflow.md)和[六个 Skill 的分工](docs/skills.md)。
+项目记录优先沿用已有文档；需要新建时放在 `.soloweave/context/` 和 `.soloweave/decisions/`。**安装 Skills 就可以使用，无需下载或构建程序。** Skills 维护 Markdown 记录，实际验证使用目标项目已有命令。详见[使用指南](docs/skill-only-workflow.md)和[六个 Skill 的分工](docs/skills.md)。
 
-## 旧版可选 CLI
+## 旧版用户迁移
 
-此前发布的 [v0.1.1-preview Windows x64 包](https://github.com/ShiYuandi/SoloWeave/releases/tag/v0.1.1-preview)仍可下载，无需自行构建。它提供 `init`（待确认配置）、`approve`（人工确认并记录 ADR）、`install`（安装当时内置的五个旧版 Skill）、`context checkpoint/resume/check`（交接）、`check`（项目校验）和 `doctor`（环境诊断）。该程序是发布时的快照，**不会自动获得根目录 `skills/` 中的新版流程**。已有用户可继续使用；新项目建议先使用上方 Skills 路线。CLI 的完整命令说明见[旧版配置文档](docs/configuration.md)与[项目连续性说明](docs/project-continuity.md)。
-
-| 命令 | 作用 |
-| --- | --- |
-| `catalog` | 查看旧版技术栈预设。 |
-| `init` / `approve` | 创建待确认配置；开发者审阅后批准并生成 ADR。 |
-| `install --dry-run` / `install` | 预览或安装内置旧版 Skills 与平台规则。 |
-| `context checkpoint` / `resume` / `check` | 保存任务摘要与真实验证、读取交接、检查资料是否过期。 |
-| `check` / `doctor` / `version` | 校验项目文件、诊断环境、查看程序版本。 |
+旧 Go CLI 已停止维护并从当前源码移除；历史 Release 和旧用户的项目资料继续保留。迁移时先核对已确认决定和用户修改，再安装新版 Skills；步骤见[迁移指南](docs/cli-migration.md)。
 
 ## 验证与参与
 
-新版 Skills 的本地格式、打包和无 CLI 流程验收结果会记录在[验收文档](docs/agent-acceptance.md)；真实客户端结果以该页为准。[目录说明](docs/directory-structure.md)介绍仓库文件，[贡献说明](CONTRIBUTING.md)介绍源码开发。
+本地格式、打包和真实客户端结果见[验收文档](docs/agent-acceptance.md)。[目录说明](docs/directory-structure.md)介绍仓库文件，[贡献说明](CONTRIBUTING.md)介绍维护者检查，[发布指南](docs/releasing.md)说明 GitHub 与 SkillHub 更新流程。
 
 许可证：[MIT](LICENSE) · [参与贡献](CONTRIBUTING.md) · [安全问题](SECURITY.md) · [变更记录](CHANGELOG.md)

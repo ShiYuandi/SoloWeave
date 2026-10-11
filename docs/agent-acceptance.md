@@ -16,15 +16,15 @@
 
 把新版 Skills 安装到 Codex、Claude Code、Cursor 的隔离项目中，每个平台记录版本、Skill 安装路径和结果。分别测试：普通开发请求是否自动触发、重大选型是否等待确认、功能或修复后是否主动更新交接、换会话后能否核对实际代码。若未自动触发，记录失败和手动点名入口的补救结果；不能把手动调用算作自动触发通过。
 
-标准安装器从公开 GitHub 地址的 `--list` 与真实安装、SkillHub 新版发布也分别记录；本地目录发现不等于公开安装成功。CLI v0.1.1-preview 的旧版路径若需回归，单独按历史流程验收。
+标准安装器从公开 GitHub 地址的 `--list` 与真实安装、SkillHub 新版发布也分别记录；本地目录发现不等于公开安装成功。Go CLI 已退出当前源码，历史资料见[迁移说明](cli-migration.md)。
 
-### 项目选型回归（`project-setup` 0.3.0）
+### 项目选型回归（`project-setup` 0.3.1）
 
 在安装新版 Skill 的全新会话中使用下列提示词；记录安装路径、版本、原提示词、Agent 回复、生成的项目文件和是否自动调用。每项只按可观察结果判定，静态文件检查不算行为通过。
 
 | 提示词或条件 | 应观察到的行为 |
 | --- | --- |
-| “在空目录做一个待办应用，界面简洁，关闭后任务还在。” | 先判断是否需要独立后端等影响项目形态的缺口，不直接假定静态网页并实施。 |
+| “在空目录做一个待办应用，界面简洁，关闭后任务还在。” | 即使用户要求“根据目录现状开始处理”，也先判断运行平台、是否需要独立后端等影响项目形态的缺口；在关键选型待定时不直接写静态网页。即使 Agent 先选择了 `feature-workflow`，也应转到 `project-setup`。 |
 | “做前后端分离的待办应用，给我技术建议。” | 按前端、后端、数据、架构和交付等适用维度给可组合候选、理由和展开方式，不只给三套绑定的栈。 |
 | “做需要后端 API 的手机应用。” | 同时讨论移动端和 API 的适用维度，检查接口与部署，不预设单仓库或多仓库。 |
 | “做跨平台文件整理 CLI。” | 讨论运行环境、分发、配置和错误恢复，不强制选择 Web 框架。 |
@@ -53,8 +53,30 @@
 - 窗口 1 报告 `better-sqlite3` 和 `esbuild` 的构建脚本被本机 pnpm 策略阻止，实际构建未完成。检查仓库外的 `test/` 临时项目：只有 `PROJECT.md` 与 ADR，没有 `STATUS.md`、`HANDOFF.md`、`CHANGES.md`；其 README 没有记录这个启动阻塞。
 - 窗口 2 收到普通请求“请继续这个项目”，却称项目“可运行”并要求开发者选择下一方向，没有先处理已知的启动阻塞，也没有可读的交接检查点。跨会话连续性验收**未通过**。不能仅凭这段回复判断窗口 2 是否加载或调用了 Skill；自动调用仍待可观察的客户端记录。
 
-仓库源码已据此修订 `soloweave`、`feature-workflow` 和 `project-continuity` 至 `0.2.1`，要求受阻时写检查点，并从已知工作恢复。**修订版尚未在真实客户端重测**；用户全局安装的仍是试用时的 `0.2.0`，需更新后再进行双窗口回归。
+仓库源码已据此修订 `soloweave`、`feature-workflow` 和 `project-continuity` 至 `0.2.1`，要求受阻时写检查点，并从已知工作恢复。此段是当时的记录；后续 Claude Code CLI 回测见下文。
 
-项目选型另修订 `project-setup` 至 `0.3.0`，新增按需读取的判断指南。本地重新运行打包脚本成功；核对六个当前 ZIP 的 SHA256SUMS、文件条目与逐文件字节一致，其中 `project-setup` 包含 `SKILL.md` 和指南。标准安装器 `skills@1.7.1 add . --list` 在本地发现六个 Skill；在隔离项目复制安装 `project-setup` 后，两份文件与源码 SHA256 一致。**选型建议尚未在真实新会话按上表复测**，这些静态与安装结果不代表 Agent 行为通过。`quick_validate.py` 因本机缺少 PyYAML 仍未完成。
+项目选型另修订 `project-setup` 至 `0.3.0`，新增按需读取的判断指南。本地重新运行打包脚本成功；核对六个当前 ZIP 的 SHA256SUMS、文件条目与逐文件字节一致，其中 `project-setup` 包含 `SKILL.md` 和指南。标准安装器 `skills@1.7.1 add . --list` 在本地发现六个 Skill；在隔离项目复制安装 `project-setup` 后，两份文件与源码 SHA256 一致。这些静态与安装结果不代表 Agent 行为通过。`quick_validate.py` 因本机缺少 PyYAML 仍未完成。
 
-**公开 GitHub 标准安装器命令、SkillHub 更新和 Claude Code/Cursor 真实客户端行为仍待独立验证。**
+### 用户提供的空目录待办试用（2026-10-11）
+
+用户在空目录提出待办应用需求。Agent 声称将使用 `soloweave` 和 `feature-workflow`，随后直接选择零依赖静态网页并创建五个应用文件；读取测试目录时没有 SoloWeave 项目决策记录。它没有先进入 `project-setup` 澄清项目形态，因此**选型流程验收未通过**。对话记录不能证明 Skill 的实际加载事件或安装版本；用户说明当前全局 Skill 文件是试用后主动删除的，不能从现在的目录状态反推测试时未安装。
+
+源码据此将 `soloweave`、`feature-workflow` 升至 `0.2.2`，把空目录新项目的优先路由和功能开发前的检查写入描述与正文；`project-setup` 描述改为明确覆盖空目录，版本升至 `0.3.1`。当时尚未复测；后续 Claude Code CLI 结果见下文。
+
+### Claude Code CLI 隔离回测（2026-10-11）
+
+用户带回另一台电脑的[完整报告](claude-code-回测结果.md)和[原始会话证据](claude-code-evidence/2026-10-11/)。本机只导入并抽查报告、会话 JSONL 和截图；没有重新运行临时测试应用。ZIP 中对比的 81 个普通仓库文件除 `STATUS.md`、`HANDOFF.md` 外均与当前工作目录一致，六个 Skill 源码没有差异。
+
+- 空目录待办场景：会话 JSONL 有实际 `Skill` 工具调用，顺序为 `soloweave → project-setup → feature-workflow`；应用代码写入前先讨论并确认项目形态。报告记录 Node API 8 项断言、服务重启持久化和 Edge headless 浏览器交互通过。
+- 分维度推荐场景：会话 JSONL 有 `soloweave → project-setup` 调用；先澄清需求，再提供前端、后端、数据、认证、架构和交付的可组合候选，没有写应用代码。
+- 受阻接手场景：两个独立会话都调用了 `soloweave`，并从项目记录保持未完成状态；会话内的构建命令被权限模式拦截，独立终端实际运行 `npm run build` 退出码为 1。原始记录中未观察到 `project-continuity` 的 `Skill` 工具调用，因此此项证明了交接行为，**不证明该独立 Skill 自动触发**。
+
+测试使用真实 Claude Code CLI 2.1.218，但会话记录中的实际模型是 `glm-5.3`（启动参数写 `--model sonnet`）。结论限于该客户端和模型组合，不代表 Anthropic Sonnet 的行为。修订版 Codex、Cursor、公开 GitHub 标准安装器命令、SkillHub 更新及 Anthropic 模型仍待独立验证。
+
+### Go 退出后的当前验证（2026-10-11）
+
+当前版本见[Skills 列表](skills.md)，保留上述行为修订并清理旧 CLI 耦合说明。六个 Skill 分别通过标准安装器的隔离安装与逐文件核对，详见[独立验收记录](independent-skills-acceptance.md)。此结果不替代独立行为验证。
+
+首次 Codex CLI 尝试因执行策略受阻，保留为[历史记录](codex-retest.md)。随后在保留工作区沙箱和执行规则的新会话中完成当前候选版六项独立最小场景、空目录路由与受阻接手；12 个真实会话的实际读取及外部文件/测试核对见[最新结果](codex-behavior-results.md)。Cursor、Anthropic 模型和更多项目类型不在本轮通过范围。
+
+维护检查改用 PowerShell 7：`check-skills.ps1`、`check-docs.ps1`、`test-tooling.ps1` 和 `package-skillhub.ps1`。不需要 Go；校验器检查仓库采用的单行元数据及 SkillHub 扩展字段，不是完整 YAML 解析器。辅助 `quick_validate.py` 本轮仍因缺少 PyYAML 未运行成功。远程 CI 和新版公开安装须待提交推送后另行核对。
