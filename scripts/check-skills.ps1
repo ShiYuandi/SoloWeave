@@ -2,9 +2,9 @@ param([string]$Root = (Split-Path -Parent $PSScriptRoot))
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $sourceRoot = Join-Path ([IO.Path]::GetFullPath($Root)) 'skills'
-$expected = @('feature-workflow', 'project-continuity', 'project-setup', 'quality-review', 'soloweave', 'systematic-debugging')
+$expected = @('feature-workflow', 'project-continuity', 'project-setup', 'quality-review', 'soloweave')
 $skills = @(Get-ChildItem -LiteralPath $sourceRoot -Directory -Force | Sort-Object Name)
-if (@(Compare-Object $expected @($skills.Name)).Count -ne 0) { throw 'Expected exactly the six SoloWeave Skill directories' }
+if (@(Compare-Object $expected @($skills.Name)).Count -ne 0) { throw 'Expected exactly the five SoloWeave Skill directories' }
 $slugs = @{}
 foreach ($skill in $skills) {
     $items = @($skill) + @(Get-ChildItem -LiteralPath $skill.FullName -Recurse -Force)
@@ -39,4 +39,4 @@ foreach ($skill in $skills) {
         }
     }
 }
-Write-Output 'PASS six Skills: metadata, unique slugs, versions, resources and package boundaries'
+Write-Output 'PASS five Skills: metadata, unique slugs, versions, resources and package boundaries'

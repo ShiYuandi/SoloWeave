@@ -2,18 +2,17 @@
 
 [English](en/skills.md)
 
-根目录 [`skills/`](../skills/) 是六个 Skill 的唯一维护与发布来源。每个 SKILL.md 包含名称、描述、工作流和 SkillHub 扩展发布字段；所需参考资料随整个 Skill 目录安装。普通用户直接安装 Skills 即可使用。
+根目录 [`skills/`](../skills/) 是五个 Skill 的唯一维护与发布来源。每个 SKILL.md 包含名称、描述、工作流和 SkillHub 扩展发布字段；所需参考资料随整个 Skill 目录安装。普通用户直接安装 Skills 即可使用。
 
 | Skill | 当前源码版本 | 何时使用 |
 | --- | --- | --- |
-| [soloweave](../skills/soloweave/SKILL.md) | 0.2.3 | 普通任务入口：读取项目、区分新旧项目并路由。 |
+| [soloweave](../skills/soloweave/SKILL.md) | 0.2.4 | 普通任务入口：读取项目、区分新旧项目并路由。 |
 | [project-setup](../skills/project-setup/SKILL.md) | 0.3.2 | 新项目、接入项目与重要选型；先澄清、分维度比较，再确认决定。 |
-| [feature-workflow](../skills/feature-workflow/SKILL.md) | 0.2.3 | 已有项目的功能开发、复用、验证和记录。 |
-| [systematic-debugging](../skills/systematic-debugging/SKILL.md) | 0.1.0 | 复现错误、定位原因、修复与回归。 |
+| [feature-workflow](../skills/feature-workflow/SKILL.md) | 0.2.4 | 已有项目的功能开发、复用、验证和记录。 |
 | [quality-review](../skills/quality-review/SKILL.md) | 0.2.1 | 核对实际改动、项目决策和验证结果。 |
 | [project-continuity](../skills/project-continuity/SKILL.md) | 0.2.2 | 新会话接手、重要节点或受阻时维护交接。 |
 
-每个 Skill 可独立安装。未安装其他 Skill 时，按当前 Skill 中的必要步骤或已有项目规范继续；入口可协调多个流程。是否自动触发取决于客户端，不能从“我会使用某 Skill”推断实际调用。
+每个 Skill 可独立安装。升级不会自动卸载已安装的旧故障排查 Skill；先核对其目录和用户修改，再由用户决定移除。未安装其他 Skill 时，按当前 Skill 中的必要步骤或已有项目规范继续；入口可协调多个流程。是否自动触发取决于客户端，不能从“我会使用某 Skill”推断实际调用。
 
 ## 安装与使用
 
@@ -31,6 +30,6 @@ npx skills@latest add ShiYuandi/SoloWeave
 
 ## SkillHub 发布状态
 
-2026-10-11 已更新原有五项并通过 GitHub 导入新增故障排查，六项均已提交对应源码版本审核。管理页核对时项目交接 0.2.2 已发布，其余五项安全审核中；待审版本的公开下载尚未验收。原有页面：[入口](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave)、[项目设置](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-setup)、[功能开发](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-feature-workflow)、[项目交接](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-continuity)、[质量检查](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-quality-review)。故障排查待审核后核对公开页面；实时状态以平台为准。
+本地源码现提供五项，入口与功能开发为 0.2.4。本轮 GitHub 提交推送已取得开发者授权；SkillHub 尚未同步。从 GitHub 安装和平台下载的内容以线上实际版本为准。此前六项提交审核的状态仅保留为[历史交付快照](release-status.md)，不代表当前五项版本已经发布。保留的页面：[入口](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave)、[项目设置](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-setup)、[功能开发](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-feature-workflow)、[项目交接](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-continuity)、[质量检查](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-quality-review)。
 
-上表记录源码版本，不代表 SkillHub 已完成审核。本轮实际进度见[交付状态](release-status.md)。维护者运行 `scripts/package-skillhub.ps1` 生成 `dist/skills/` 下的六个 ZIP 和 SHA256SUMS。步骤见[发布指南](releasing.md)。
+上表记录源码版本，不代表 SkillHub 已完成审核。本轮实际进度见[交付状态](release-status.md)。维护者运行 `scripts/package-skillhub.ps1` 生成 `dist/skills/` 下的五个 ZIP 和 SHA256SUMS。步骤见[发布指南](releasing.md)。

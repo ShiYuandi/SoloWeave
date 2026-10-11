@@ -1,7 +1,7 @@
 param(
     [Parameter(Mandatory)][string]$CasesPath,
     [Parameter(Mandatory)][string]$EvidencePath,
-    [string[]]$Names = @('soloweave', 'project-setup', 'feature-workflow', 'systematic-debugging', 'quality-review', 'project-continuity', 'all-skills', 'blocked-continuity'),
+    [string[]]$Names = @('soloweave', 'project-setup', 'feature-workflow', 'quality-review', 'project-continuity', 'all-skills', 'blocked-continuity'),
     [int]$TimeoutSeconds = 240
 )
 Set-StrictMode -Version Latest

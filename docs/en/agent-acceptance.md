@@ -6,8 +6,8 @@ This page separates **local file and packaging checks** from **live agent behavi
 
 ## Local checks
 
-1. Validate names, frontmatter, versions, and unique slugs in the six root `SKILL.md` files. Run `scripts/package-skillhub.ps1` and inspect ZIP contents and SHA256SUMS.
-2. Provide the six Skills to a disposable project with no existing application. Keep a reusable function and related test, then give the agent an ordinary development request. Check that it reads the project, reuses code, and runs a real test.
+1. Validate names, frontmatter, versions, and unique slugs in the five root `SKILL.md` files. Run `scripts/package-skillhub.ps1` and inspect ZIP contents and SHA256SUMS.
+2. Provide the five Skills to a disposable project with no existing application. Keep a reusable function and related test, then give the agent an ordinary development request. Check that it reads the project, reuses code, and runs a real test.
 3. Propose a major technical choice without approving it. Check that records stay pending and no ADR is fabricated. After explicit approval, check the ADR records the decision and reasoning.
 4. Resume in another session without the old chat. Confirm the agent finds the goal, current task, recent changes, verification, and next step from project files. After changing a relevant source file, check it recognizes that old handoff notes may be stale.
 5. Regress a blocked new project: have the agent implement a project that needs local build scripts, then cause an observable dependency or permission blocker. Before window 1 ends, verify that `STATUS.md` and `HANDOFF.md` record the actual failure, blocker, and next step. In window 2, ask only “continue this project”; check that the agent verifies and advances or explains the blocker, without calling unverified work runnable. Any extra authorization must be requested for a concrete action.
@@ -37,11 +37,15 @@ Use these prompts in a fresh session with the revised Skill installed. Record it
 
 Also try a desktop project and one unlisted project type to check that the agent generates relevant dimensions. If the client does not expose invocation events, record invocation as unobservable rather than inferring it from the reply.
 
-## Current results (2026-10-11)
+## Current five-Skill revision
+
+Entry and feature development are 0.2.4; dedicated debugging and its route were removed. Five-Skill resource checks, all document links, 15 maintenance checks, seven fixtures, and local-source independent/full-set installations passed. Three ordinary-request Codex scenarios and one explicitly invoked blocked checkpoint passed. One additional review-only request read an older global quality Skill and is not evidence for the revised feature Skill. See the [detailed results and limits](../five-skills-acceptance.md) and [reviewed receipt](../codex-evidence/2026-10-11-five-skills.json). The six-Skill results below remain historical.
+
+## Earlier six-Skill results (2026-10-11)
 
 - Six-Skill metadata and resource checks passed. Fifteen maintenance checks cover invalid metadata, missing references, package boundaries, source bytes, and reproducibility.
 - skills@1.7.1 passed six independent installation checks. Installation from public GitHub for Codex/Claude Code/Cursor produced 14 matching files across two platform directories. Fresh-directory success does not establish conflict handling for user edits.
-- Current source passed 12 real Codex sessions: six independent minimal scenarios, full-set empty-directory routing, blocked handoff across sessions, and explicitly authorized repair. Actual local Skill reads, reuse, original test hashes, and failure/repair outcomes were reviewed. See [results](../codex-behavior-results.md) and [independent acceptance](../independent-skills-acceptance.md).
+- Earlier source passed 12 real Codex sessions: six independent minimal scenarios, full-set empty-directory routing, blocked handoff across sessions, and explicitly authorized repair. Actual local Skill reads, reuse, original test hashes, and failure/repair outcomes were reviewed. See [results](../codex-behavior-results.md) and [independent acceptance](../independent-skills-acceptance.md).
 - The initial Codex read failure remains in the [test record](../codex-retest.md). Later success does not prove one specific cause for that failure.
 - Cross-device Claude Code CLI 2.1.218 used earlier Skill revisions and the actual model glm-5.3. See the [report and evidence](../claude-code-回测结果.md). New-project confirmation was observed; a separate continuity invocation was not observed in the blocked case. The application was not rerun locally, and these results do not establish Anthropic model behavior.
 - GitHub CI passed for delivery commit 07e6288. All six SkillHub reviews were submitted; see the [status snapshot](../release-status.md). Static CI did not run model behavior tests.

@@ -1,8 +1,8 @@
 ---
 name: soloweave
-description: 开始或继续软件开发、规划、修复、审查或接手工作时使用；先判断新项目还是既有项目，选择适用工作流，并在重要节点维护可交接的上下文。
+description: 开始或继续软件开发、规划、代码修改、审查或接手工作时使用；先判断新项目还是既有项目，选择适用工作流，并在重要节点维护可交接的上下文。
 slug: shiyuandi-soloweave
-version: 0.2.3
+version: 0.2.4
 displayName: SoloWeave 开发入口
 summary: 正常提出开发需求，AI 主动核对项目、选择工作流并维护交接。
 license: MIT
@@ -24,7 +24,6 @@ homepage: https://github.com/ShiYuandi/SoloWeave
 - **先判断是新建项目还是在既有项目中开发。** 空目录、只有无关文件或尚无可运行项目骨架时，即使用户说“开发一个功能”或“根据目录现状开始处理”，也先按 `project-setup` 完成项目形态和关键选型确认，再交给 `feature-workflow` 实施。用户要求开始处理，不等于批准 AI 自选运行平台、是否需要独立后端等关键方案。用户已明确这些约束且不存在重要分歧时，可简要核对后继续，不重复询问。
 - 新项目、接入项目或重要技术选型：`project-setup`。
 - 功能开发和一般代码改动：`feature-workflow`。
-- 行为错误、测试失败或性能回退：`systematic-debugging`。
 - 代码审查、交付检查：`quality-review`。
 - 恢复旧任务、完成重要节点或准备切换 Agent：`project-continuity`。
 

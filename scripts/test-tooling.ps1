@@ -81,7 +81,7 @@ try {
     $firstManifest = [IO.File]::ReadAllText((Join-Path $outputDir 'SHA256SUMS'))
     Add-Type -AssemblyName System.IO.Compression
     $lines = @(Get-Content -LiteralPath (Join-Path $outputDir 'SHA256SUMS'))
-    if ($lines.Count -ne 6) { throw 'Expected six checksum entries' }
+    if ($lines.Count -ne 5) { throw 'Expected five checksum entries' }
     foreach ($line in $lines) {
         $expectedHash, $filename = $line -split '  ', 2
         $zipPath = Join-Path $outputDir $filename
@@ -101,7 +101,7 @@ try {
         } finally { $zip.Dispose() }
     }
     $passed++
-    Write-Output 'PASS six package checksums and every resource match source'
+    Write-Output 'PASS five package checksums and every resource match source'
     & $package -Root $repo -OutputPath $outputDir
     if ([IO.File]::ReadAllText((Join-Path $outputDir 'SHA256SUMS')) -ne $firstManifest) { throw 'Repeated packaging changed checksums' }
     $passed++

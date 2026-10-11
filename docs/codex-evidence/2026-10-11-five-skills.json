@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-11",
+  "timezone": "Asia/Shanghai",
+  "client": "codex-cli 0.162.0-alpha.17.2",
+  "configured_model": "gpt-6.1-sol",
+  "model_override": false,
+  "source_skills": {
+    "feature-workflow": {
+      "version": "0.2.4",
+      "sha256": "b1d04898284d74407bbe08954b60d58554699043eb95d20efea1cee0ffc319d5"
+    },
+    "project-continuity": {
+      "version": "0.2.2",
+      "sha256": "5b86377d3fff285cc198b6608441a338e746d436ef1c723b7c68a3dba755f494"
+    },
+    "project-setup": {
+      "version": "0.3.2",
+      "sha256": "a1771f5fa336c5be14798386fc40b5dc6c19f39b3cd7de44d23b927e338620f7"
+    },
+    "quality-review": {
+      "version": "0.2.1",
+      "sha256": "6160407797e6b6f05ac4339d500d58d771f91fd0597d13f6f58f5c8a2c0841ac"
+    },
+    "soloweave": {
+      "version": "0.2.4",
+      "sha256": "1e50982c6a32187036d492f946c508a61313b59319276f18d6f132184160ad81"
+    }
+  },
+  "sessions": [
+    {
+      "name": "soloweave",
+      "review": "passed",
+      "invocation": "ordinary request",
+      "observed_skill_reads": [
+        "soloweave"
+      ],
+      "versions": {
+        "soloweave": "0.2.4"
+      },
+      "started": "2026-10-11T23:15:45.5189395+08:00",
+      "finished": "2026-10-11T23:16:17.1916877+08:00",
+      "events_sha256": "cac56ca7a74fe1e74ef08a9fffe1eee82b4bb1e33e302387ee691f29f93dd238"
+    },
+    {
+      "name": "feature-workflow",
+      "review": "passed",
+      "invocation": "ordinary request",
+      "observed_skill_reads": [
+        "feature-workflow"
+      ],
+      "versions": {
+        "feature-workflow": "0.2.4"
+      },
+      "started": "2026-10-11T23:16:17.2153910+08:00",
+      "finished": "2026-10-11T23:17:20.1632322+08:00",
+      "events_sha256": "97a54421aa8fe8d16b6c2d0679c70ca25b5fdf7c82156938dce150f85d831ec9"
+    },
+    {
+      "name": "all-skills",
+      "review": "passed",
+      "invocation": "ordinary request",
+      "observed_skill_reads": [
+        "soloweave",
+        "project-setup",
+        "project-continuity"
+      ],
+      "versions": {
+        "feature-workflow": "0.2.4",
+        "project-setup": "0.3.2",
+        "soloweave": "0.2.4",
+        "quality-review": "0.2.1",
+        "project-continuity": "0.2.2"
+      },
+      "started": "2026-10-11T23:17:20.1674892+08:00",
+      "finished": "2026-10-11T23:18:02.7064827+08:00",
+      "events_sha256": "20a96d3e79d8f55b6badbba143e7076455091b3151a0f65adc6a517d1fc3bd9c"
+    },
+    {
+      "name": "feature-blocked",
+      "review": "not_attributable_to_current_feature",
+      "invocation": "ordinary request",
+      "observed_skill_reads": [
+        "global quality-review 0.2.0"
+      ],
+      "versions": {
+        "feature-workflow": "0.2.4"
+      },
+      "started": "2026-10-11T23:18:58.0777892+08:00",
+      "finished": "2026-10-11T23:19:48.4197570+08:00",
+      "events_sha256": "ae890a52ccfd8f95a67e51132989e01ad7aee55993a1307a0738f38640be135f"
+    },
+    {
+      "name": "feature-blocked-explicit",
+      "review": "passed_targeted_checkpoint",
+      "invocation": "explicit local Skill",
+      "observed_skill_reads": [
+        "feature-workflow"
+      ],
+      "versions": {
+        "feature-workflow": "0.2.4"
+      },
+      "started": "2026-10-11T23:21:17.9757194+08:00",
+      "finished": "2026-10-11T23:22:02.0769859+08:00",
+      "events_sha256": "219ad8008b3a4e49604ca91fec65e5f02553cbc796a3d6e1ded3e8080d06bd3f"
+    }
+  ],
+  "scope": "Three ordinary-request scenarios and one explicitly invoked failure checkpoint passed. One review-only control read an older global quality Skill and is not evidence for the local feature revision. Raw logs remain local; receipts are reviewed summaries, not automatic acceptance."
+}

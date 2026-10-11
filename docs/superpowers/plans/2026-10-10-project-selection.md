@@ -1,5 +1,7 @@
 # SoloWeave 项目选型推荐实施计划
 
+> 历史记录：本文保留此前六项版本的流程或结果。2026-10-11 已确认当前产品恢复五项；旧安装清单和步骤不用于本轮操作，当前说明见 [Skills](../../skills.md)与[回测指南](../../behavior-testing.md)。原始结果不代表入口／功能 0.2.4 已完成真实行为回测。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [x]`) syntax for tracking.
 
 **Goal:** 让 `project-setup` 从需求出发识别项目类型，按适用维度提出可组合、有依据且不受预设技术清单限制的选型建议，并经开发者确认后记录。
