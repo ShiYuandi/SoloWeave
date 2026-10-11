@@ -6,7 +6,7 @@
 
 - 请复制**整个 SoloWeave 工作目录**，包括隐藏的 `.git/`、`.soloweave/`、`skills/` 和本地未提交改动。只重新克隆 GitHub 仓库会得到较旧的 `fd6e04a`，缺少本次空目录路由修订。
 - 搬迁前本地分支为 `master`，HEAD 为 `fd6e04a77e32bdff0d121fda753be4231a6f1333`；有 16 个已修改、尚未提交的文件，以及本轮新增的交接与报告文档。接手时以实际 `git status` 和文件内容为准。不要为了让状态变干净而重置、切换分支、拉取、提交或推送。
-- 新版 Skill 来源是仓库根目录 `skills/`。`internal/bundle/assets/skills/` 是旧版 Go CLI 的快照，GitHub 当前提交和 SkillHub 公开版也不是这次待测版本。不要从它们安装此次测试用 Skill。
+- 新版 Skill 来源是仓库根目录 `skills/`。本文记录当时的本地候选版回测，待测版本以该次记录为准；不能用其他发布版本替代。
 
 | Skill | 此次应看到的版本 |
 | --- | --- |
@@ -21,7 +21,7 @@
 
 ## 给另一台电脑上的 Codex
 
-你是**测试操作者和记录者**，被测对象是这台电脑上实际运行的 **Claude Code**。先在 **SoloWeave 仓库**阅读 `AGENTS.md`、`.soloweave/context/HANDOFF.md`、`.soloweave/context/STATUS.md`、`docs/agent-acceptance.md` 和本文；核对 `git status`、六个 `SKILL.md` 的版本和 `project-setup` 的参考文件。仓库的旧 CLI 配置和检查点不代表这次 Skills 优先修订已通过。请不要在回测中改写 SoloWeave 的 Skill 源码；发现问题记录证据和建议即可。
+你是**测试操作者和记录者**，被测对象是这台电脑上实际运行的 **Claude Code**。先在 **SoloWeave 仓库**阅读 `AGENTS.md`、`.soloweave/context/HANDOFF.md`、`.soloweave/context/STATUS.md`、`docs/agent-acceptance.md` 和本文；核对 `git status`、六个 `SKILL.md` 的版本和 `project-setup` 的参考文件。项目记录不代表待测 Skill 已通过验收。请不要在回测中改写 SoloWeave 的 Skill 源码；发现问题记录证据和建议即可。
 
 请通过本机 Claude Code 客户端或其官方 CLI 实际启动会话、发送测试提示词并收集原始回复。记录所用的启动方式、工作目录、客户端版本及能证明回复来自 Claude Code 的会话信息。Codex 自己分析提示词、编写待办应用，或替 Claude Code 生成回答，都不算本次测试。若无法启动 Claude Code，停止行为测试，在报告中写清实际阻塞；不要模拟其行为。
 

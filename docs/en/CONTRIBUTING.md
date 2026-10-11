@@ -2,9 +2,9 @@
 
 [简体中文](../../CONTRIBUTING.md)
 
-Read the [Skills design](../skills-first-design.md), [Go retirement plan](../go-retirement-plan.md), and [handoff](../../.soloweave/context/HANDOFF.md), then verify actual files and Git state.
+Read the [Skills design](../design.md), [development plan](../development-plan.md), and [handoff](../../.soloweave/context/HANDOFF.md), then verify actual files and Git state.
 
-Users install Skills directly. Maintainers need **PowerShell 7** for repository scripts; Go and Python are not required.
+Users install Skills directly. Maintainers need **PowerShell 7** for repository scripts; No application build is required.
 
 - Edit Skills only in root `skills/`. Keep instructions focused and references within each Skill.
 - `name`, `description`, and `license` are Agent Skills fields. Preserve `slug`, `version`, `displayName`, `summary`, and `homepage` as SkillHub extensions. Bump the numeric version of each changed Skill independently.

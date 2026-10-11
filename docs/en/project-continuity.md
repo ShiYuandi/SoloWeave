@@ -10,4 +10,4 @@ Distinguish passed, failed, not run, and unavailable tools. A permissions denial
 
 On “continue this project,” read goals, status, handoff, and ADRs, then verify actual files and Git. Advance a known next step; ask when a necessary decision or goal is missing. Current files take precedence over stale notes.
 
-Skills maintain Markdown records rather than machine checkpoints. See the [workflow](skill-only-workflow.md) and [legacy migration](cli-migration.md).
+Skills maintain Markdown records; verify actual files and test results when resuming. See the [workflow](skill-only-workflow.md).

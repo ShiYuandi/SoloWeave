@@ -18,6 +18,6 @@ The agent should offer independently combinable candidates with tradeoffs and a 
 
 For a feature, search for suitable existing implementations. For a bug, seek observable reproduction evidence first. Run relevant available project checks and distinguish passed, failed, not run, and unavailable. After meaningful work, a blocker, or before switching accounts, the agent updates `STATUS.md`, `CHANGES.md`, and a short `HANDOFF.md` under `.soloweave/context/`. A new agent reads these notes and then checks Git and source files; current files win when they conflict with old notes.
 
-`PROJECT.md` holds stable goals and approved decision links. `HANDOFF.md` should identify the current task, recent files, actual verification and outcome, open issues, next step, and check time. If Git is unavailable, say so. Do not store secrets. Skills-only work does not create the Go CLI's `approval.json`, `checkpoint.json`, or `installation.json`, or call manual review a passing `soloweave check`.
+`PROJECT.md` holds stable goals and approved decision links. `HANDOFF.md` should identify the current task, recent files, actual verification and outcome, open issues, next step, and check time. If Git is unavailable, say so. Do not store secrets. Only checks actually run may be reported as passing; describe the evidence for manual review.
 
 See [cross-agent acceptance](agent-acceptance.md) for the test procedure.

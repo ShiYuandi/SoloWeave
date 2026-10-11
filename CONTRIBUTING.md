@@ -2,9 +2,9 @@
 
 [English](docs/en/CONTRIBUTING.md)
 
-较大改动前阅读 [Skills 设计](docs/skills-first-design.md)、[Go 退出计划](docs/go-retirement-plan.md)和[交接记录](.soloweave/context/HANDOFF.md)，再核对实际文件与 Git 状态。早期 Go 设计保留为历史资料。
+较大改动前阅读 [项目设计](docs/design.md)、[开发计划](docs/development-plan.md)和[交接记录](.soloweave/context/HANDOFF.md)，再核对实际文件与 Git 状态。
 
-普通用户直接安装 Skills。维护者运行仓库脚本需要 **PowerShell 7**，不需要 Go、Python 或自行构建程序。
+普通用户直接安装 Skills。维护者运行仓库脚本需要 **PowerShell 7**，无需自行构建程序。
 
 - 只在根目录 `skills/` 编辑 Skill。保持说明简洁，按需链接同一 Skill 内的参考资料。
 - `SKILL.md` 中的 `name`、`description`、`license` 用于 Agent Skills；`slug`、`version`、`displayName`、`summary`、`homepage` 保留为 SkillHub 扩展元数据。修改内容时更新对应 Skill 的数字版本，不要求六个 Skill 同时升级。

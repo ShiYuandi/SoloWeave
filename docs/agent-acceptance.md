@@ -1,4 +1,4 @@
-# Skills 优先验收
+# Skills 验收
 
 [English](en/agent-acceptance.md)
 
@@ -7,8 +7,8 @@
 ## 本地检查
 
 1. 校验根目录六个 `SKILL.md` 的名称、frontmatter、版本和唯一 slug；运行 `scripts/package-skillhub.ps1`，核对每个 ZIP 的内容和 SHA256SUMS。
-2. 在没有 SoloWeave Go CLI 的临时项目中提供六个 Skill。模拟已有项目：保留一个可复用函数和相关测试，让 Agent 根据普通自然语言需求完成小改动；检查其先读项目、复用代码并运行真实测试。
-3. 先提出一个重要技术选型但不确认，检查项目记录标为待确认，且无虚构 ADR 或 CLI 批准文件；确认后再检查 ADR 的理由与确认事实。
+2. 在全新的临时项目中提供六个 Skill。模拟已有项目：保留一个可复用函数和相关测试，让 Agent 根据普通自然语言需求完成小改动；检查其先读项目、复用代码并运行真实测试。
+3. 先提出一个重要技术选型但不确认，检查项目记录标为待确认，且无虚构 ADR；确认后再检查 ADR 的理由与确认事实。
 4. 在另一个不带旧聊天记录的会话中接手，确认能从项目文件定位目标、当前任务、最近修改、验证与下一步。改动相关源文件后，检查它能识别旧交接可能过期。
 5. 回归受阻的新项目：让 Agent 实现一个需要本机构建脚本的项目，制造可观察的依赖或权限阻塞。结束第一窗口前检查 `STATUS.md`、`HANDOFF.md` 已写明实际失败、阻塞和下一步；第二窗口只说“请继续这个项目”，检查 Agent 先核对并推进或解释该阻塞，且不把未验证的项目称为可运行。需要额外授权时应针对具体操作询问。
 
@@ -16,9 +16,9 @@
 
 把新版 Skills 安装到 Codex、Claude Code、Cursor 的隔离项目中，每个平台记录版本、Skill 安装路径和结果。分别测试：普通开发请求是否自动触发、重大选型是否等待确认、功能或修复后是否主动更新交接、换会话后能否核对实际代码。若未自动触发，记录失败和手动点名入口的补救结果；不能把手动调用算作自动触发通过。
 
-标准安装器从公开 GitHub 地址的 `--list` 与真实安装、SkillHub 新版发布也分别记录；本地目录发现不等于公开安装成功。Go CLI 已退出当前源码，历史资料见[迁移说明](cli-migration.md)。
+标准安装器从公开 GitHub 地址的 `--list` 与真实安装、SkillHub 新版发布也分别记录；本地目录发现不等于公开安装成功。
 
-### 项目选型回归（`project-setup` 0.3.1）
+### 项目选型回归（`project-setup`）
 
 在安装新版 Skill 的全新会话中使用下列提示词；记录安装路径、版本、原提示词、Agent 回复、生成的项目文件和是否自动调用。每项只按可观察结果判定，静态文件检查不算行为通过。
 
@@ -37,46 +37,15 @@
 
 另外测试一次桌面端和一种未列出的项目类型，检查 Agent 能自行补出适用维度。若客户端无法显示自动调用事件，记录“调用状态不可观察”，不要据回复推断自动触发。
 
-## 当前结果
+## 当前结果（2026-10-11）
 
-此前五个旧版 Skill 已在隔离项目做过无 CLI 文件流程演练。本轮六个新版 Skill 已通过仓库打包脚本的名称、必填字段、版本和唯一 slug 检查；六个 ZIP 的条目与 SHA256SUMS 已核对。标准安装器执行 `add . --list` 识别了全部六个 Skill；在临时项目中分别安装了 Codex、Claude Code、Cursor 的项目级文件，并逐一核对安装后的 `SKILL.md` 与源文件一致。Windows 上默认安装模式也完成了 Codex 的六个文件安装。
+- 六个 Skill 的元数据与资源检查通过；15 项维护回归覆盖无效字段、缺失引用、打包边界、六包内容和重复打包一致。
+- 标准安装器 skills@1.7.1 完成六项独立安装核对；公开 GitHub 安装选择 Codex/Claude Code/Cursor，两套平台目录共 14 个文件与源码字节一致。新目录安装通过不证明已有修改的冲突合并正确。
+- 当前源码版本在真实 Codex CLI 完成 12 个新会话：六项独立最小行为、全套空目录路由、受阻双会话接手和获准修复通过。核对了实际读取 Skill、复用实现、原测试哈希和真实失败/修复结果；见[行为结果](codex-behavior-results.md)和[独立验收](independent-skills-acceptance.md)。
+- 首次 Codex 读取失败保留为[回测记录](codex-retest.md)；成功结果不能推断此前失败的单一根因。
+- 跨设备 Claude Code CLI 2.1.218 使用较早 Skill 修订，实际模型为 glm-5.3；报告及原始调用见[Claude Code 结果](claude-code-回测结果.md)。观察到新项目确认流程；受阻场景未观察到单独 continuity 调用。本机未重跑该应用，不能等同于 Anthropic 模型通过。
+- GitHub CI 对交付提交 07e6288 已通过，六项 SkillHub 审核已提交；当时状态见[交付记录](release-status.md)。静态 CI 没有运行模型行为测试。
 
-另在无 SoloWeave CLI、无 Git 仓库的临时项目中，人工按新版 Skill 流程完成一次小功能：先运行测试观察到缺失模块失败，再复用已有函数实现并运行测试，得到两项检查通过；写入项目目标、状态、变更和交接记录。新会话式的单独读取与复测确认能从文件定位工作并重现通过结果。该演练只证明文件流程可行，不能证明 Agent 自动选择 Skill。
+## 尚待验证
 
-旧版 Go CLI 的 `go test ./... -count=1`、`go vet ./...`、`go build ./...` 均以退出码 0 完成。改动文档的相对文件链接检查通过。
-
-本机 `quick_validate.py` 因缺少 PyYAML 未执行成功；它的验证结果不可称为通过。标准安装器首次尝试曾遇到 npm 连接拒绝，随后重试已完成上述本地发现和安装。
-
-### 用户提供的 Codex 双窗口试用（2026-10-10）
-
-- 窗口 1 按公开 GitHub 仓库说明将六个 Skill 安装到 Codex 全局目录，报告来源提交 `5bc8f1e`；本轮核对六个已安装 `SKILL.md` 与仓库源文件的 SHA256 一致。普通待办应用请求得到架构方案，开发者调整为前后端分离并确认后，Agent 写入源码、`PROJECT.md` 与 ADR。仅凭对话摘要不能证明内部 Skill 自动调用事件。
-- 窗口 1 报告 `better-sqlite3` 和 `esbuild` 的构建脚本被本机 pnpm 策略阻止，实际构建未完成。检查仓库外的 `test/` 临时项目：只有 `PROJECT.md` 与 ADR，没有 `STATUS.md`、`HANDOFF.md`、`CHANGES.md`；其 README 没有记录这个启动阻塞。
-- 窗口 2 收到普通请求“请继续这个项目”，却称项目“可运行”并要求开发者选择下一方向，没有先处理已知的启动阻塞，也没有可读的交接检查点。跨会话连续性验收**未通过**。不能仅凭这段回复判断窗口 2 是否加载或调用了 Skill；自动调用仍待可观察的客户端记录。
-
-仓库源码已据此修订 `soloweave`、`feature-workflow` 和 `project-continuity` 至 `0.2.1`，要求受阻时写检查点，并从已知工作恢复。此段是当时的记录；后续 Claude Code CLI 回测见下文。
-
-项目选型另修订 `project-setup` 至 `0.3.0`，新增按需读取的判断指南。本地重新运行打包脚本成功；核对六个当前 ZIP 的 SHA256SUMS、文件条目与逐文件字节一致，其中 `project-setup` 包含 `SKILL.md` 和指南。标准安装器 `skills@1.7.1 add . --list` 在本地发现六个 Skill；在隔离项目复制安装 `project-setup` 后，两份文件与源码 SHA256 一致。这些静态与安装结果不代表 Agent 行为通过。`quick_validate.py` 因本机缺少 PyYAML 仍未完成。
-
-### 用户提供的空目录待办试用（2026-10-11）
-
-用户在空目录提出待办应用需求。Agent 声称将使用 `soloweave` 和 `feature-workflow`，随后直接选择零依赖静态网页并创建五个应用文件；读取测试目录时没有 SoloWeave 项目决策记录。它没有先进入 `project-setup` 澄清项目形态，因此**选型流程验收未通过**。对话记录不能证明 Skill 的实际加载事件或安装版本；用户说明当前全局 Skill 文件是试用后主动删除的，不能从现在的目录状态反推测试时未安装。
-
-源码据此将 `soloweave`、`feature-workflow` 升至 `0.2.2`，把空目录新项目的优先路由和功能开发前的检查写入描述与正文；`project-setup` 描述改为明确覆盖空目录，版本升至 `0.3.1`。当时尚未复测；后续 Claude Code CLI 结果见下文。
-
-### Claude Code CLI 隔离回测（2026-10-11）
-
-用户带回另一台电脑的[完整报告](claude-code-回测结果.md)和[原始会话证据](claude-code-evidence/2026-10-11/)。本机只导入并抽查报告、会话 JSONL 和截图；没有重新运行临时测试应用。ZIP 中对比的 81 个普通仓库文件除 `STATUS.md`、`HANDOFF.md` 外均与当前工作目录一致，六个 Skill 源码没有差异。
-
-- 空目录待办场景：会话 JSONL 有实际 `Skill` 工具调用，顺序为 `soloweave → project-setup → feature-workflow`；应用代码写入前先讨论并确认项目形态。报告记录 Node API 8 项断言、服务重启持久化和 Edge headless 浏览器交互通过。
-- 分维度推荐场景：会话 JSONL 有 `soloweave → project-setup` 调用；先澄清需求，再提供前端、后端、数据、认证、架构和交付的可组合候选，没有写应用代码。
-- 受阻接手场景：两个独立会话都调用了 `soloweave`，并从项目记录保持未完成状态；会话内的构建命令被权限模式拦截，独立终端实际运行 `npm run build` 退出码为 1。原始记录中未观察到 `project-continuity` 的 `Skill` 工具调用，因此此项证明了交接行为，**不证明该独立 Skill 自动触发**。
-
-测试使用真实 Claude Code CLI 2.1.218，但会话记录中的实际模型是 `glm-5.3`（启动参数写 `--model sonnet`）。结论限于该客户端和模型组合，不代表 Anthropic Sonnet 的行为。修订版 Codex、Cursor、公开 GitHub 标准安装器命令、SkillHub 更新及 Anthropic 模型仍待独立验证。
-
-### Go 退出后的当前验证（2026-10-11）
-
-当前版本见[Skills 列表](skills.md)，保留上述行为修订并清理旧 CLI 耦合说明。六个 Skill 分别通过标准安装器的隔离安装与逐文件核对，详见[独立验收记录](independent-skills-acceptance.md)。此结果不替代独立行为验证。
-
-首次 Codex CLI 尝试因执行策略受阻，保留为[历史记录](codex-retest.md)。随后在保留工作区沙箱和执行规则的新会话中完成当前候选版六项独立最小场景、空目录路由与受阻接手；12 个真实会话的实际读取及外部文件/测试核对见[最新结果](codex-behavior-results.md)。Cursor、Anthropic 模型和更多项目类型不在本轮通过范围。
-
-维护检查改用 PowerShell 7：`check-skills.ps1`、`check-docs.ps1`、`test-tooling.ps1` 和 `package-skillhub.ps1`。不需要 Go；校验器检查仓库采用的单行元数据及 SkillHub 扩展字段，不是完整 YAML 解析器。辅助 `quick_validate.py` 本轮仍因缺少 PyYAML 未运行成功。远程 CI 和新版公开安装须待提交推送后另行核对。
+Cursor、Claude Code 的 Anthropic 模型、更多项目类型及已有安装的文件冲突场景尚待实测。SkillHub 待审核版本的公开下载也需另行验收。辅助 quick_validate.py 因缺少 PyYAML 未成功；不能记为通过。自动触发不保证在每次请求中发生，手动点名的结果单独记录。

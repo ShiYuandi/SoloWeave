@@ -18,6 +18,6 @@ AI 会按需求给出可组合的候选、取舍与推荐，你可以逐项选�
 
 功能开发先搜索可复用实现；故障修复先取得可观察的复现证据。运行项目实际可用的测试或检查，并准确区分通过、失败、未运行和工具不可用。完成重要任务、受阻或准备切换账号时，AI 应维护 `.soloweave/context/` 下的 `STATUS.md`、`CHANGES.md` 和简短 `HANDOFF.md`。新的 AI 先读记录，再核对 Git 和源文件；有冲突时以实际文件为准。
 
-`PROJECT.md` 保留稳定目标和已确认决策链接；`HANDOFF.md` 至少能找到当前任务、最近改动、实际验证与结果、遗留问题、下一步和核对时间。Git 不可用就明确写不可用。不要写入密钥。纯 Skills 不生成 Go CLI 的 `approval.json`、`checkpoint.json` 或 `installation.json`，也不把人工核对称为 `soloweave check` 通过。
+`PROJECT.md` 保留稳定目标和已确认决策链接；`HANDOFF.md` 至少能找到当前任务、最近改动、实际验证与结果、遗留问题、下一步和核对时间。Git 不可用就明确写不可用。不要写入密钥。只有实际运行过的检查才能记录为通过，人工核对需要说明依据。
 
 详细验收步骤见[跨 Agent 验收](agent-acceptance.md)。

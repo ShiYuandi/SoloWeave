@@ -2,7 +2,7 @@
 
 [简体中文](../skills.md)
 
-Root [`skills/`](../../skills/) is the only maintained source. Each directory contains SKILL.md and any required resources, including SkillHub publication extensions. Current source has no Go CLI.
+Root [`skills/`](../../skills/) is the only maintained source. Each directory contains SKILL.md and any required resources, including SkillHub publication extensions. Users install the Skills directly.
 
 | Skill | Source version | Purpose |
 | --- | --- | --- |
@@ -31,4 +31,4 @@ Ask for work normally, checking that new projects clarify key decisions before i
 
 On 2026-10-11, all six source versions were submitted for review: five existing listings were updated using source ZIPs, and systematic-debugging was added through GitHub import. The dashboard showed continuity 0.2.2 published and the other five under security review. Public downloads for pending versions have not been verified. See the [status and page links](../skills.md#skillhub-发布状态); the platform remains authoritative for later changes.
 
-Versions above identify source, not completed SkillHub review. See [delivery status](../release-status.md). The packaging script produces six ZIPs and SHA256SUMS in ignored `dist/skills/`. See [releasing](releasing.md) and [legacy migration](cli-migration.md).
+Versions above identify source, not completed SkillHub review. See [delivery status](../release-status.md). The packaging script produces six ZIPs and SHA256SUMS in ignored `dist/skills/`. See [releasing](releasing.md).

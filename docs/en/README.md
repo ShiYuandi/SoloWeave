@@ -36,9 +36,9 @@ Then ask for work normally, for example:
 
 > Add user login to this project. Inspect existing code first, run the relevant tests, and leave a progress note another agent can use.
 
-You do not need to type a SoloWeave command for every task. The entry Skill routes to setup, feature development, debugging, review, or continuity as needed. The agent should inspect an existing project's code and records; you still approve major technical choices. Automatic skill selection depends on the agent and is not guaranteed. If needed, explicitly ask it to “use SoloWeave to continue this project.”
+After installation, describe your development task normally. The entry Skill routes to setup, feature development, debugging, review, or continuity as needed. The agent should inspect an existing project's code and records; you still approve major technical choices. Automatic skill selection depends on the agent and is not guaranteed. If needed, explicitly ask it to “use SoloWeave to continue this project.”
 
-**Verification status:** The Go CLI is retired. Independent installation file checks, static checks, and packaging passed. Current source versions also passed six standalone minimal scenarios, empty-directory routing, and blocked handoff in real Codex CLI sessions. See the [12-session results](../codex-behavior-results.md) and [acceptance](agent-acceptance.md). Earlier Claude Code evidence used older revisions and the actual model `glm-5.3`; Cursor and Anthropic models were not tested in this round. Actual GitHub and SkillHub progress is recorded in [delivery status](../release-status.md).
+**Verification status:** Independent installation file checks, static checks, and packaging passed. Current source versions also passed six standalone minimal scenarios, empty-directory routing, and blocked handoff in real Codex CLI sessions. See the [12-session results](../codex-behavior-results.md) and [acceptance](agent-acceptance.md). Earlier Claude Code evidence used older revisions and the actual model `glm-5.3`; Cursor and Anthropic models were not tested in this round. Actual GitHub and SkillHub progress is recorded in [delivery status](../release-status.md).
 
 ## What it does
 
@@ -50,10 +50,6 @@ You do not need to type a SoloWeave command for every task. The entry Skill rout
 | Finish important work or switch accounts | Update progress, significant changes, actual test results, and next steps for the next session. |
 
 Use existing project documentation where possible. New records live in `.soloweave/context/` and `.soloweave/decisions/`. **Install Skills directly; there is no program to download or build.** Skills maintain Markdown records and use the target project's existing checks. See the [workflow](skill-only-workflow.md) and [Skill roles](skills.md).
-
-## Legacy migration
-
-The Go CLI is retired and removed from current source. Historical Releases remain available. Preserve project decisions and user edits when moving to Skills; see the [migration guide](cli-migration.md).
 
 ## Verification and contribution
 

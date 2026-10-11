@@ -4,7 +4,7 @@
 
 **Goal:** 让 `project-setup` 从需求出发识别项目类型，按适用维度提出可组合、有依据且不受预设技术清单限制的选型建议，并经开发者确认后记录。
 
-**Architecture:** `SKILL.md` 规定交互顺序和确认边界，按需读取的参考文件只提供判断问题、比较标准和非约束性示例。行为场景和使用文档说明预期与真实客户端验收；不修改 Go CLI。
+**Architecture:** `SKILL.md` 规定交互顺序和确认边界，按需读取的参考文件只提供判断问题、比较标准和非约束性示例。行为场景和使用文档说明预期与真实客户端验收；工作流只通过 Skills 和项目文档表达。
 
 **Tech Stack:** Agent Skills Markdown、PowerShell 打包脚本、现有中英文 Markdown 文档。
 
@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- 保留六个 Skill 的名称及 SkillHub slug；本轮只修改根目录 `skills/project-setup/` 的选型行为，不改旧版 Go CLI 的内置资源或机器批准文件。
+- 保留六个 Skill 的名称及 SkillHub slug；本轮只修改根目录 `skills/project-setup/` 的选型行为及相关说明。
 - 类型覆盖 Web 前端、后端 API、全栈 Web、移动端、桌面端、CLI／自动化、数据／AI；允许混合和未列出的类型。类型用于发现问题，不限定技术。
 - 参考文件里的路线与技术只是例子，不是白名单、默认技术栈、固定排序或数量上限。AI 可依据需求提出未列出的技术和组合。
 - 已有项目以实际代码、依赖和有效 ADR 为起点；用户已给的选型不重复追问；关键新选型经明确确认才写成已批准 ADR。
@@ -35,7 +35,7 @@
 - Modify: `skills/project-setup/SKILL.md`
 
 **Interfaces:**
-- Consumes: 设计文档中“交互流程”“异常与边界”；仓库现有 `PROJECT.md`、ADR、CLI 兼容约定。
+- Consumes: 设计文档中“交互流程”“异常与边界”；仓库现有 `PROJECT.md`、ADR 和工作流约定。
 - Produces: Skill 触发描述、需求澄清 → 类型与维度识别 → 候选比较 → 组合检查 → 开发者确认 → 文档记录的流程；按需引用 `references/selection-guide.md`。
 
 - [x] **Step 1:** 核对 `SKILL.md` 当前 frontmatter、版本、slug，以及其他五个 Skill 的版本；确定本次递增版本并保持 slug 不变。

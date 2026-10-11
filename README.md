@@ -36,9 +36,9 @@ npx skills@latest add ShiYuandi/SoloWeave
 
 > 帮我给这个项目增加用户登录。先看已有实现，完成后运行相关测试，并留下下一次能接手的进度记录。
 
-无需每次输入 `/setup`、`/build` 或 `soloweave` 命令。入口 Skill 会按任务选择项目设置、功能开发、故障排查、质量检查或交接流程。首次进入长期开发的项目时，AI 会检查现有文档和代码；重大技术选型仍需你确认。自动调用由各 AI 工具决定，不能保证每次触发；必要时可明确说“使用 SoloWeave 继续这个项目”。
+安装后正常描述开发需求即可。入口 Skill 会按任务选择项目设置、功能开发、故障排查、质量检查或交接流程。首次进入长期开发的项目时，AI 会检查现有文档和代码；重大技术选型仍需你确认。自动调用由各 AI 工具决定，不能保证每次触发；必要时可明确说“使用 SoloWeave 继续这个项目”。
 
-**当前验证状态：**已移除 Go CLI，六项独立安装文件核对、静态检查与打包通过；当前源码版本也通过了真实 Codex CLI 的六项独立最小场景、空目录路由及受阻接手回测。12 个会话的证据和边界见[行为结果](docs/codex-behavior-results.md)与[验收记录](docs/agent-acceptance.md)。此前 Claude Code CLI 的证据使用较早版本，实际模型为 `glm-5.3`；Cursor 和 Anthropic 模型本轮未实测。GitHub 与 SkillHub 的实际更新进度见[交付状态](docs/release-status.md)。
+**当前验证状态：**六项独立安装文件核对、静态检查与打包通过；当前源码版本也通过了真实 Codex CLI 的六项独立最小场景、空目录路由及受阻接手回测。12 个会话的证据和边界见[行为结果](docs/codex-behavior-results.md)与[验收记录](docs/agent-acceptance.md)。此前 Claude Code CLI 的证据使用较早版本，实际模型为 `glm-5.3`；Cursor 和 Anthropic 模型本轮未实测。GitHub 与 SkillHub 的实际更新进度见[交付状态](docs/release-status.md)。
 
 ## 它会做什么
 
@@ -50,10 +50,6 @@ npx skills@latest add ShiYuandi/SoloWeave
 | 完成重要任务或切换账号 | 更新项目状态、重要变更、真实测试结果和下一步，让新会话从文件接手。 |
 
 项目记录优先沿用已有文档；需要新建时放在 `.soloweave/context/` 和 `.soloweave/decisions/`。**安装 Skills 就可以使用，无需下载或构建程序。** Skills 维护 Markdown 记录，实际验证使用目标项目已有命令。详见[使用指南](docs/skill-only-workflow.md)和[六个 Skill 的分工](docs/skills.md)。
-
-## 旧版用户迁移
-
-旧 Go CLI 已停止维护并从当前源码移除；历史 Release 和旧用户的项目资料继续保留。迁移时先核对已确认决定和用户修改，再安装新版 Skills；步骤见[迁移指南](docs/cli-migration.md)。
 
 ## 验证与参与
 

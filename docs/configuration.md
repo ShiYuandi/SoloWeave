@@ -17,5 +17,3 @@
 候选技术和架构在开发者确认前保持“待确认”；确认后由 Agent 记录，不需要 `approve` 命令。后续重大变化另建 ADR，说明取代的决定。类型和参考指南不限制可选择的技术。
 
 Skills 不提供机器批准摘要或自动过期检测。接手时核对记录、实际文件和 Git 状态；不能仅凭文档里的“已完成”判断项目可运行。详见[项目连续性](project-continuity.md)。
-
-已有旧 CLI 项目请按[迁移指南](cli-migration.md)处理；[旧 YAML 字段说明](archive/go-cli/configuration.md)仅供历史参考。

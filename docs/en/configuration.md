@@ -8,4 +8,4 @@ Reuse existing project documentation first. For continuing work, default records
 
 Keep proposed technologies and architecture pending until the developer confirms them. Record alternatives, reasons, constraints, and confirmation in an ADR; significant later changes supersede earlier decisions with a new ADR.
 
-Skills do not supply machine approval digests or automatic stale-check detection. Verify records against actual files and Git. See [continuity](project-continuity.md), [legacy migration](cli-migration.md), and the [archived YAML guide](../archive/go-cli/en/configuration.md).
+Skills do not supply machine approval digests or automatic stale-check detection. Verify records against actual files and Git. See [continuity](project-continuity.md).

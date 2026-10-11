@@ -10,4 +10,4 @@
 
 新会话收到“请继续这个项目”时，先读目标、状态、交接和相关 ADR，再核对源码与 Git。有明确下一步时先推进已知工作；只有关键决定或目标确实缺失时再询问。交接过期时说明差异，以当前文件为准。
 
-Skills 维护 Markdown 记录，不提供旧 CLI 的机器检查点。详细使用见[Skills 工作流](skill-only-workflow.md)，旧项目见[迁移指南](cli-migration.md)。
+Skills 维护 Markdown 记录，接手时需核对文件与实际验证结果。详细使用见[Skills 工作流](skill-only-workflow.md)。
