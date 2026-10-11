@@ -8,7 +8,11 @@ SoloWeave is a set of AI development Skills for solo developers and teams of 1â€
 
 ## Why I built SoloWeave
 
-While using AI to write code, I found that **building one feature is easier than keeping an entire project coherent over time**. An agent may **choose a stack or directory structure before I approve it**, then introduce another approach later or **rewrite functionality that already exists**.
+While using AI to write code, I found that **building one feature is easier than keeping an entire project coherent over time**.
+
+When starting a project, AI usually proposes technologies and asks me to confirm them. But I may still not understand **why those technologies were recommended, which alternatives fit, or what the tradeoffs are**. I want it to **understand my requirements first, then discuss relevant choices such as frontend, backend, database, and architecture separately**, so I can make an informed decision.
+
+As development continues, AI may also drift from agreed conventions or overlook existing components and functions, **rewriting functionality that already exists**.
 
 **Losing development context** is even more frustrating. After I switch accounts, models, or tools, the next agent does not know the project's goal, approved architecture, completed work, or open problems. I have to **explain the project again and ask the AI to reexamine existing work**.
 
