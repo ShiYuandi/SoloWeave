@@ -29,6 +29,6 @@ Ask for work normally, checking that new projects clarify key decisions before i
 
 ## SkillHub publication status
 
-The last recorded public versions are entry 0.1.3 and the other four legacy Skills 0.1.2; systematic-debugging is not listed yet. See the [Chinese status and page links](../skills.md#skillhub-发布状态). No online update was performed in this round.
+On 2026-10-11, all six source versions were submitted for review: five existing listings were updated using source ZIPs, and systematic-debugging was added through GitHub import. The dashboard showed continuity 0.2.2 published and the other five under security review. Public downloads for pending versions have not been verified. See the [status and page links](../skills.md#skillhub-发布状态); the platform remains authoritative for later changes.
 
 Versions above identify source, not completed SkillHub review. See [delivery status](../release-status.md). The packaging script produces six ZIPs and SHA256SUMS in ignored `dist/skills/`. See [releasing](releasing.md) and [legacy migration](cli-migration.md).

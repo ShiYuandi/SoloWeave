@@ -27,12 +27,14 @@
 - 首次 Codex CLI 读取拒绝作为历史保留，后续回测已经成功；未关闭沙箱或执行规则，不能据此断言旧失败的单一根因。
 - Cursor、Anthropic 模型及更多项目类型未在本轮实测；一次最小场景通过不能保证所有任务总会自动触发。
 - skill-creator 辅助 quick_validate.py 因缺少 PyYAML 未成功；不影响仓库自有脚本已运行的结果。
-- 远端 CI、新版 GitHub 安装及 SkillHub 发布未执行；仍未提交或推送。公开页面状态沿用上次记录，未在本轮重新在线核对。
+- SkillHub 六项审核已提交；核对时交接 0.2.2 已发布，其余五项安全审核中，待审版本公开下载尚未验收。见 docs/release-status.md。
 
 ## 下一步
 
-当前本地行为验收已完成；发布前确认最终差异和原始会话资料，取得明确指令后中文提交、推送、检查 CI、验证公开安装并更新 SkillHub。Cursor、Anthropic 模型和更多场景作为后续独立回归。不要重新全局安装用户已删除的 Skills。
+当前本地行为验收和本轮授权的线上提交已完成。后续核对 SkillHub 审核及公开下载；Cursor、Anthropic 模型和更多场景作为后续独立回归。不要重新全局安装用户已删除的 Skills。
 
 ## 本轮线上操作授权
 
-开发者已明确授权中文提交、推送，确认 GitHub CI 与公开安装后提交六项 SkillHub 审核。当前正在执行，实际进度见 docs/release-status.md；不把待审核写成已发布。
+开发者已明确授权中文提交、推送，确认 GitHub CI 与公开安装后提交六项 SkillHub 审核。已执行：迁移 eb452f5、CI 修复 135e13c 推送至 master；135e13c 远端 CI 通过。15 项检查本来已通过，首次 CI 误用负例子进程退出码，修复明确成功退出码后复验成功。
+
+公开 GitHub 安装使用 skills@1.7.1，在全新临时项目选择 Codex/Claude Code/Cursor，安装六项；.agents/skills 与 .claude/skills 共 14 个文件逐项 SHA256 与源码一致。没有全局安装。SkillHub 五项通过 ZIP 更新，故障排查通过 GitHub 导入新增；六项均已提交，项目设置含参考资料。截图在 dist/acceptance/skillhub-submitted-2026-10-11.jpg；实际快照见 docs/release-status.md。

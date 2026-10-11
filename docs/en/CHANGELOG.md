@@ -2,12 +2,13 @@
 
 [简体中文](../../CHANGELOG.md)
 
-## Unreleased: Skills-first migration
+## Skills-first migration (source pushed; SkillHub review tracked separately)
 
 - Retired the Go CLI source, dependencies, embedded legacy Skills, builds, and executable release workflow. Archived obsolete machine records and guides; added bilingual migration and Skills release instructions.
 - Added PowerShell 7 validation, documentation link checks, package regression tests, and Skills-only CI. Fixed ZIP timestamps make repeated packaging reproducible.
-- Removed CLI coupling: entry/feature `0.2.3`, setup `0.3.2`, continuity `0.2.2`, review `0.2.1`; debugging remains `0.1.0`. Independent installation file checks passed; independent live behavior remains unverified.
-- Imported Claude Code CLI evidence (actual model `glm-5.3`). This round's real Codex CLI attempt was blocked by read policy, not reported as passing. Local changes are not published.
+- Removed CLI coupling: entry/feature `0.2.3`, setup `0.3.2`, continuity `0.2.2`, review `0.2.1`; debugging remains `0.1.0`. Independent installation checks and six minimal live Codex scenarios passed.
+- Imported Claude Code CLI evidence (actual model `glm-5.3`). The first Codex read failure remains historical; subsequent testing completed 12 real temporary sessions, including new-project routing and blocked handoff, with reviewed receipts.
+- Committed and pushed with Chinese messages. GitHub CI passed after fixing a retained negative-test exit code. Public GitHub installation matched source, and all six SkillHub reviews were submitted; see [delivery status](../release-status.md).
 
 - An empty-directory todo trial showed the agent skipping project selection and writing a static page. `soloweave` and `feature-workflow` are now `0.2.2` with an explicit new-project routing gate; `project-setup` is `0.3.1` and names empty directories in its description. Live retesting is pending.
 - `project-setup` is now `0.3.0`: it discovers requirements and project type before comparing independently combinable choices by relevant dimension. Its guide offers decision questions and examples without limiting recommendations. SkillHub packages now include required reference files.

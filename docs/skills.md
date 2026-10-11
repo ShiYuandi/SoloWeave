@@ -31,6 +31,6 @@ npx skills@latest add ShiYuandi/SoloWeave
 
 ## SkillHub 发布状态
 
-此前公开的五个旧版 Skill：[入口](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave)、[项目设置](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-setup)、[功能开发](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-feature-workflow)、[项目交接](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-continuity)、[质量检查](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-quality-review)。最近记录的公开入口版本为 0.1.3，其余四项为 0.1.2；调试 Skill 尚未上架。本轮未在线更新，公开状态以实际页面为准。
+2026-10-11 已更新原有五项并通过 GitHub 导入新增故障排查，六项均已提交对应源码版本审核。管理页核对时项目交接 0.2.2 已发布，其余五项安全审核中；待审版本的公开下载尚未验收。原有页面：[入口](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave)、[项目设置](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-setup)、[功能开发](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-feature-workflow)、[项目交接](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-continuity)、[质量检查](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-quality-review)。故障排查待审核后核对公开页面；实时状态以平台为准。
 
 上表记录源码版本，不代表 SkillHub 已完成审核。本轮实际进度见[交付状态](release-status.md)。维护者运行 `scripts/package-skillhub.ps1` 生成 `dist/skills/` 下的六个 ZIP 和 SHA256SUMS。步骤见[发布指南](releasing.md)，旧程序用户见[迁移指南](cli-migration.md)。

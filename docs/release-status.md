@@ -1,6 +1,6 @@
 # 本轮交付状态
 
-日期：2026-10-11。开发者已明确授权中文提交、推送、确认 GitHub CI 与公开安装后提交六项 SkillHub 审核。
+日期：2026-10-11。开发者明确授权的提交、推送、GitHub 验证和六项 SkillHub 审核提交已完成。
 
 ## 本地验收
 
@@ -12,9 +12,24 @@
 
 | 项目 | 当前状态 |
 | --- | --- |
-| 中文提交与推送 | 已授权，正在执行。 |
-| GitHub CI | 等待本轮推送后核对。 |
-| 公开 GitHub 安装 | 等待本轮推送后核对。 |
-| SkillHub | 管理页已核对：入口 0.1.3、其余四项 0.1.2 均已发布，调试尚未上架。本轮六项更新待提交。 |
+| 中文提交与推送 | 迁移提交 `eb452f5`、CI 修复 `135e13c` 已推送至 origin/master。 |
+| GitHub CI | [135e13c 检查通过](https://github.com/ShiYuandi/SoloWeave/actions/runs/38146932426)。首次检查的 15 项全部通过，但负例进程残留退出码导致失败；已明确返回成功退出码并经远端复验。 |
+| 公开 GitHub 安装 | skills@1.7.1 从 ShiYuandi/SoloWeave 成功安装六项到全新临时项目，选择 Codex、Claude Code、Cursor；两套目录共 14 个文件与源码字节一致。未改动用户全局安装。 |
+| SkillHub | 五项旧 Skill 已上传对应源码包，故障排查通过 GitHub 导入新增；六项均已提交审核。项目设置包含 selection-guide.md。 |
 
-提交审核不等于审核通过；必须分别核对管理页、公开版本和下载。当前版本、链接和发布步骤见 [Skills](skills.md)与[发布指南](releasing.md)。
+### SkillHub 提交后状态
+
+2026-10-11 管理页核对结果；这是当时快照，后续以平台页面为准。
+
+| Skill | 版本 | 状态 |
+| --- | --- | --- |
+| soloweave | 0.2.3 | 安全审核中 |
+| project-setup | 0.3.2 | 安全审核中 |
+| feature-workflow | 0.2.3 | 安全审核中 |
+| project-continuity | 0.2.2 | 已发布 |
+| quality-review | 0.2.1 | 安全审核中 |
+| systematic-debugging | 0.1.0 | 安全审核中 |
+
+管理页可能在审核中继续显示旧名称；入口和设置已提交源码中的中文名称与概述。更新表单使用 ZIP，新建调试项使用 GitHub 导入。截图保存在本地忽略目录 `dist/acceptance/skillhub-submitted-2026-10-11.jpg`。
+
+提交审核不等于审核通过；五项待审版本的公开下载尚未验收。当前版本、链接和发布步骤见 [Skills](skills.md)与[发布指南](releasing.md)。未创建新 GitHub Release，既有 CLI 历史发布保留。
