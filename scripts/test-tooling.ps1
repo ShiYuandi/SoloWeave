@@ -113,3 +113,7 @@ try {
         if (Test-Path -LiteralPath $resolvedScratch) { Remove-Item -LiteralPath $resolvedScratch -Recurse -Force }
     }
 }
+
+# Expected failing child processes leave LASTEXITCODE at 1. Report the suite's
+# successful result explicitly so CI wrappers do not reuse that negative case.
+exit 0
