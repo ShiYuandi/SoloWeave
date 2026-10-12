@@ -1,12 +1,28 @@
 # 交付状态与历史快照
 
-## 当前五项版本：GitHub 更新
+## 当前五项交付核对（2026-10-12）
 
-2026-10-11 开发者确认移除独立故障排查。当前源码为五项，入口和功能开发为 0.2.4；本轮验证见[验收记录](agent-acceptance.md)。本地验收完成后，开发者已明确授权中文提交并推送至 GitHub；实际提交、远端与 CI 结果按 Git/GitHub 核对。本轮未更新 SkillHub，也未卸载用户已有安装。旧 SkillHub 条目需在取得平台更新授权后核对处理。
+GitHub 已推送 [`37c7062`](https://github.com/ShiYuandi/SoloWeave/commit/37c7062)，对应 [CI 通过](https://github.com/ShiYuandi/SoloWeave/actions/runs/38151366651)。本轮开发者已要求继续公开安装验收和 SkillHub 同步。
+
+- 标准安装器 skills@1.7.1 从公开 ShiYuandi/SoloWeave 仓库发现五项并安装到全新临时项目；选择 Codex、Claude Code、Cursor，.agents/skills/ 与 .claude/skills/ 共 12 个文件与源码字节一致。没有修改全局 Skills，也未测试已有用户修改文件的冲突合并。
+- 入口与功能开发 0.2.4 已上传对应源码 ZIP 和中文变更说明；两项均已发布，公开下载包与源码字节一致。
+- 旧故障排查 0.1.0 已执行下架，刷新管理页确认“已下架”；平台说明为从公开列表隐藏，管理页仍保留“上架”操作，没有永久删除。
+
+| Skill | 源码版本 | 最近核对的 SkillHub 状态 | 公开下载验收 |
+| --- | --- | --- | --- |
+| soloweave | 0.2.4 | 已发布 | SKILL.md 与源码字节一致 |
+| feature-workflow | 0.2.4 | 已发布 | SKILL.md 与源码字节一致 |
+| project-setup | 0.3.2 | 已发布 | SKILL.md 与 references/selection-guide.md 均一致 |
+| project-continuity | 0.2.2 | 已发布 | SKILL.md 与源码字节一致 |
+| quality-review | 0.2.1 | 已发布 | SKILL.md 与源码字节一致 |
+
+五份已发布公开包共六份源码资源全部匹配。平台另在每包加入 _meta.json 分发元数据；分别核对了 slug 与版本，不将其误认作仓库源码文件。核对后的安装和下载哈希记录保存在本机忽略目录 dist/acceptance/public-five-2026-10-12/，下架与管理页截图为 dist/acceptance/skillhub-five-2026-10-12-confirmed.png；入口最终发布截图为 dist/acceptance/skillhub-entry-published-2026-10-12.png。上述为核对时快照，后续以平台为准。
+
+开发者随后明确要求清理目录并推送，本轮验收与交接记录随整理一并纳入中文提交；实际提交和远端状态以 Git 为准。完整项目回测进展见[开发计划](development-plan.md)与[完整项目验收](end-to-end-acceptance.md)。
 
 ## 历史六项交付快照
 
-以下内容记录此前六项交付，不代表当前五项已经发布；版本和测试结果按当时事实保留。
+以下内容记录此前六项交付，不作为当前五项状态的依据；版本和测试结果按当时事实保留。
 
 
 日期：2026-10-11。开发者明确授权的提交、推送、GitHub 验证和六项 SkillHub 审核提交已完成。

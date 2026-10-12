@@ -39,6 +39,8 @@ Also try a desktop project and one unlisted project type to check that the agent
 
 ## Current five-Skill revision
 
+2026-10-12 update: public installation passed with 12 matching files. All five current SkillHub packages are published, with six matching source resources. Three fresh Codex sessions covered selection, implementation and resumption from only “请继续这个项目”. External integration tests passed twice (2 tests per snapshot), followed by real browser add/complete/delete and close/restart recovery. Internal environment failures remain separate from external success. This does not rerun every Skill independently. See the [full-project results](end-to-end-acceptance.md) and [receipt](../codex-evidence/2026-10-12-public-five.json).
+
 Entry and feature development are 0.2.4; dedicated debugging and its route were removed. Five-Skill resource checks, all document links, 15 maintenance checks, seven fixtures, and local-source independent/full-set installations passed. Three ordinary-request Codex scenarios and one explicitly invoked blocked checkpoint passed. One additional review-only request read an older global quality Skill and is not evidence for the revised feature Skill. See the [detailed results and limits](../five-skills-acceptance.md) and [reviewed receipt](../codex-evidence/2026-10-11-five-skills.json). The six-Skill results below remain historical.
 
 ## Earlier six-Skill results (2026-10-11)
@@ -52,4 +54,4 @@ Entry and feature development are 0.2.4; dedicated debugging and its route were 
 
 ## Pending validation
 
-Cursor, Anthropic models in Claude Code, broader project types, and conflicts with modified installations remain untested. Public downloads of pending SkillHub versions need verification. The auxiliary quick_validate.py attempt failed because PyYAML was missing. Automatic invocation is not guaranteed; report explicit invocation separately.
+Cursor, Anthropic models in Claude Code, broader project types, and conflicts with modified installations remain untested. The five current SkillHub downloads were verified this round; future versions need fresh checks. The auxiliary quick_validate.py attempt failed because PyYAML was missing. Automatic invocation is not guaranteed; report explicit invocation separately.

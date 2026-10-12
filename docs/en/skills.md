@@ -28,6 +28,6 @@ Ask for work normally, checking that new projects clarify key decisions before i
 
 ## SkillHub publication status
 
-Local source now contains five Skills; entry and feature development are 0.2.4. The developer has authorized committing and pushing this revision to GitHub; SkillHub synchronization remains pending. GitHub installations and platform downloads still reflect their actual online versions. The earlier six-Skill submission remains a [historical snapshot](../release-status.md), not publication proof for this revision. See the [page links](../skills.md#skillhub-发布状态).
+The five Skills are available in GitHub commit 37c7062; public installation was verified on 2026-10-12. Entry and feature development 0.2.4 are published on SkillHub. Setup 0.3.2, continuity 0.2.2, and quality review 0.2.1 are published. All six source resources in the five published packages matched the repository. Each package also contains platform-generated _meta.json; its slug/version were checked separately. The older debugging listing was unpublished and remains recoverable. See the [current delivery snapshot](../release-status.md) and [page links](../skills.md#skillhub-发布状态).
 
 Versions above identify source, not completed SkillHub review. See [delivery status](../release-status.md). The packaging script produces five ZIPs and SHA256SUMS in ignored `dist/skills/`. See [releasing](releasing.md).

@@ -16,14 +16,16 @@ SoloWeave provides AI development Skills.
 | `README.md`, `CONTRIBUTING.md`, `docs/en/` | Project entry, contribution rules, and English public documentation. |
 | `docs/design.md`, `docs/development-plan.md` | Current product design and development plan. |
 | `docs/configuration.md`, `docs/project-continuity.md` | Project records, decisions, and handoff. |
-| `docs/agent-acceptance.md`, `docs/behavior-testing.md`, `docs/five-skills-acceptance.md` | Acceptance criteria, live-test method, and current five-Skill results; historical evidence remains separate. |
+| `docs/agent-acceptance.md`, `docs/behavior-testing.md`, `docs/five-skills-acceptance.md`, `docs/end-to-end-acceptance.md` | Acceptance criteria, live-test method, and current five-Skill results; historical evidence remains separate. |
 | `docs/codex-evidence/`, `docs/claude-code-evidence/` | Reviewed receipts or original client evidence. |
-| `docs/superpowers/` | Detailed project-selection design and implementation records. |
+| `docs/archive/` | Historical selection design and completed implementation plans; current rules are in docs/design.md and skills/. |
 | `docs/releasing.md`, `docs/release-status.md` | Publication workflow and verified online status. |
 | `.soloweave/context/`, `.soloweave/decisions/` | Repository continuity and architecture decisions. |
 | `AGENTS.md` | Repository rules for agents. |
 | `LICENSE`, `SECURITY.md`, `CODE_OF_CONDUCT.md` | Licensing, security, and community policy. |
-| `.tools/`, `dist/` | Ignored local caches, packages, and test logs. |
+| `dist/skills/`, `dist/acceptance/` | Ignored current packages and original local test evidence. |
+| `dist/archive/` | Recoverable old package snapshots, fixtures, and local tool remnants; excluded from Git. |
+| `.tools/` | Optional ignored, regenerable tool cache; removed during cleanup. |
 | `.git/` | Git metadata. |
 
 Target projects may reuse existing documentation or store context under `.soloweave/context/` and `.soloweave/decisions/`. Check existing installations and preserve user edits before installing or updating.

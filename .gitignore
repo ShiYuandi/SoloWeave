@@ -2,6 +2,11 @@
 /.tools/
 /dist/
 
+# 本机依赖和脚本缓存
+node_modules/
+__pycache__/
+*.py[cod]
+
 # 本机编辑器与操作系统文件
 .idea/
 .vscode/

@@ -30,6 +30,6 @@ npx skills@latest add ShiYuandi/SoloWeave
 
 ## SkillHub 发布状态
 
-本地源码现提供五项，入口与功能开发为 0.2.4。本轮 GitHub 提交推送已取得开发者授权；SkillHub 尚未同步。从 GitHub 安装和平台下载的内容以线上实际版本为准。此前六项提交审核的状态仅保留为[历史交付快照](release-status.md)，不代表当前五项版本已经发布。保留的页面：[入口](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave)、[项目设置](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-setup)、[功能开发](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-feature-workflow)、[项目交接](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-continuity)、[质量检查](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-quality-review)。
+当前五项已在 GitHub 提交 37c7062 中提供，并于 2026-10-12 完成公开安装核对。SkillHub 入口和功能开发 0.2.4 均已发布。项目设置 0.3.2、项目交接 0.2.2、质量检查 0.2.1 已发布；这五项已发布版本的公开包共六份源码资源均与仓库一致；平台新增 _meta.json 的 slug/version 另行核对。旧故障排查已下架，未永久删除；详细状态见[交付记录](release-status.md)。页面：[入口](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave)、[项目设置](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-setup)、[功能开发](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-feature-workflow)、[项目交接](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-continuity)、[质量检查](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-quality-review)。
 
-上表记录源码版本，不代表 SkillHub 已完成审核。本轮实际进度见[交付状态](release-status.md)。维护者运行 `scripts/package-skillhub.ps1` 生成 `dist/skills/` 下的五个 ZIP 和 SHA256SUMS。步骤见[发布指南](releasing.md)。
+上表记录源码版本；SkillHub 状态为核对时快照，本轮实际进度见[交付状态](release-status.md)。维护者运行 `scripts/package-skillhub.ps1` 生成 `dist/skills/` 下的五个 ZIP 和 SHA256SUMS。步骤见[发布指南](releasing.md)。

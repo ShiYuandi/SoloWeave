@@ -1,0 +1,259 @@
+{
+  "date": "2026-10-12",
+  "timezone": "Asia/Shanghai",
+  "source_commit": "37c70626bc5a6b6881998ef7a3cc5e092d809ed9",
+  "client": "codex-cli 0.162.0-alpha.17.2",
+  "configured_model": "gpt-6.1-sol",
+  "model_override": false,
+  "source_skills": {
+    "feature-workflow": {
+      "version": "0.2.4",
+      "sha256": "b1d04898284d74407bbe08954b60d58554699043eb95d20efea1cee0ffc319d5"
+    },
+    "project-continuity": {
+      "version": "0.2.2",
+      "sha256": "5b86377d3fff285cc198b6608441a338e746d436ef1c723b7c68a3dba755f494"
+    },
+    "project-setup": {
+      "version": "0.3.2",
+      "sha256": "a1771f5fa336c5be14798386fc40b5dc6c19f39b3cd7de44d23b927e338620f7"
+    },
+    "quality-review": {
+      "version": "0.2.1",
+      "sha256": "6160407797e6b6f05ac4339d500d58d771f91fd0597d13f6f58f5c8a2c0841ac"
+    },
+    "soloweave": {
+      "version": "0.2.4",
+      "sha256": "1e50982c6a32187036d492f946c508a61313b59319276f18d6f132184160ad81"
+    }
+  },
+  "public_install": {
+    "installer": "skills@1.7.1",
+    "source": "ShiYuandi/SoloWeave",
+    "discovered_skills": 5,
+    "platforms": [
+      "codex",
+      "claude-code",
+      "cursor"
+    ],
+    "matched_files": 12,
+    "global_install_modified": false,
+    "existing_user_edits_conflicts": "not tested"
+  },
+  "skillhub": {
+    "published_packages": [
+      {
+        "skill": "project-setup",
+        "version": "0.3.2",
+        "result": "passed",
+        "resources": {
+          "references/selection-guide.md": "a04b944a1cc8628b10797929a7a5b135b71d78ea8dffc4ef2a4f1424cbe96150",
+          "SKILL.md": "a1771f5fa336c5be14798386fc40b5dc6c19f39b3cd7de44d23b927e338620f7"
+        },
+        "platform_metadata": {
+          "file": "_meta.json",
+          "slug": "shiyuandi-soloweave-project-setup",
+          "version": "0.3.2"
+        },
+        "zip_sha256": "829807c55275aa01a7faf7ed4185083e6039642541d0f065db7f2fa1ed185796"
+      },
+      {
+        "skill": "quality-review",
+        "version": "0.2.1",
+        "result": "passed",
+        "resources": {
+          "SKILL.md": "6160407797e6b6f05ac4339d500d58d771f91fd0597d13f6f58f5c8a2c0841ac"
+        },
+        "platform_metadata": {
+          "file": "_meta.json",
+          "slug": "shiyuandi-soloweave-quality-review",
+          "version": "0.2.1"
+        },
+        "zip_sha256": "cc79fdf7a2b7296ba4fd2ca0b6a4a28f8d91584d78a692cb66921e5c319c26ff"
+      },
+      {
+        "skill": "project-continuity",
+        "version": "0.2.2",
+        "result": "passed",
+        "resources": {
+          "SKILL.md": "5b86377d3fff285cc198b6608441a338e746d436ef1c723b7c68a3dba755f494"
+        },
+        "platform_metadata": {
+          "file": "_meta.json",
+          "slug": "shiyuandi-soloweave-project-continuity",
+          "version": "0.2.2"
+        },
+        "zip_sha256": "3b00ad70d0ca1c01a9694ea761f57cffcc9a7bed378d2269a196e60344cda7f2"
+      },
+      {
+        "skill": "feature-workflow",
+        "version": "0.2.4",
+        "result": "passed",
+        "resources": {
+          "SKILL.md": "b1d04898284d74407bbe08954b60d58554699043eb95d20efea1cee0ffc319d5"
+        },
+        "platform_metadata": {
+          "file": "_meta.json",
+          "slug": "shiyuandi-soloweave-feature-workflow",
+          "version": "0.2.4"
+        },
+        "zip_sha256": "156fa3c010ac474b29d329954a2a6293d8ac16760ef402fc5bfe9092a1f9da16"
+      },
+      {
+        "skill": "soloweave",
+        "version": "0.2.4",
+        "result": "passed",
+        "resources": {
+          "SKILL.md": "1e50982c6a32187036d492f946c508a61313b59319276f18d6f132184160ad81"
+        },
+        "platform_metadata": {
+          "file": "_meta.json",
+          "slug": "shiyuandi-soloweave",
+          "version": "0.2.4"
+        },
+        "zip_sha256": "55d96292f8f6ad8af727b9bd76d3c0807ad3aa83b7423bd7086df8799a664a79"
+      }
+    ],
+    "retired_debugging": "unpublished; recoverable; not permanently deleted"
+  },
+  "other_clients": {
+    "claude": "no callable CLI found; behavior not tested",
+    "cursor": "no callable CLI found; behavior not tested"
+  },
+  "end_to_end": {
+    "scenarios": [
+      {
+        "name": "e2e-propose",
+        "prompt": "我想在当前目录开发一个前后端分离的待办应用，支持新增、完成和删除任务，关闭后再次打开仍保留数据。只在本机单用户使用，界面简洁、中文。我熟悉 JavaScript，希望依赖少，不需要登录或云部署。请根据目录现状开始处理。",
+        "result": "passed within stated scope",
+        "read_local_skills": [
+          "soloweave",
+          "project-setup",
+          "feature-workflow",
+          "project-continuity"
+        ],
+        "observation": "Ordinary request; dimension-based choices, pending records, no application or approved ADR before confirmation.",
+        "original_log_sha256": {
+          ".events.jsonl": "5058621d1762f5060bfc5d2ef3a585f95cde9c80722d765e28fab10e04102621",
+          ".stderr.txt": "b8a7309861da8eec4865a47cb9325f9fb993bdd66a5b8d7f7d825359b94a92c5",
+          ".result.md": "7aa7d9322680637f2edbf79cba2c3f7ee103e6c22dc7d417d730b18a09cd50e9",
+          ".run.json": "1f6d97d4407207c4f03eb66ec1d19223c7fa5fd89a278acd25513dd58c52ec43"
+        }
+      },
+      {
+        "name": "e2e-build",
+        "prompt": "这是隔离验收项目的确认：采用刚才建议的原生 HTML/CSS/JavaScript 前端、Node.js 内置 HTTP 后端和本地 JSON 持久化。无需第三方依赖，前后端分开运行。项目最终仍要求新增、完成、删除任务和重启后恢复。本轮先实现新增、完成与持久化，并运行实际验证；删除功能明确留给下一次会话，作为已确定的下一步，不要在本轮实现。请维护项目目标、已确认选型、真实验证结果、未完成任务及可直接执行的交接记录。",
+        "result": "passed within stated scope",
+        "read_local_skills": [
+          "soloweave",
+          "project-setup",
+          "feature-workflow",
+          "project-continuity"
+        ],
+        "observation": "Test-driver approval; implements scoped add/complete/persistence; approved ADR and four context documents; delete clearly handed off. Original integration runner blocked by spawn EPERM; direct services and restart passed.",
+        "original_log_sha256": {
+          ".events.jsonl": "7b6ada0a561a1fe0e751a7373673f9078d289a02b48198ef26279e203ce36ec5",
+          ".stderr.txt": "9833ea8cfcca98aea5fd4cd31c2056a624445ba3e2c737028fe97c6f1e9bb8c5",
+          ".result.md": "6876d48a26e7e6487d4a6def6ed7afc84c5cae4c8b81c541c80c6d20bd229862",
+          ".run.json": "a97a756fc901aa16ec36f72fa59255abae24aa48800c0f276bb8c45e38426d89"
+        }
+      },
+      {
+        "name": "e2e-resume",
+        "prompt": "请继续这个项目",
+        "result": "passed within stated scope",
+        "read_local_skills": [
+          "soloweave",
+          "project-continuity",
+          "feature-workflow"
+        ],
+        "observation": "Fresh session prompt only asks to continue; reads records and source, implements pending delete with existing helpers; direct service/restart checks pass; updates handoff honestly.",
+        "original_log_sha256": {
+          ".events.jsonl": "42405885a71d3110bf15a6b5e5baea1fb6d286e3e427fbc93ec75faf96254527",
+          ".stderr.txt": "16eb2458e353d25eae0e3ff05aa9d4563f4ca427300708818e6d7ccc7178bda0",
+          ".result.md": "324d5ab9f5845e057cb893dc9faf751421eee99d9f724187a98d67dcf8c2e295",
+          ".run.json": "77967bde9940ca8339ea23b30e4b05dee8c5ed1e702acca107afc7752a951cc2"
+        }
+      }
+    ],
+    "approved_ADR_preserved": true,
+    "external_integration": {
+      "after_build": {
+        "passed": 2,
+        "failed": 0
+      },
+      "after_resume": {
+        "passed": 2,
+        "failed": 0
+      }
+    },
+    "agent_environment_limits": [
+      "spawn EPERM blocks automatic subprocess integration tests",
+      "resume session had no browser surface"
+    ],
+    "external_browser": {
+      "result": "passed",
+      "checks": [
+        "add",
+        "mark complete",
+        "delete",
+        "close tab",
+        "stop and restart backend",
+        "reopen new tab retains completed task and deleted task stays absent"
+      ],
+      "test_services_stopped": true
+    },
+    "not_tested": [
+      "mobile layout",
+      "browser failure-path interaction",
+      "new project types beyond full-stack Web",
+      "user-edited install conflicts",
+      "Claude Code and Cursor live behavior"
+    ]
+  },
+  "external_log_sha256": {
+    "after-build-external-test.txt": "9b3d74239e35b520b5f09cf596d3389f70ae5b63b397ef4a8b93af3e83e22be7",
+    "after-resume-external-test.txt": "117d49d814a724f883a7d6d6bb8016bad7a44d985faf1989fcba8a90e8912dbd"
+  },
+  "snapshot_sha256": {
+    "after-build": {
+      ".soloweave/context/CHANGES.md": "8543422b24dacb5cfb0ed606af0bd595cb57d9059a8bb653e46d6575ca8b0a91",
+      ".soloweave/context/HANDOFF.md": "d82183d6c904101b574719bc05d7f6918025ff859fca04f71d149b6118339d64",
+      ".soloweave/context/PROJECT.md": "41010c27f1d167d4d297895165ca5168a163225e0886f40bfea43a1669171926",
+      ".soloweave/context/STATUS.md": "1177b24a3b2727755296b35f5e5f518ad8f7d689b85c487c3c987bd9a7816bd8",
+      ".soloweave/decisions/ADR-0001.md": "041835f61865c7ee55f2c30d5576224d47a7844eb7856f51b16b19233c0dcb1c",
+      "backend/server.js": "14a78b8ce48092b15ae6da68cc3c0d600af1e1590c30e0a27855d0dde0ea6ec2",
+      "frontend/app.js": "0251679f5ab4a9ace955156a6d017ccc451dc1c8faaf75d36c32728146d02df4",
+      "frontend/index.html": "6c017f35ba3758219b3ef3a0f06c8485f6d7915d75693955d98397422463bbf6",
+      "frontend/server.js": "67b53f5f2739c90c030b24ba32551be9dc605757eb7e0fdd8eedacfe565fec02",
+      "frontend/style.css": "71d9b58e30fe192e33d0dea17296d544b5a8d664bb0e9724989b0842697aa3aa",
+      "README.md": "b91d5621de6163e11f8c3eb1266cfe5709717951715c45137cc78bb38ae7d26f",
+      "tests/integration.test.js": "b9f74e9f94878a9888211bb33cb95a7ce531588baad713475126ecea3549e9ec",
+      "tests/verify-running.js": "3611c19d5013a51d5f90930ba215217ef24d8ef7b55103d404248a81e7ed4174"
+    },
+    "after-resume": {
+      ".soloweave/context/CHANGES.md": "d7b71e3f168319326e5ac788271b44aa82fe63f2eb7012f5fd3605f422aa47f1",
+      ".soloweave/context/HANDOFF.md": "13244d765b7ef0f8c778e752f3506f1c1d7dbe447b30367118912568d8fa1377",
+      ".soloweave/context/PROJECT.md": "dd215b4f5f8dda74c23b1185ec74f7fb3b04a381a56956665fbfc6d26b596bfc",
+      ".soloweave/context/STATUS.md": "0edc604ecb4e2a732a0eab1a9199c42474a1ff2addb090c03d49c8479be94b3b",
+      ".soloweave/decisions/ADR-0001.md": "041835f61865c7ee55f2c30d5576224d47a7844eb7856f51b16b19233c0dcb1c",
+      "backend/server.js": "c8e99be306088b2d7e098b019e69f9054dac33ac914ad4f0c50da8ff62cf63db",
+      "frontend/app.js": "af96fc385c1ada634e065ea02d37a5bda159c048eb6fbd0c9f430843eae5a1c9",
+      "frontend/index.html": "6c017f35ba3758219b3ef3a0f06c8485f6d7915d75693955d98397422463bbf6",
+      "frontend/server.js": "67b53f5f2739c90c030b24ba32551be9dc605757eb7e0fdd8eedacfe565fec02",
+      "frontend/style.css": "1529be33d11891efb7747a5273392da7544a2150688500f5e4bd41a3dea105d4",
+      "README.md": "e1a1b0c2b74294a2348a5d9b49fcc219a41cea0a208b787955a447d037498737",
+      "tests/integration.test.js": "73eb61e71d4c48bba16aea375f2235e8190bfcdbf5004955d6a40ab64ced800f",
+      "tests/verify-deletion.js": "01a8e0448690cb2dd439df1b5838e4fc92a1bfbcf2dda70c6c54681eb29b4234",
+      "tests/verify-running.js": "eaffc90cf1a0d9ad33394cb5fc1429afc9a417f77c0622469ef9d7791b5d1f06"
+    }
+  },
+  "final_static_checks": {
+    "markdown_relative_file_links": {
+      "passed_files": 52,
+      "web_content_and_heading_anchors": "not checked"
+    },
+    "five_skill_resources": "passed",
+    "git_diff_check": "passed"
+  }
+}
