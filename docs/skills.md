@@ -33,3 +33,7 @@ npx skills@latest add ShiYuandi/SoloWeave
 当前五项已在 GitHub 提交 37c7062 中提供，并于 2026-10-12 完成公开安装核对。SkillHub 入口和功能开发 0.2.4 均已发布。项目设置 0.3.2、项目交接 0.2.2、质量检查 0.2.1 已发布；这五项已发布版本的公开包共六份源码资源均与仓库一致；平台新增 _meta.json 的 slug/version 另行核对。旧故障排查已下架，未永久删除；详细状态见[交付记录](release-status.md)。页面：[入口](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave)、[项目设置](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-setup)、[功能开发](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-feature-workflow)、[项目交接](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-project-continuity)、[质量检查](https://skillhub.cn/skills/user_38c0807e/shiyuandi-soloweave-quality-review)。
 
 上表记录源码版本；SkillHub 状态为核对时快照，本轮实际进度见[交付状态](release-status.md)。维护者运行 `scripts/package-skillhub.ps1` 生成 `dist/skills/` 下的五个 ZIP 和 SHA256SUMS。步骤见[发布指南](releasing.md)。
+
+## Agensi 发布状态
+
+2026-10-18 已提交五项免费条目，名称、概述与平台介绍使用英文；包内中文说明及源码版本保持不变。当前五项均已上架，价格均为 Free；质量检查的[公开页面](https://www.agensi.io/skills/soloweave-quality-review)也已核对。入口与具体链接见[公开主页](https://www.agensi.io/creators/creator-645)和[交付状态](release-status.md)。公开页核对不等同于 Agensi MCP 实际调用验收。

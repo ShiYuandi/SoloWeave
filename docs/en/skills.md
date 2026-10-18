@@ -31,3 +31,7 @@ Ask for work normally, checking that new projects clarify key decisions before i
 The five Skills are available in GitHub commit 37c7062; public installation was verified on 2026-10-12. Entry and feature development 0.2.4 are published on SkillHub. Setup 0.3.2, continuity 0.2.2, and quality review 0.2.1 are published. All six source resources in the five published packages matched the repository. Each package also contains platform-generated _meta.json; its slug/version were checked separately. The older debugging listing was unpublished and remains recoverable. See the [current delivery snapshot](../release-status.md) and [page links](../skills.md#skillhub-发布状态).
 
 Versions above identify source, not completed SkillHub review. See [delivery status](../release-status.md). The packaging script produces five ZIPs and SHA256SUMS in ignored `dist/skills/`. See [releasing](releasing.md).
+
+## Agensi publication
+
+On 2026-10-18, all five Skills were submitted as Free listings with English names, summaries and descriptions. The original Simplified Chinese instructions and source versions were preserved. All five listings are live and Free, including the verified [Quality Review page](https://www.agensi.io/skills/soloweave-quality-review). See the [creator page](https://www.agensi.io/creators/creator-645) and [dated status snapshot](../release-status.md). Public listing checks do not establish Agensi MCP runtime behavior.

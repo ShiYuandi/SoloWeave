@@ -1,5 +1,21 @@
 # 交付状态与历史快照
 
+## Agensi 免费发布（2026-10-18）
+
+开发者明确要求发布到 Agensi，并要求平台介绍使用英文。五项已上传并提交审核，逐项预览确认 Free。最终管理页为 5 项 Live、0 项 Pending；四项在公开主页可见，最后上架的质量检查也已通过其公开详情页核对，五项均为英文介绍和 Free 定价。
+
+| Skill | 上传源码版本 | 英文名称与公开链接 | 核对状态 | 定价 |
+| --- | --- | --- | --- | --- |
+| soloweave | 0.2.4 | [SoloWeave Development Guide](https://www.agensi.io/skills/soloweave-development-guide) | Live，公开可见 | Free |
+| project-setup | 0.3.2 | [SoloWeave Project Setup](https://www.agensi.io/skills/soloweave-project-setup) | Live，公开可见 | Free |
+| feature-workflow | 0.2.4 | [SoloWeave Feature Workflow](https://www.agensi.io/skills/soloweave-feature-workflow) | Live，公开可见 | Free |
+| project-continuity | 0.2.2 | [SoloWeave Project Continuity](https://www.agensi.io/skills/soloweave-project-continuity) | Live，公开可见 | Free |
+| quality-review | 0.2.1 | [SoloWeave Quality Review](https://www.agensi.io/skills/soloweave-quality-review) | Live，公开可见 | Free |
+
+[公开主页](https://www.agensi.io/creators/creator-645)；[管理入口](https://www.agensi.io/dashboard#my-skills)。只翻译平台介绍，包内中文 SKILL.md、版本及参考资料未修改。五包的六份资源本地逐字节核对通过；公开项目设置详情页确认包含 selection-guide.md。平台预览及公开详情显示自己的包标记 v1.0，正文另列真实源码版本，不混同两个版本。未进行 Agensi MCP 安装或运行内容核验，不能把公开页核对当成实际调用通过。
+
+平台自动生成内容曾出现不存在的 setup 命令与未实测演示，已清除并按实际能力填写。无须支付费用或连接收款账户即可完成本次免费提交。上传包、SHA256SUMS、截图与提交收据保存在忽略目录 dist/agensi/2026-10-18/。源码基准为 1d42336；开发者随后明确要求将本轮发布记录中文提交并推送，实际提交与远端状态以 Git 为准。
+
 ## 当前五项交付核对（2026-10-12）
 
 GitHub 已推送 [`37c7062`](https://github.com/ShiYuandi/SoloWeave/commit/37c7062)，对应 [CI 通过](https://github.com/ShiYuandi/SoloWeave/actions/runs/38151366651)。本轮开发者已要求继续公开安装验收和 SkillHub 同步。
